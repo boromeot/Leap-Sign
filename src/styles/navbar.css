@@ -1,6 +1,7 @@
 nav > ul {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   list-style: none;
 }
 
@@ -11,4 +12,11 @@ nav {
 .nav-bar__user-btns {
   display: flex;
   gap: 1em;
+}
+
+.frog-img {
+  width: 4em;
+  height: 4em;
+  border-radius: 50%;
+  object-fit: cover;
 }
