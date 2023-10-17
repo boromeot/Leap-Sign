@@ -54,6 +54,15 @@ a:hover {
 body {
   min-width: 320px;
   min-height: 100vh;
+  /* light green to dark green from left side of page to right */
+  background: linear-gradient(
+    90deg,
+    #79D4D5 20%,
+    /* #5BCCC1 25%, */
+    /* #4ECABB 50%, */
+    /* #4ECABB 75%, */
+    #2BC2A6 100%
+  );
 }
 
 h1 {
