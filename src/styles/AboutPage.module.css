@@ -1,0 +1,12 @@
+.aboutPageContainer{
+    display: flex;
+    flex-direction: column;
+    padding: 100px 100px;
+    gap: 32px;
+    height: 500px;
+}
+.aboutText{
+    border: 2px solid black;
+    background-color: lightgrey;
+}
+
