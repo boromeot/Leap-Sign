@@ -1,56 +1,56 @@
 /* html {height: 100%;overflow:hidden} */
 
 body {
-    background: 
+    background:
 -webkit-linear-gradient(CadetBlue, DarkSeaGreen);
-    background: 
+    background:
      -o-linear-gradient(CadetBlue, DarkSeaGreen);
-    background: 
+    background:
    -moz-linear-gradient(CadetBlue, DarkSeaGreen);
-    background: 
+    background:
         linear-gradient(CadetBlue, DarkSeaGreen);
     min-height: 100%;
 }
 
 .profilepicture {
-    position: absolute; 
+    position: absolute;
     width: 180px;
     height: 180px;
     background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/6083/profile/profile-512_1.jpg) no-repeat;
     background-size: 180px 180px;
-    margin: auto; 
+    margin: auto;
     /* top:0; left: 0; bottom: 0; right: 0; */
     z-index: 3;
-  
-    -webkit-box-shadow: 
+
+    -webkit-box-shadow:
       0 0 0 10px  rgba(255,255,255,.2),
       0 0 5px 2px rgba(0,0,0,.3),
 inset 0 0 0 10px  rgba(0,0,255,.2);
-    -moz-box-shadow: 
+    -moz-box-shadow:
       0 0 0 10px  rgba(255,255,255,.2),
       0 0 5px 2px rgba(0,0,0,.3),
 inset 0 0 0 10px  rgba(0,0,255,.2);
-    box-shadow: 
+    box-shadow:
       0 0 0 10px  rgba(255,255,255,.2),
       0 0 5px 2px rgba(0,0,0,.3),
 inset 0 0 0 10px  rgba(0,0,255,.2);
-  
-    -webkit-border-radius: 999px; 
+
+    -webkit-border-radius: 999px;
     -moz-border-radius: 999px;
     border-radius: 999px;
     /* border-radius: 50% has issues on some mobile browsers */
 }
 
 .pulse1 {
-    position: absolute;  
+    position: absolute;
     width: 200px;
     height: 200px;
-    margin: auto; 
+    margin: auto;
     /* top: 0; left: 0; bottom: 0; right: 0; */
     z-index: 1;
     opacity: 0;
     border: 3px solid rgba(255,255,255,.1);
-  
+
     -webkit-animation: pulsejg1 4s linear infinite;
     -moz-animation: pulsejg1 4s linear infinite; /* animations which runs for 4 sec*/
     animation: pulsejg1 4s linear infinite;
@@ -69,12 +69,12 @@ inset 0 0 0 10px  rgba(0,0,255,.2);
     position: absolute;
     width: 200px;
     height: 200px;
-    margin: auto; 
+    margin: auto;
     /* top: 0; left: 0; bottom: 0; right: 0; */
     z-index: 2;
     opacity: 0;
     border: 1px solid rgba(255,255,255,0);
-  
+
     -webkit-animation: pulsejg2 4s linear infinite;
     -moz-animation: pulsejg2 4s linear infinite;
     animation: pulsejg2 4s linear infinite;
@@ -287,10 +287,19 @@ inset 0 0 0 10px  rgba(0,0,255,.2);
 }
 .leafclass{
     display: flex;
-    justify-content: space-evenly /* Adjust as needed */
+    justify-content: space-evenly; /* Adjust as needed */
 }
 .lessonsLilyPad{
     width: 50px; /* Adjust the width of each frog as needed */
-  height: 50px; /* Adjust the height of each frog as needed */
-  
+    height: 50px; /* Adjust the height of each frog as needed */
+
+}
+.gray {
+
+    margin-top: -2px;
+    width: 168px;
+    margin-left: -14px;
+    opacity: 0.7;
+    filter: grayscale(100%);
+
 }

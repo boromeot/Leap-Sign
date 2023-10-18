@@ -10,6 +10,8 @@ import AboutPage from './pages/AboutPage'
 import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
 import LessonsPage from './pages/LessonsPage'
+import SingleLesson from './pages/SingleLesson'
+
 function App() {
   // const [count, setCount] = useState(0)
 
@@ -22,6 +24,7 @@ function App() {
       <Route path='/signup' element={<SignUp />} />
       <Route path='/signin' element={<SignIn />} />
       <Route path='/lessons' element={<LessonsPage />}/>
+      <Route path='/lessons/1' element={<SingleLesson />}/>
     </Routes>
       {/* <div>
         <a href="https://vitejs.dev" target="_blank">
