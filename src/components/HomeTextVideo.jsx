@@ -7,7 +7,8 @@ function HomeTextVideo(props) {
         <div className={classes.homeTextVideoContainer}>
             <div className={classes.homeTextVideoDiv}>
                 <div className={classes.hometext}>
-                    {props.text}
+                    <h2>{props.title}</h2>
+                    <p>{props.text}</p>
                 </div>
                 <div className={classes.homevideo}>
                     <ReactPlayer url={props.url} controls width='100%' height='100%' />
