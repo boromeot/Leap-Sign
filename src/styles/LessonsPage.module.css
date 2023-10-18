@@ -292,7 +292,7 @@ inset 0 0 0 10px  rgba(0,0,255,.2);
 .lessonsLilyPad{
     width: 50px; /* Adjust the width of each frog as needed */
     height: 50px; /* Adjust the height of each frog as needed */
-
+    position: relative;
 }
 .gray {
 
@@ -302,4 +302,15 @@ inset 0 0 0 10px  rgba(0,0,255,.2);
     opacity: 0.7;
     filter: grayscale(100%);
 
+}
+.frogImg{
+    position: absolute;
+    z-index: 4;
+    width: 166px;
+    height: 172px;
+
+
+}
+.frogContainer{
+    position: relative;
 }
