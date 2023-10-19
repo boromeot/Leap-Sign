@@ -6,8 +6,8 @@ import lilypad from '../assets/lilypad.png'
 const developers = [
     {firstname: 'Tyler', lastname: 'Boromeo', url: 'https://www.linkedin.com/in/kekoa-boromeo/'},
     {firstname: 'PJ', lastname: 'Singh', url: 'https://www.linkedin.com/in/prabhjot-singh-software-developer/'},
-    {firstname: 'Shana', lastname: 'Edouard', url: 'https://www.linkedin.com/in/thenammai-nachiyappan-56bbaa1a2/'},
-    {firstname: 'Thenu', lastname: 'Nachiyappan', url: 'https://www.linkedin.com/in/shana-edouard/'},
+    {firstname: 'Shana', lastname: 'Edouard', url: 'https://www.linkedin.com/in/shana-edouard/'},
+    {firstname: 'Thenu', lastname: 'Nachiyappan', url: 'https://www.linkedin.com/in/henammai-nachiyappan-56bbaa1a2/'},
     {firstname: 'Leslie', lastname: 'Chou', url: 'https://www.linkedin.com/in/lesliechou921/'},
 ];
 
