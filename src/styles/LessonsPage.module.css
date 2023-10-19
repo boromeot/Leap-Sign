@@ -280,15 +280,21 @@ inset 0 0 0 10px  rgba(0,0,255,.2);
         opacity: 0;
     }
 }
+
+.leafclass{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    grid-template-rows: auto;
+    column-gap: 50px;
+    row-gap: 200px;
+}
+
 .leafimg{
     margin-top: -2px;
     width: 168px;
     margin-left: -14px;
 }
-.leafclass{
-    display: flex;
-    justify-content: space-evenly; /* Adjust as needed */
-}
+
 .lessonsLilyPad{
     width: 50px; /* Adjust the width of each frog as needed */
     height: 50px; /* Adjust the height of each frog as needed */

@@ -6,25 +6,25 @@ import frogImg from '../assets/frog.png';
 import leaf from '../assets/lilypad.png';
 import SingleLesson from '../pages/SingleLesson'
 
-const shoot = () => {
-    alert("Great Shot!");
-}
+// const shoot = () => {
+//     alert("Great Shot!");
+// }
 
 const leafnode = () => {
     return (
         <div>
             <div className={classes.pulse1}></div>
             <div className={classes.pulse2}></div>
-            <button className={classes.profilepicture} onClick={shoot}>
+            <button className={classes.profilepicture}>
                 <img className={classes.leafimg} src={leaf} alt="lilyPad" />
             </button>
         </div>
     )
 };
 
-const reset = () => {
-    setUnlocked(false)
-};
+// const reset = () => {
+//     setUnlocked(false)
+// };
 
 
 const FiveLeafNodes = () => {
@@ -44,7 +44,7 @@ const FiveLeafNodes = () => {
             <div className={classes.frogContainer}  onClick={handleClick} >
                 <img className={classes.frogImg} src={frogImg} alt='FrogLogo' />
                 {leafnode()}
-               
+
                 {/* <button onClick={handleClick}> click me</button> */}
             </div>
             <div className={classes.lessonsLilyPad}>
