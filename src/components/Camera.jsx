@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Webcam from "react-webcam"
 import * as tf from '@tensorflow/tfjs'
 import * as mp_holistic from '@mediapipe/holistic';
@@ -8,14 +8,29 @@ import { drawFace, drawHands, drawPose } from '../utils/draw';
 const Camera = () => {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
-  
+  const [net, setNet] = useState(null);
+
+  useEffect(() => {
+    if (net !== null) {
+      const canvasCtx = canvasRef.current.getContext('2d');
+      const intervalId = setInterval(() => {
+        detect(net, canvasCtx)
+      }, 100)
+      return () => {
+        clearInterval(intervalId);
+        net.close();
+      }
+    }
+  }, [net])
+
+
   const loadModel = async () => {
     const config = {locateFile: (file) => {
       return `https://cdn.jsdelivr.net/npm/@mediapipe/holistic@` +
              `${mp_holistic.VERSION}/${file}`;
     }};
     const holistic = await new mp_holistic.Holistic(config);
-    holistic.setOptions({
+    await holistic.setOptions({
       modelComplexity: 1,
       smoothLandmarks: true,
       enableSegmentation: true,
@@ -24,15 +39,7 @@ const Camera = () => {
       minDetectionConfidence: 0.5,
       minTrackingConfidence: 0.5
     });
-    const canvasCtx = canvasRef.current.getContext('2d');
-    const intervalId = setInterval(() => {
-      detect(holistic, canvasCtx)
-    }, 100)
-
-    window.addEventListener('beforeunload', () => {
-      console.log('cleared Interval', intervalId)
-      clearInterval(intervalId); // Clear the interval before the user leaves page
-    });
+    setNet(holistic);
   }
 
   const detect = async (model, canvasCtx) => {
@@ -54,6 +61,8 @@ const Camera = () => {
       const _ = await model.send({image: video });
       model.onResults((detections) => {
         /* faceLandmarks length 478 poseLandmarks length 33 leftHandLandmarks length 21*/
+        canvasCtx.save();
+        canvasCtx.clearRect(0, 0, videoWidth, videoHeight);
         drawFace(detections, canvasCtx);
         drawHands(detections, canvasCtx);
         drawPose(detections, canvasCtx);
