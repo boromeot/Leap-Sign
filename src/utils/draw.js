@@ -43,12 +43,12 @@ export const drawPose = (detections, canvasCtx) => {
       canvasCtx,
       Object.values(mp_holistic.POSE_LANDMARKS_LEFT)
           .map(index => detections.poseLandmarks[index]),
-      {visibilityMin: 0.65, color: 'white', fillColor: 'rgb(255,138,0)'});
+      {visibilityMin: 0.65, color: 'white', fillColor: 'rgb(255,138,0)', radius: 2});
     mp_drawing.drawLandmarks(
       canvasCtx,
       Object.values(mp_holistic.POSE_LANDMARKS_RIGHT)
           .map(index => detections.poseLandmarks[index]),
-      {visibilityMin: 0.65, color: 'white', fillColor: 'rgb(255,138,0)'});
+      {visibilityMin: 0.65, color: 'white', fillColor: 'rgb(255,138,0)', radius: 2});
   }
 }
 
@@ -56,9 +56,9 @@ export const drawFace = (detections, canvasCtx) => {
   if (detections.faceLandmarks) {
     // Draw face
     
-    // mp_drawing.drawConnectors( CAUSES CRASHES
-    //   canvasCtx, detections.faceLandmarks, mp_holistic.FACEMESH_TESSELATION,
-    //   {color: '#C0C0C070', lineWidth: 1});
+    mp_drawing.drawConnectors( 
+      canvasCtx, detections.faceLandmarks, mp_holistic.FACEMESH_TESSELATION,
+      {color: '#C0C0C070', lineWidth: 1});
     mp_drawing.drawConnectors(
       canvasCtx, detections.faceLandmarks, mp_holistic.FACEMESH_RIGHT_EYE,
       {color: 'rgb(0,217,231)'});
@@ -73,9 +73,9 @@ export const drawFace = (detections, canvasCtx) => {
       {color: 'rgb(0,217,231)'});
     mp_drawing.drawConnectors(
       canvasCtx, detections.faceLandmarks, mp_holistic.FACEMESH_FACE_OVAL,
-      {color: '#E0E0E0', lineWidth: 5});
+      {color: '#E0E0E0', lineWidth: 2});
     mp_drawing.drawConnectors(
       canvasCtx, detections.faceLandmarks, mp_holistic.FACEMESH_LIPS,
-      {color: '#E0E0E0', lineWidth: 5});
+      {color: '#E0E0E0', lineWidth: 2});
   }
 }
