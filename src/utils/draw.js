@@ -28,3 +28,22 @@ export const drawHands = (detections, canvasCtx) => {
     });
   }
 }
+
+export const drawPose = (detections, canvasCtx) => {
+  if (detections.poseLandmarks) {
+    // Draw pose
+    mp_drawing.drawConnectors(
+      canvasCtx, detections.poseLandmarks, mp_holistic.POSE_CONNECTIONS,
+      {color: 'white'});
+    mp_drawing.drawLandmarks(
+      canvasCtx,
+      Object.values(mp_holistic.POSE_LANDMARKS_LEFT)
+          .map(index => detections.poseLandmarks[index]),
+      {visibilityMin: 0.65, color: 'white', fillColor: 'rgb(255,138,0)'});
+    mp_drawing.drawLandmarks(
+      canvasCtx,
+      Object.values(mp_holistic.POSE_LANDMARKS_RIGHT)
+          .map(index => detections.poseLandmarks[index]),
+      {visibilityMin: 0.65, color: 'white', fillColor: 'rgb(255,138,0)'});
+  }
+}
