@@ -50,8 +50,9 @@ export const drawPose = (detections, canvasCtx) => {
 
 export const drawFace = (detections, canvasCtx) => {
   if (detections.faceLandmarks) {
-    // Face...
-    // mp_drawing.drawConnectors(
+    // Draw face
+    
+    // mp_drawing.drawConnectors( CAUSES CRASHES
     //   canvasCtx, detections.faceLandmarks, mp_holistic.FACEMESH_TESSELATION,
     //   {color: '#C0C0C070', lineWidth: 1});
     mp_drawing.drawConnectors(
