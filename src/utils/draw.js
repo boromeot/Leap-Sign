@@ -47,3 +47,30 @@ export const drawPose = (detections, canvasCtx) => {
       {visibilityMin: 0.65, color: 'white', fillColor: 'rgb(255,138,0)'});
   }
 }
+
+export const drawFace = (detections, canvasCtx) => {
+  if (detections.faceLandmarks) {
+    // Face...
+    // mp_drawing.drawConnectors(
+    //   canvasCtx, detections.faceLandmarks, mp_holistic.FACEMESH_TESSELATION,
+    //   {color: '#C0C0C070', lineWidth: 1});
+    mp_drawing.drawConnectors(
+      canvasCtx, detections.faceLandmarks, mp_holistic.FACEMESH_RIGHT_EYE,
+      {color: 'rgb(0,217,231)'});
+    mp_drawing.drawConnectors(
+      canvasCtx, detections.faceLandmarks, mp_holistic.FACEMESH_RIGHT_EYEBROW,
+      {color: 'rgb(0,217,231)'});
+    mp_drawing.drawConnectors(
+      canvasCtx, detections.faceLandmarks, mp_holistic.FACEMESH_LEFT_EYE,
+      {color: 'rgb(255,138,0)'});
+    mp_drawing.drawConnectors(
+      canvasCtx, detections.faceLandmarks, mp_holistic.FACEMESH_LEFT_EYEBROW,
+      {color: 'rgb(255,138,0)'});
+    mp_drawing.drawConnectors(
+      canvasCtx, detections.faceLandmarks, mp_holistic.FACEMESH_FACE_OVAL,
+      {color: '#E0E0E0', lineWidth: 5});
+    mp_drawing.drawConnectors(
+      canvasCtx, detections.faceLandmarks, mp_holistic.FACEMESH_LIPS,
+      {color: '#E0E0E0', lineWidth: 5});
+  }
+}
