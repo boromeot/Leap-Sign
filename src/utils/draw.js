@@ -2,6 +2,7 @@ import * as mp_drawing from '@mediapipe/drawing_utils';
 import * as mp_holistic from '@mediapipe/holistic';
 
 export const drawHands = (detections, canvasCtx) => {
+  if (!detections) return;
   if (detections.rightHandLandmarks) {
     // Draw right hand
     mp_drawing.drawConnectors(
@@ -66,10 +67,10 @@ export const drawFace = (detections, canvasCtx) => {
       {color: 'rgb(0,217,231)'});
     mp_drawing.drawConnectors(
       canvasCtx, detections.faceLandmarks, mp_holistic.FACEMESH_LEFT_EYE,
-      {color: 'rgb(255,138,0)'});
+      {color: 'rgb(0,217,231)'});
     mp_drawing.drawConnectors(
       canvasCtx, detections.faceLandmarks, mp_holistic.FACEMESH_LEFT_EYEBROW,
-      {color: 'rgb(255,138,0)'});
+      {color: 'rgb(0,217,231)'});
     mp_drawing.drawConnectors(
       canvasCtx, detections.faceLandmarks, mp_holistic.FACEMESH_FACE_OVAL,
       {color: '#E0E0E0', lineWidth: 5});
