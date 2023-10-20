@@ -1,3 +1,6 @@
+import * as mp_drawing from '@mediapipe/drawing_utils';
+import * as mp_holistic from '@mediapipe/holistic';
+
 export const drawHands = (detections, canvasCtx) => {
   if (detections.rightHandLandmarks) {
     // Draw right hand
