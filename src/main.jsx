@@ -25,12 +25,10 @@ import './index.css'
 // ]);
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
     <BrowserRouter>
       <App />
     </BrowserRouter>
-    {/* <RouterProvider router={router}>
-      <NavBar />
-    </RouterProvider> */}
-  </React.StrictMode>,
+    // {/* <RouterProvider router={router}>
+    //   <NavBar />
+    // </RouterProvider> */}
 )
