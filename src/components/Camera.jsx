@@ -14,7 +14,7 @@ const Camera = () => {
       return `https://cdn.jsdelivr.net/npm/@mediapipe/holistic@` +
              `${mp_holistic.VERSION}/${file}`;
     }};
-    const holistic = new mp_holistic.Holistic(config);
+    const holistic = await new mp_holistic.Holistic(config);
     holistic.setOptions({
       modelComplexity: 1,
       smoothLandmarks: true,
@@ -25,9 +25,14 @@ const Camera = () => {
       minTrackingConfidence: 0.5
     });
     const canvasCtx = canvasRef.current.getContext('2d');
-    setInterval(() => {
+    const intervalId = setInterval(() => {
       detect(holistic, canvasCtx)
     }, 100)
+
+    window.addEventListener('beforeunload', () => {
+      console.log('cleared Interval', intervalId)
+      clearInterval(intervalId); // Clear the interval before the user leaves page
+    });
   }
 
   const detect = async (model, canvasCtx) => {
