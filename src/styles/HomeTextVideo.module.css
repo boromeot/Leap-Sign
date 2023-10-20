@@ -15,6 +15,7 @@
     background-color: white;
     margin: 0 100px;
     box-shadow: 0 0 20px rgb(0, 0, 0, 0.2);
+    overflow: hidden;
 }
 
 .hometext {
@@ -35,6 +36,11 @@
     padding: 20px
 }
 
+.hidden {
+    display: none;
+}
+
+
 
 @media screen and (max-width: 820px) {
     .homeTextVideoContainer {
@@ -47,7 +53,7 @@
     .homeTextVideoDiv {
         
         display: flex;
-        flex-direction: column;
+        /* flex-direction: column; */
         height: fit-content;
         gap: 15px;
         margin: 0 20px;
