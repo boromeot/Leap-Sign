@@ -91,3 +91,21 @@
     }
 }
 
+@media screen and (max-width: 820px) {
+    .aboutPageContainer {
+        margin: 10px;
+    }
+
+    .aboutText {
+        font-size: 12px;
+    }
+    .developersUl > li > a > p {
+        display: none;
+        padding: 0;
+    }
+    
+    .developersContainer {
+        padding: 10px;
+        margin: 10px;
+    }
+}
