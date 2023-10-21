@@ -46,7 +46,7 @@ const HomePage = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveCard((prevActiveCard) => (prevActiveCard + 1) % cardsData.length);
-    }, 5000)
+    }, 10000)
 
     return () => {
       clearInterval(interval);
