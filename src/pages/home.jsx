@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import HomeTextVideo from '../components/HomeTextVideo';
 import classes from '../styles/home.module.css';
 
@@ -43,23 +43,19 @@ const HomePage = () => {
     { title: title3, text: text3, url: video3 },
   ];
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setActiveCard((prevActiveCard) => (prevActiveCard + 1) % cardsData.length);
+    }, 5000)
+
+    return () => {
+      clearInterval(interval);
+    }
+  }, [cardsData]);
+
   return (
     <>
-    <div className={classes.radioButtons}>
-        {cardsData.map((_, index) => (
-          <label key={index} className={classes.radioLabel}>
-            <input
-              type="radio"
-              name="cardSelector"
-              value={index}
-              checked={index === activeCard}
-              onChange={handleCardChange}
-              className={classes.radioBtn}
-            />
-          </label>
-          
-        ))}
-    </div>
+    
     <div className={classes.carouselContainer}>
       <div className={classes.homeTextVideoContainer}>
         {cardsData.map((data, index) => (
@@ -73,6 +69,23 @@ const HomePage = () => {
         ))}
       </div>
     </div>
+
+    <div className={classes.radioButtons}>
+            {cardsData.map((_, index) => (
+              <label key={index} className={classes.radioLabel}>
+                <input
+                  type="radio"
+                  name="cardSelector"
+                  value={index}
+                  checked={index === activeCard}
+                  onChange={handleCardChange}
+                  className={classes.radioBtn}
+                />
+              </label>
+              
+            ))}
+        </div>
+
     </>
   );
 };

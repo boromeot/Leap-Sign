@@ -21,12 +21,14 @@ import classes from '../styles/HomeTextVideo.module.css';
 // }
 
 function HomeTextVideo(props) {
+
     const cardClasses = props.isActive
-    ? `${classes.homeTextVideoDiv} ${classes.active} ${classes.transitionCard}`
-    : `${classes.homeTextVideoDiv} ${classes.hidden} ${classes.transitionCard}`; 
+    ? `${classes.homeTextVideoDiv} ${classes.active} `
+    : `${classes.homeTextVideoDiv} ${classes.hidden} `; 
 
   
     return (
+    // <div className={classes.homeTextVideoContainer}>
       <div className={cardClasses}>
         <div className={classes.hometext}>
           <h2>{props.title}</h2>
@@ -36,6 +38,7 @@ function HomeTextVideo(props) {
           <ReactPlayer url={props.url} controls width='100%' height='100%' />
         </div>
       </div>
+    // </div>
     );
   }
 
