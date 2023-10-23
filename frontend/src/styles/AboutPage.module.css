@@ -109,3 +109,25 @@
         margin: 10px;
     }
 }
+
+@media screen and (min-width: 821px) and (max-width: 950px) {
+    .developersContainer {
+        margin: 20px 100px;
+    }
+
+    .developersUl > li > a > p {
+        display: none;
+        padding: 0;
+    }
+    
+    .developersUl {
+        padding-bottom: 0;
+    }
+}
+
+
+@media screen and (min-width: 480px) and (max-width: 820px) {
+    .developersContainer {
+        margin: 100px 10px;
+    }
+}
