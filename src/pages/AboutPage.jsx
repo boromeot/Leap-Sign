@@ -6,8 +6,8 @@ import lilypad from '../assets/lilypad.png'
 const developers = [
     {firstname: 'Tyler', lastname: 'Boromeo', url: 'https://www.linkedin.com/in/kekoa-boromeo/'},
     {firstname: 'PJ', lastname: 'Singh', url: 'https://www.linkedin.com/in/prabhjot-singh-software-developer/'},
-    {firstname: 'Shana', lastname: 'Edouard', url: 'https://www.linkedin.com/in/thenammai-nachiyappan-56bbaa1a2/'},
-    {firstname: 'Thenu', lastname: 'Nachiyappan', url: 'https://www.linkedin.com/in/shana-edouard/'},
+    {firstname: 'Shana', lastname: 'Edouard', url: 'https://www.linkedin.com/in/shana-edouard/'},
+    {firstname: 'Thenu', lastname: 'Nachiyappan', url: 'https://www.linkedin.com/in/thenammai-nachiyappan-56bbaa1a2/'},
     {firstname: 'Leslie', lastname: 'Chou', url: 'https://www.linkedin.com/in/lesliechou921/'},
 ];
 
@@ -46,7 +46,7 @@ function AboutPage() {
             </div>
 
             <div className={classes.developersContainer}>
-                <h3>Meet the [app name] group</h3>
+                <h3>Meet the [app name] team</h3>
                 <ul className={classes.developersUl}>
                     {developers.map((developer) => (
                         <li 

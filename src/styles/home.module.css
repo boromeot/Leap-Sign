@@ -1,0 +1,37 @@
+.radioButtons {
+    margin-top: 10px;
+    padding: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    /* background-color: pink; */
+}
+
+.radioBtn {
+  width: 25px; 
+  height: 25px; 
+  margin-right: 5px; 
+  cursor: pointer;
+}
+
+.radioBtn:checked{
+  background-color: green;
+  border-color: green;
+  border: none;
+  outline: none;
+}
+
+input[type='radio']:checked:after {
+  background-color: green;
+}
+
+input[type='radio']:after {
+  background-color: green;
+}
+
+@media screen and (max-width: 820px) {
+  .radioButtons {
+    display: none;
+  }
+}
