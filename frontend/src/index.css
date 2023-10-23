@@ -4,6 +4,10 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+html {
+  height: 100vh;
+}
 :root {
 
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
