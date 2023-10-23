@@ -8,7 +8,7 @@ const NavBar = () => {
     <nav className='nav-bar'>
       <ul className='nav-bar__list'>
         <li className='nav-bar__logo'><Link to="/"><img className='frog-img' src={frogImg} alt="Frog Logo"/></Link></li>
-        <li className='nav-bar__app-name'><Link to='/about'>Catchy/app Name here</Link></li>
+        <li className='nav-bar__app-name'>Catchy/app Name here</li>
         <li className='nav-bar__user-btns'>
           <Link to="/signin"><button>Sign In</button></Link>
           <Link to="/signup"><button>Sign Up</button></Link>
