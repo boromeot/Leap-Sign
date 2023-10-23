@@ -11,7 +11,7 @@ import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
 import LessonsPage from './pages/LessonsPage'
 import SingleLesson from './pages/SingleLesson'
-
+import SecondLesson from './pages/SecondLesson'
 function App() {
   // const [count, setCount] = useState(0)
 
@@ -24,7 +24,8 @@ function App() {
       <Route path='/signup' element={<SignUp />} />
       <Route path='/signin' element={<SignIn />} />
       <Route path='/lessons' element={<LessonsPage />}/>
-      <Route path='/lessons/1' element={<SingleLesson />}/>
+      <Route path= '/lessons/:id' element={<SingleLesson />}/>
+      <Route path= '/lessons/:id' element={<SecondLesson />}/>
     </Routes>
       {/* <div>
         <a href="https://vitejs.dev" target="_blank">
