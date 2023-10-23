@@ -320,9 +320,24 @@ inset 0 0 0 10px  rgba(0,0,255,.2);
     height: 172px;
     margin-left: 13px;
     margin-top: 5px;
+}
 
+.frogImg.animate {
+    animation: moveElement 2s ease;
+    animation-fill-mode: forwards;
 
 }
+
+@keyframes moveElement {
+    0% {
+      transform: translate(0, 0); /* Initial position */
+    }
+    100% {
+      transform: translate(20vw, 0); /* Final position */
+    }
+}
+
+
 .frogContainer{
     position: relative;
 }

@@ -1,14 +1,10 @@
-import { React, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
+import React, {useState, useEffect } from 'react';
+import { useNavigate, useLocation } from 'react-router-dom';
 import classes from '../styles/LessonsPage.module.css';
 import frogImg from '../assets/frog.png';
 import leaf from '../assets/lilypad.png';
-import SingleLesson from '../pages/SingleLesson'
+import FrogAnimation from '../pages/FrogAnimation';
 
-// const shoot = () => {
-//     alert("Great Shot!");
-// }
 
 const leafnode = () => {
     return (
@@ -22,54 +18,56 @@ const leafnode = () => {
     )
 };
 
-// const reset = () => {
-//     setUnlocked(false)
-// };
-
-
 const FiveLeafNodes = () => {
     const navigateTo = useNavigate();
-
+    const location = useLocation();
+    const query = new URLSearchParams(location.search);
+    const shouldAnimate = query.get("animate") === "true";
+    const [animate, setAnimate] = useState(false);
     const [unlocked, setUnlocked] = useState(false);
+
+    useEffect(() => {
+        if(shouldAnimate) {
+            setAnimate(true);
+            setUnlocked(true);
+        }
+    }, [shouldAnimate])
+
     function handleClick() {
         navigateTo("/lessons/1");
     }
-    if (!unlocked) {
-        setUnlocked(true)
-    }
+
 
     return (
         <div className={classes.leafclass}>
-
-            <div className={classes.frogContainer}  onClick={handleClick} >
-                <img className={classes.frogImg} src={frogImg} alt='FrogLogo' />
+            <div className={classes.frogContainer} onClick={handleClick} >
+                {animate && <FrogAnimation animate={animate}/>}
+                <img className={`${classes.frogImg} ${animate ? classes.animate : classes.frogImg}`} src={frogImg} alt='FrogLogo' />
                 {leafnode()}
-
-                {/* <button onClick={handleClick}> click me</button> */}
             </div>
             <div className={classes.lessonsLilyPad}>
-                {!unlocked ? (
+                {unlocked ? (
                     leafnode()
                 ) : (
                     <img className={classes.gray} src={leaf} alt="lilyPad" />
                 )}
             </div>
             <div className={classes.lessonsLilyPad}>
-                {!unlocked ? (
+                {unlocked ? (
                     leafnode()
                 ) : (
                     <img className={classes.gray} src={leaf} alt="lilyPad" />
                 )}
             </div>
             <div className={classes.lessonsLilyPad}>
-                {!unlocked ? (
+                {unlocked ? (
                     leafnode()
                 ) : (
                     <img className={classes.gray} src={leaf} alt="lilyPad" />
                 )}
             </div>
             <div className={classes.lessonsLilyPad}>
-                {!unlocked ? (
+                {unlocked ? (
                     leafnode()
                 ) : (
                     <img className={classes.gray} src={leaf} alt="lilyPad" />
