@@ -1,12 +1,111 @@
 .aboutPageContainer{
     display: flex;
     flex-direction: column;
-    padding: 100px 100px;
+    padding: 60px 60px;
     gap: 32px;
-    height: 500px;
+    height: fit-content;
+    background-color: white;
+    margin: 50px 100px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgb(0, 0, 0, 0.2);
 }
 .aboutText{
-    border: 2px solid black;
-    background-color: lightgrey;
+    display: flex;
 }
 
+.lilyImg {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+}
+
+.developersUl {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.developersUl > li {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    width: 19%;
+}
+
+.developersUl > li > a {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.devImg {
+    width: 40px;
+    height: 40px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.hi {
+    position: absolute;
+    top: -30px;
+    right: -10px;
+    background-color: white;
+    font-size: 10px;
+    padding: 8px;
+    border-radius: 80%;
+}
+
+.developersContainer {
+    padding: 15px;
+    margin: 100px 100px 10px 100px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgb(0, 0, 0, 0.2);
+}
+
+.developersContainer > h3 {
+    margin: 10px 20px 25px 20px;
+}
+
+
+@keyframes jump {
+    0% { transform: translateY(0); }
+    25% { transform: translateY(-10px); }
+    50% { transform: translateY(0); }
+    75% { transform: translateY(-10px); }
+    100% { transform: translateY(0); }
+}
+
+.frogJump:hover {
+    animation: jump 0.5s ease infinite;
+}
+
+
+@media screen and (min-width: 1300px) and  (max-width: 1500px) {
+    .hi {
+        right: 30px;
+    }
+}
+@media screen and (min-width: 1500px) {
+    .hi {
+        right: 60px;
+    }
+}
+
+@media screen and (max-width: 820px) {
+    .aboutPageContainer {
+        margin: 10px;
+    }
+
+    .aboutText {
+        font-size: 12px;
+    }
+    .developersUl > li > a > p {
+        display: none;
+        padding: 0;
+    }
+    
+    .developersContainer {
+        padding: 10px;
+        margin: 10px;
+    }
+}
