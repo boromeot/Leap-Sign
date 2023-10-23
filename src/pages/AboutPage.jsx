@@ -46,7 +46,7 @@ function AboutPage() {
             </div>
 
             <div className={classes.developersContainer}>
-                <h3>Meet the [app name] group</h3>
+                <h3>Meet the [app name] team</h3>
                 <ul className={classes.developersUl}>
                     {developers.map((developer) => (
                         <li 
