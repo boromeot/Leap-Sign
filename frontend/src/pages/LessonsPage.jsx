@@ -23,30 +23,55 @@ const FiveLeafNodes = () => {
     const [animate, setAnimate] = useState(false);
     const [currentLesson, setCurrentLesson] = useState(0);
 
+    function handleLilyPadClick(lessonNumber) {
+        if (lessonNumber === currentLesson + 1) {
+            setCurrentLesson(lessonNumber);
+
+            // Navigate to a different page, set animate to true there
+            navigate(`/lessons/${lessonNumber}`, { state: { animate: true } });
+        }
+    }
+
     useEffect(() => {
         if (location.state && location.state.animate) {
             setAnimate(true);
         }
+
     }, [location]);
-    function handleLilyPadClick(lessonNumber) {
-        if (lessonNumber === currentLesson + 1) {
-            setCurrentLesson(lessonNumber);
+
+    useEffect(() => {
+        if(animate) {
+            const animationTimeout = setTimeout(() => {
+                setAnimate(false);
+            }, 2000);
+
+            return () => clearTimeout(animationTimeout)
         }
-        navigate(`/lessons/${lessonNumber}`);
-    }
+
+    }, [animate])
+
 
     return (
         <div className={classes.leafclass}>
             <div className={classes.frogContainer} onClick={() => handleLilyPadClick(1)}>
                 {animate && <FrogAnimation animate={animate} />}
-                <img className={`${classes.frogImg} ${animate ? classes.animate : ''}`} src={frogImg} alt='FrogLogo' />
+                <img
+                    className={`${classes.frogImg} ${animate ? classes.animation : ''}`}
+                    src={frogImg}
+                    alt='FrogLogo'
+                />
+                {leafnode()}
             </div>
             {[1, 2, 3, 4, 5].map((i) => (
                 <div className={classes.lessonsLilyPad} key={i} onClick={() => handleLilyPadClick(i)}>
                     {i <= currentLesson ? (
                         <>
                             {animate && <FrogAnimation animate={animate} />}
-                            <img className={classes.frogImg} src={frogImg} alt='FrogLogo' />
+                            <img
+                                className={`${classes.frogImg} ${animate ? classes.animation : ''}`}
+                                src={frogImg}
+                                alt='FrogLogo'
+                            />
                             {leafnode()}
                         </>
                     ) : (
@@ -69,7 +94,7 @@ export default FiveLeafNodes;
 //     const [animate, setAnimate] = useState(false);
 //     const [unlocked, setUnlocked] = useState(false);
 //     const [currentLesson, setCurrentLesson] = useState(0); // Initialize the current lesson to 1
-  
+
 
 //     // useEffect(() => {
 //     //     if (shouldAnimate) {
@@ -118,8 +143,8 @@ export default FiveLeafNodes;
 //     </div>
 // );
 
-    
-    
+
+
 // }
 
 // export default FiveLeafNodes;
@@ -190,7 +215,7 @@ export default FiveLeafNodes;
 //         console.log("Clicking"+i)
 //         elements.push(
 //             <div className={classes.lessonsLilyPad} key={i}   onClick={() => handleClick(i)} >
-                
+
 //                 {unlocked ? leafnode() : <img className={classes.gray} src={leaf} alt="lilyPad" />}
 //             </div>
 //         );
@@ -203,7 +228,7 @@ export default FiveLeafNodes;
 // return (
 //     <div className={classes.leafclass}>
 //         <div className={classes.frogContainer} >
-//             {animate && <FrogAnimation animate={animate}/>} 
+//             {animate && <FrogAnimation animate={animate}/>}
 //             <img className={`${classes.frogImg} ${animate ? classes.animate : classes.frogImg}`} src={frogImg} alt='FrogLogo' />
 //             {leafnode()}
 //         </div>
@@ -215,12 +240,12 @@ export default FiveLeafNodes;
 // return (
 //     <div className={classes.leafclass}>
 //         <div className={classes.frogContainer} onClick={handleClick1} >
-//             {animate && <FrogAnimation animate={animate}/>} 
+//             {animate && <FrogAnimation animate={animate}/>}
 //             <img className={`${classes.frogImg} ${animate ? classes.animate : classes.frogImg}`} src={frogImg} alt='FrogLogo' />
 //             {/* <img className={`${classes.frogImg} `} src={frogImg} alt='FrogLogo' /> */}
 //            {leafnode()}
 //         </div>
-      
+
 //         <div className={classes.frogContainer} onClick={handleClick2}>
 //             {unlocked ? (
 //                 leafnode()

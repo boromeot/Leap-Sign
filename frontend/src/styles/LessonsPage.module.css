@@ -305,7 +305,6 @@ inset 0 0 0 10px  rgba(0,0,255,.2);
     position: relative;
 }
 .gray {
-
     margin-top: -2px;
     width: 168px;
     margin-left: -14px;
@@ -313,7 +312,7 @@ inset 0 0 0 10px  rgba(0,0,255,.2);
     filter: grayscale(100%);
 
 }
-.frogImg{
+.frogImg {
     position: absolute;
     z-index: 4;
     width: 166px;
@@ -322,21 +321,28 @@ inset 0 0 0 10px  rgba(0,0,255,.2);
     margin-top: 5px;
 }
 
-.frogImg.animate {
+.frogImg.animation {
     animation: moveElement 2s ease;
     animation-fill-mode: forwards;
+}
 
+.frogImg.animationCqomplete {
+    left: 130px;
+    top: 0;
 }
 
 @keyframes moveElement {
     0% {
-      transform: translate(0, 0); /* Initial position */
+      /* Initial position */
+      left: 0;
+      top: 0;
     }
     100% {
-      transform: translate(20vw, 0); /* Final position */
+       /* Final position */
+       left: 130px;
+       top: 0;
     }
 }
-
 
 .frogContainer{
     position: relative;
