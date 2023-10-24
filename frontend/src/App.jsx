@@ -1,7 +1,4 @@
-// import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 
 import './App.css'
 import NavBar from './components/NavBar'
@@ -11,42 +8,23 @@ import SignUp from './pages/SignUp'
 import SignIn from './pages/SignIn'
 import LessonsPage from './pages/LessonsPage'
 import SingleLesson from './pages/SingleLesson'
+import Camera from './components/Camera';
 import SecondLesson from './pages/SecondLesson'
 function App() {
-  // const [count, setCount] = useState(0)
-
   return (
     <>
-    <NavBar />
-    <Routes>
-      <Route path="/" element={<HomePage />} />
-      <Route path="/about" element={<AboutPage />} />
-      <Route path='/signup' element={<SignUp />} />
-      <Route path='/signin' element={<SignIn />} />
-      <Route path='/lessons' element={<LessonsPage />}/>
-      <Route path= '/lessons/:id' element={<SingleLesson />}/>
-      <Route path= '/lessons/:id' element={<SecondLesson />}/>
-    </Routes>
-      {/* <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p> */}
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path='/signup' element={<SignUp />} />
+        <Route path='/signin' element={<SignIn />} />
+        <Route path='/lessons' element={<LessonsPage />}/>
+        <Route path='/lessons/1' element={<SingleLesson />}/>
+        <Route path='/camera' element={<Camera />}/>
+        <Route path= '/lessons/:id' element={<SingleLesson />}/>
+        <Route path= '/lessons/:id' element={<SecondLesson />}/>
+      </Routes>
     </>
   )
 }
