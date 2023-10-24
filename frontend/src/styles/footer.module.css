@@ -19,6 +19,10 @@
     height: 40px;
 }
 
+.footerImg > p > span {
+    font-weight: bold;
+}
+
 .aboutLink {
     display: flex;
     justify-content: center;
@@ -40,6 +44,10 @@
     align-items: center;
 }
 
+.aboutText > span {
+    font-weight: bold;
+}
+
 
  @keyframes jump {
     0% { transform: translateY(0); }
@@ -48,17 +56,6 @@
     75% { transform: translateY(-10px); }
     100% { transform: translateY(0); }
 } 
-
-  
-  .logoJump {
-    animation: jump 3s linear 1, stop 10s linear 1; 
-    animation-fill-mode: both; 
-    animation-iteration-count: infinite; 
-  }
-  
-  @keyframes stop {
-    0%, 100% { transform: translateY(0); }
-  }
 
 .logoJump:hover {
     animation: jump 0.5s ease infinite;

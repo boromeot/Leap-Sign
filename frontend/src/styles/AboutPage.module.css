@@ -66,6 +66,10 @@
     margin: 10px 20px 25px 20px;
 }
 
+.aboutText > p > span {
+    font-weight: bold;
+}
+
 
 @keyframes jump {
     0% { transform: translateY(0); }
