@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import FrogAnimation from './FrogAnimation';
 
 
-export default function lesson() {
-  const navigate = useNavigate();
+export default function lesson2() {
+  const navigateTo = useNavigate();
 
   // const [checked, setChecked] = React.useState(false);
   // const [animate, setAnimate] = React.useState(false);
@@ -14,14 +14,10 @@ export default function lesson() {
   //     setChecked(event.target.checked);
   // };
 
-  // const handleClick = async () => {
-  //   // navigateTo("/lessons?animate=true");
-  //   navigateTo("/lessons");
-  // }
+  const handleClick = async () => {
+    navigateTo("/lessons");
+  }
 
-  const navigateBackToLessons = () => {
-    navigate('/lessons', { state: { animate: true } });
-}
 
 return (
     <>
@@ -32,7 +28,7 @@ return (
     /> */}
 
     <div>
-      <button onClick={navigateBackToLessons}>
+      <button onClick={handleClick}>
         Continue
       </button>
     </div>
