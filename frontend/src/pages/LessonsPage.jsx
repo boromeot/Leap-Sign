@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { useSpring, animated } from "@react-spring/web";
+
 import classes from '../styles/LessonsPage.module.css';
 import frogImg from '../assets/frog.png';
 import leaf from '../assets/lilypad.png';
