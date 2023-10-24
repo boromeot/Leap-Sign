@@ -1,4 +1,9 @@
 {
+
+  "dependencies": {
+    "@react-spring/web": "^9.7.3"
+  }
+
   "name": "aa-hackathon-project",
   "version": "1.0.0",
   "description": "",
@@ -16,4 +21,5 @@
   "keywords": [],
   "author": "",
   "license": "ISC"
+
 }
