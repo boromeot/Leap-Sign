@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import HomeTextVideo from '../components/HomeTextVideo';
+import Footer from '../components/footer';
 import classes from '../styles/home.module.css';
 
 const title1 = 'Why Learning Sign Language?'
@@ -13,22 +14,6 @@ const video1 = 'https://www.youtube.com/shorts/TYC8mCQ9E14';
 const video2 = 'https://www.youtube.com/shorts/frNyrr7RRWU';
 const video3 = 'https://www.youtube.com/shorts/Fcd4UQQc8ZE';
 
-// const HomePage = () => {
-
-//   const [active, setActive] = useState(0);
-//   const cardData = [
-//     {title: title1, text: text1, url: video1},
-//     {title: title2, text: text2, url: video2},
-//     {title: title3, text: text1, url: video1},
-//   ]
-//   return (
-//     <>
-//     <HomeTextVideo title={title1} text={text1} url={video1}/>
-//     <HomeTextVideo title={title2} text={text2} url={video2}/>
-//     <HomeTextVideo title={title3} text={text3} url={video3}/>
-//     </>
-//   );
-// };
 
 const HomePage = () => {
   const [activeCard, setActiveCard] = useState(0);
@@ -84,7 +69,9 @@ const HomePage = () => {
               </label>
               
             ))}
-        </div>
+    </div>
+
+    <Footer />
 
     </>
   );

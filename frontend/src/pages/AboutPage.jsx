@@ -32,21 +32,25 @@ function AboutPage() {
     return (
         <>
             <div className={classes.aboutPageContainer}>
-                <h1>About [app name]</h1>
-                <p className={classes.aboutText}>
+                <h1>About LeapSign</h1>
+               
+                <div className={classes.aboutText}>
+                <img src={lilypad} alt="app name" className={classes.lilyImg}/> 
+                <p><span>LeapSign</span>  is an educational project that has the potential to enrich the lives of families and strengthen bonds between parents and children.</p>
+                </div>
+                <div className={classes.aboutText}>
                     <img src={lilypad} alt="app name" className={classes.lilyImg}/>
-                    [app name] is an educational project that has the potential to enrich the lives of families and strengthen bonds between parents and children.
-                </p>
-                <p className={classes.aboutText}>
-                <img src={lilypad} alt="app name" className={classes.lilyImg}/>[app name] aims to provide an engaging and interactive platform for parents and children to learn sign language with a user-friendly application that offers interactive lessons with the power of AI to help give guided lessons through images and video to show that the signs are being done correctly. 
-                </p>
-                <p className={classes.aboutText}>
-                <img src={lilypad} alt="app name" className={classes.lilyImg}/>[app name]'s vision is simple yet powerful: to empower families with the tools and resources they need to learn sign language and communicate with the Deaf and hard-of-hearing community. Sign language is a beautiful and expressive form of communication, and it should be accessible to everyone.
-                </p>
+                    <p><span>LeapSign</span> aims to provide an engaging and interactive platform for parents and children to learn sign language with a user-friendly application that offers interactive lessons with the power of AI to help give guided lessons through images and video to show that the signs are being done correctly. 
+                    </p>
+                </div>
+                <div className={classes.aboutText}>
+                    <img src={lilypad} alt="app name" className={classes.lilyImg}/>
+                    <p><span>LeapSign</span>'s vision is simple yet powerful: to empower families with the tools and resources they need to learn sign language and communicate with the Deaf and hard-of-hearing community. Sign language is a beautiful and expressive form of communication, and it should be accessible to everyone.</p>
+                </div>
             </div>
 
             <div className={classes.developersContainer}>
-                <h3>Meet the [app name] team</h3>
+                <h3>Meet the LeapSign team</h3>
                 <ul className={classes.developersUl}>
                     {developers.map((developer) => (
                         <li 

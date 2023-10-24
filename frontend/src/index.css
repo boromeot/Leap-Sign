@@ -23,6 +23,7 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  position: relative;
 }
 
 button {
@@ -59,6 +60,7 @@ a:hover {
 body {
   min-width: 320px;
   min-height: 100vh;
+  /* min-height: fit-content; */
   /* light green to dark green from left side of page to right */
   background: linear-gradient(
     90deg,
@@ -73,6 +75,20 @@ body {
 h1 {
   font-size: 3.2em;
   line-height: 1.1;
+}
+
+footer {
+  /* position: absolute; */
+  bottom: 0px;
+  width: 100%;
+}
+
+@media screen and (min-width: 820px) {
+  footer {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+  }
 }
 
 @media (prefers-color-scheme: light) {
