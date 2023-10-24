@@ -1,17 +1,13 @@
 {
   "name": "aa-hackathon-project",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "render-postbuild": "cd frontend && npm install && npm run build",
-    "install": "npm --prefix backend install backend && npm --prefix frontend install frontend",
-    "dev:backend": "npm install --prefix backend start",
-    "dev:frontend": "npm install --prefix frontend start",
-    "sequelize": "npm run --prefix backend sequelize",
-    "sequelize-cli": "npm run --prefix backend sequelize-cli",
-    "start": "npm start --prefix backend",
-    "build": "npm run build --prefix backend"
+    "dev": "vite",
+    "build": "vite build",
+    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -20,6 +16,7 @@
     "@mediapipe/drawing_utils": "^0.3.1675466124",
     "@mediapipe/holistic": "^0.5.1675471629",
     "@tensorflow/tfjs": "^4.12.0",
+    "js-cookie": "^3.0.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-player": "^2.13.0",
@@ -35,9 +32,5 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
     "vite": "^4.4.5"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC"
-
+  }
 }
