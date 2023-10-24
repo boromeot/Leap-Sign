@@ -4,7 +4,7 @@ import classes from '../styles/LessonsPage.module.css';
 const FrogAnimation = ({ animate }) => {
   useEffect(() => {
     if (animate) {
-      document.querySelector(`.${classes.frogImg}`).classList.add(classes.animate);
+      document.querySelector(`.${classes.frogImg}`).classList.add(classes.animation);
     }
   }, []);
 
