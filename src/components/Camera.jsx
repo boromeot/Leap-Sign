@@ -1,56 +1,64 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Webcam from "react-webcam"
-import * as tf from '@tensorflow/tfjs'
-import * as mp_holistic from '@mediapipe/holistic';
 import { drawFace, drawHands, drawPose } from '../utils/draw';
+import { loadCNN, loadLSTM } from '../utils/loadModel';
+import extractKeypoints from '../utils/extract';
+import * as tf from '@tensorflow/tfjs';
 
 const Camera = () => {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
-  const [net, setNet] = useState(null);
+  const [CNN, setCNN] = useState(null);
+  const [LSTM, setLSTM] = useState(null);
 
   useEffect(() => {
-    if (net !== null) {
+    if (CNN !== null && LSTM !== null) {
+
+      setCanvasAndVideoDimensions();
+
       const canvasCtx = canvasRef.current.getContext('2d');
       const intervalId = setInterval(() => {
-        detect(net, canvasCtx)
-      }, 100)
+        detect(CNN, canvasCtx)
+      }, 75);
+
+      let x = [];
+      let i = 0;
+
+      CNN.onResults((detections) => {
+        canvasCtx.save();
+        canvasCtx.clearRect(0, 0, webcamRef.current.video.videoWidth, webcamRef.current.video.videoHeight);
+        drawFace(detections, canvasCtx);
+        drawHands(detections, canvasCtx);
+        drawPose(detections, canvasCtx);
+
+        const keypoints = extractKeypoints(detections);
+        x = x.concat(keypoints);
+        i++;
+
+        if (i % 30 === 0) {
+          const tensor = tf.tensor3d(x, [1, 30, 1662]);
+          console.log('lstm');
+          LSTM.predict(tensor).print();
+          tensor.dispose();
+          x = [];
+        }
+      });
       return () => {
         clearInterval(intervalId);
       }
     }
-  }, [net])
+  }, [CNN, LSTM])
 
-  const loadModel = async () => {
+  const loadModels = async () => {
     try {
-      const config = {locateFile: (file) => {
-        return `https://cdn.jsdelivr.net/npm/@mediapipe/holistic@` +
-               `${mp_holistic.VERSION}/${file}`;
-      }};
-      const holistic = await new mp_holistic.Holistic(config);
-      await holistic.setOptions({
-        modelComplexity: 1,
-        smoothLandmarks: true,
-        enableSegmentation: true,
-        smoothSegmentation: true,
-        refineFaceLandmarks: true,
-        minDetectionConfidence: 0.5,
-        minTrackingConfidence: 0.5
-      });
-      setNet(holistic);
-      // setConfigSet(true);
+      setCNN(await loadCNN());
+      setLSTM(await loadLSTM('src/models/crispy_creme/model.json'));
     } catch (error) {
-      console.error('Error loading the model:', error);
+      console.error('Error loading the models:', error);
     }
   }
 
-  const detect = async (model, canvasCtx) => {
-    if (!webcamRef.current || webcamRef.current.video.readyState !== 4) {
-      console.log('detect function failed');
-      return;
-    }
-
-    const video = webcamRef.current.video;
+  const setCanvasAndVideoDimensions = () => {
     const videoWidth = webcamRef.current.video.videoWidth;
     const videoHeight = webcamRef.current.video.videoHeight;
 
@@ -59,20 +67,20 @@ const Camera = () => {
 
     canvasRef.current.width = videoWidth;
     canvasRef.current.height = videoHeight;
+  }
 
+  const detect = async (model) => {
+    if (!webcamRef.current || webcamRef.current.video.readyState !== 4) {
+      console.log('detect function failed');
+      return;
+    }
+    const video = webcamRef.current.video;
     await model.send({image: video });
-    model.onResults((detections) => {
-      canvasCtx.save();
-      canvasCtx.clearRect(0, 0, videoWidth, videoHeight);
-      drawFace(detections, canvasCtx);
-      drawHands(detections, canvasCtx);
-      drawPose(detections, canvasCtx);
-    });
   }
 
   return (
     <>
-      <Webcam ref={webcamRef} onUserMedia={loadModel} style={
+      <Webcam ref={webcamRef} onUserMedia={loadModels} style={
         {
           position: 'absolute',
           marginLeft: 'auto',
