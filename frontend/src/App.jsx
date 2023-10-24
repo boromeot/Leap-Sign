@@ -10,6 +10,7 @@ import LessonsPage from './pages/LessonsPage'
 import SingleLesson from './pages/SingleLesson'
 import Camera from './components/Camera';
 import SecondLesson from './pages/SecondLesson'
+
 function App() {
   return (
     <>
