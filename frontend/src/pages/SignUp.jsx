@@ -3,6 +3,8 @@ import '../styles/signup.css'
 
 const SignUp = () => {
   const [username, setUsername] = useState('')
+  const [firstName, setFirstName] = useState('')
+  const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
@@ -25,12 +27,20 @@ const SignUp = () => {
   }
 
   return (
-    <div className='signup-container'>
+    <div className='signup-container' style={{paddingBottom: "2rem"}}>
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
         <label>
           Username:
           <input required type='text' value={username} onChange={(e) => setUsername(e.target.value)} />
+        </label>
+        <label>
+          First Name:
+          <input required type='text' value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+        </label>
+        <label>
+          Last Name:
+          <input required type='text' value={lastName} onChange={(e) => setLastName(e.target.value)} />
         </label>
         {(isSubmitting && errors.email) && <p className='error'>{errors.email}</p>}
         <label>

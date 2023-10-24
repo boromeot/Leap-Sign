@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 5rem;
+  margin: 3rem;
   gap: 20px;
 }
 
@@ -39,6 +39,7 @@
   font-family: inherit;
   background-color: #f9f9f9;
   border: 1px solid #f9f9f9;
+  width: 100%;
 }
 
 .signup-container > form > button {
@@ -48,4 +49,15 @@
 .signup-container > form > button:hover {
   background-color: #94C56F;
   color: white;
+}
+
+/* media query for mobile */
+@media (max-width: 768px) {
+  .signup-container {
+    margin-top: 1rem;
+  }
+
+  .signup-container > form {
+    width: 80vw;
+  }
 }
