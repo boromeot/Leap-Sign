@@ -321,29 +321,29 @@ inset 0 0 0 10px  rgba(0,0,255,.2);
     margin-top: 5px;
 }
 
-.frogImg.animation {
-    animation: moveElement 2s ease;
-    animation-fill-mode: forwards;
-}
 
-.frogImg.animationCqomplete {
-    left: 130px;
+ .frogImg.animation {
+    animation: moveElement 2s ease forwards; /* Combine the animation properties */
+} 
+
+ .frogImg.animationComplete {
+    left: 280px; /* Update the final position to 200px */
     top: 0;
-}
+} 
 
 @keyframes moveElement {
     0% {
-      /* Initial position */
+        /* Initial position */
       left: 0;
-      top: 0;
+        top: 0;
+    } 
+   100% {
+        /* Final position */
+       left: 280px;
+        top: 0;
     }
-    100% {
-       /* Final position */
-       left: 130px;
-       top: 0;
-    }
-}
+} 
 
-.frogContainer{
+.frogContainer {
     position: relative;
-}
+} 

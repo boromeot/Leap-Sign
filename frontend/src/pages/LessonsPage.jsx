@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useSpring, animated } from "@react-spring/web";
 import classes from '../styles/LessonsPage.module.css';
 import frogImg from '../assets/frog.png';
 import leaf from '../assets/lilypad.png';
@@ -22,11 +23,12 @@ const FiveLeafNodes = () => {
     const location = useLocation();
     const [animate, setAnimate] = useState(false);
     const [currentLesson, setCurrentLesson] = useState(0);
-
+   
+  
     function handleLilyPadClick(lessonNumber) {
         if (lessonNumber === currentLesson + 1) {
             setCurrentLesson(lessonNumber);
-
+           
             // Navigate to a different page, set animate to true there
             navigate(`/lessons/${lessonNumber}`, { state: { animate: true } });
         }
@@ -35,21 +37,17 @@ const FiveLeafNodes = () => {
     useEffect(() => {
         if (location.state && location.state.animate) {
             setAnimate(true);
-        }
+        }// Set animate back to false after 2 seconds to stop the animation
+        const animationTimeout = setTimeout(() => {
+            setAnimate(false);
+        }, 2000);
 
-    }, [location]);
+        return () => clearTimeout(animationTimeout);
 
-    useEffect(() => {
-        if(animate) {
-            const animationTimeout = setTimeout(() => {
-                setAnimate(false);
-            }, 2000);
+    }, [location,animate]);
 
-            return () => clearTimeout(animationTimeout)
-        }
-
-    }, [animate])
-
+    
+    
 
     return (
         <div className={classes.leafclass}>
@@ -60,6 +58,7 @@ const FiveLeafNodes = () => {
                     src={frogImg}
                     alt='FrogLogo'
                 />
+                
                 {leafnode()}
             </div>
             {[1, 2, 3, 4, 5].map((i) => (
