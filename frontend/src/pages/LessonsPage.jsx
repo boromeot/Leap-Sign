@@ -18,71 +18,216 @@ const leafnode = () => {
         </div>
     )
 };
+
 const FiveLeafNodes = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [animate, setAnimate] = useState(false);
     const [currentLesson, setCurrentLesson] = useState(0);
-   
-  
-    function handleLilyPadClick(lessonNumber) {
-        if (lessonNumber === currentLesson + 1) {
-            setCurrentLesson(lessonNumber);
-           
-            // Navigate to a different page, set animate to true there
-            navigate(`/lessons/${lessonNumber}`, { state: { animate: true } });
-        }
-    }
+
+    // Define animation properties as state
+    const [animationProperties, setAnimationProperties] = useState({
+      animationDuration: '2s', // Default duration
+      animationTimingFunction: 'ease', // Default timing function
+      destinationLeft: 0,
+      destinationTop: 0,
+    });
 
     useEffect(() => {
-        if (location.state && location.state.animate) {
-            setAnimate(true);
-        }// Set animate back to false after 2 seconds to stop the animation
-        const animationTimeout = setTimeout(() => {
+        // Function to calculate and set animation properties
+        const calculateAnimationProperties = (lessonNumber) => {
+        // Calculate the position of the destination lily pad
+        const destinationLilyPad = document.querySelector(`#lilyPad${lessonNumber}`);
+        if (destinationLilyPad) {
+            const destinationPosition = destinationLilyPad.getBoundingClientRect();
+            const containerPosition = document.querySelector('.leafclass').getBoundingClientRect();
+            const frogWidth = document.querySelector(`.${classes.frogImg}`).getBoundingClientRect().width;
+
+            // Calculate the position offsets
+            const leftOffset = destinationPosition.left - containerPosition.left + (destinationLilyPad.offsetWidth - frogWidth) / 2;
+            const topOffset = destinationPosition.top - containerPosition.top;
+
+            // Set animation properties for the frog
+            setAnimationProperties({
+                animationDuration: '2s', // Set your desired duration
+                animationTimingFunction: 'ease', // Set your desired timing function
+                destinationLeft: leftOffset,
+                destinationTop: topOffset,
+            });
+        }
+        };
+
+        // Get the animate state from localStorage
+        const shouldAnimate = localStorage.getItem('animate') === 'true';
+
+        // Set the component's animate state
+        setAnimate(shouldAnimate);
+
+        // Call the function to calculate animation properties for the current lesson
+        calculateAnimationProperties(currentLesson);
+      }, [location, currentLesson]);
+
+      function handleLilyPadClick(lessonNumber) {
+        if (lessonNumber === currentLesson + 1) {
+          setCurrentLesson(lessonNumber);
+
+          // Set animate to 'true' in localStorage
+          localStorage.setItem('animate', 'true');
+
+          // Navigate to a different page
+          navigate(`/lessons/${lessonNumber}`);
+
+          // Set animate back to 'false' after 2 seconds to stop the animation
+          setTimeout(() => {
+            localStorage.setItem('animate', 'false');
             setAnimate(false);
-        }, 2000);
-
-        return () => clearTimeout(animationTimeout);
-
-    }, [location,animate]);
-
-    
-    
+          }, 2000);
+        }
+      }
 
     return (
-        <div className={classes.leafclass}>
-            <div className={classes.frogContainer} onClick={() => handleLilyPadClick(1)}>
+      <div className={classes.leafclass}>
+        <div className={classes.frogContainer} onClick={() => handleLilyPadClick(1)}>
+          {animate && <FrogAnimation animate={animate} />}
+          <img
+            className={`${classes.frogImg} ${animate ? classes.animation : ''}`}
+            src={frogImg}
+            alt='FrogLogo'
+            style={{
+              animationDuration: animationProperties.animationDuration,
+              animationTimingFunction: animationProperties.animationTimingFunction,
+              left: animationProperties.destinationLeft,
+              top: animationProperties.destinationTop,
+            }}
+          />
+          {leafnode()}
+        </div>
+        {[1, 2, 3, 4, 5].map((i) => (
+          <div className={classes.lessonsLilyPad} id={`lilyPad2`} key={i} onClick={() => handleLilyPadClick(i)}>
+            {i <= currentLesson ? (
+              <>
                 {animate && <FrogAnimation animate={animate} />}
                 <img
-                    className={`${classes.frogImg} ${animate ? classes.animation : ''}`}
-                    src={frogImg}
-                    alt='FrogLogo'
+                  className={`${classes.frogImg} ${animate ? classes.animation : ''}`}
+                  src={frogImg}
+                  alt='FrogLogo'
                 />
-                
                 {leafnode()}
-            </div>
-            {[1, 2, 3, 4, 5].map((i) => (
-                <div className={classes.lessonsLilyPad} key={i} onClick={() => handleLilyPadClick(i)}>
-                    {i <= currentLesson ? (
-                        <>
-                            {animate && <FrogAnimation animate={animate} />}
-                            <img
-                                className={`${classes.frogImg} ${animate ? classes.animation : ''}`}
-                                src={frogImg}
-                                alt='FrogLogo'
-                            />
-                            {leafnode()}
-                        </>
-                    ) : (
-                        <img className={classes.gray} src={leaf} alt="lilyPad" />
-                    )}
-                </div>
-            ))}
-        </div>
+              </>
+            ) : (
+              <img className={classes.gray} src={leaf} alt="lilyPad" />
+            )}
+          </div>
+        ))}
+      </div>
     );
-}
+};
 
 export default FiveLeafNodes;
+
+// const FiveLeafNodes = () => {
+//     const navigate = useNavigate();
+//     const location = useLocation();
+//     const [animate, setAnimate] = useState(false);
+//     const [currentLesson, setCurrentLesson] = useState(0);
+//     const [animationProperties, setAnimationProperties] = useState({
+//         animationDuration: '2s', // Default duration
+//         animationTimingFunction: 'ease', // Default timing function
+//         destinationLeft: 0,
+//         destinationTop: 0,
+//       });
+
+
+//     function handleLilyPadClick(lessonNumber) {
+//         if (lessonNumber === currentLesson + 1) {
+//             setCurrentLesson(lessonNumber);
+//         }
+
+//         // Calculate the position of the destination lily pad
+//         const destinationLilyPad = document.querySelector(`#lilyPad${lessonNumber}`);
+//         if (destinationLilyPad) {
+//         const destinationPosition = destinationLilyPad.getBoundingClientRect();
+//         const containerPosition = document.querySelector('.leafclass').getBoundingClientRect();
+
+//         // Calculate the position offsets
+//         const leftOffset = destinationPosition.left - containerPosition.left;
+//         const topOffset = destinationPosition.top - containerPosition.top;
+
+//         // Set animation properties for the frog
+//         setAnimationProperties({
+//           animationDuration: '2s', // Set your desired duration
+//           animationTimingFunction: 'ease', // Set your desired timing function
+//           destinationLeft: leftOffset,
+//           destinationTop: topOffset,
+//         });
+
+//         // Trigger the animation
+//         setAnimate(true);
+
+//             // Set animate to 'true' in localStorage
+//             localStorage.setItem('animate', 'true');
+
+//             // Navigate to a different page
+//             navigate(`/lessons/${lessonNumber}`);
+
+//             // Set animate back to 'false' after 2 seconds to stop the animation
+//             setTimeout(() => {
+//                 localStorage.setItem('animate', 'false');
+//                 setAnimate(false);
+//             }, 2000);
+//         }
+//     }
+
+//     useEffect(() => {
+//         // Get the animate state from localStorage
+//         const shouldAnimate = localStorage.getItem('animate') === 'true';
+
+//         // Set the component's animate state
+//         setAnimate(shouldAnimate);
+
+//     }, [location]);
+
+
+//     return (
+//         <div className={classes.leafclass}>
+//             <div className={classes.frogContainer} onClick={() => handleLilyPadClick(1)}>
+//                 {animate && <FrogAnimation animate={animate} />}
+//                 <img
+//                     className={`${classes.frogImg} ${animate ? classes.animation : ''}`}
+//                     src={frogImg}
+//                     alt='FrogLogo'
+//                     style={{
+//                         animationDuration: animationProperties.animationDuration,
+//                         animationTimingFunction: animationProperties.animationTimingFunction,
+//                         left: animationProperties.destinationLeft,
+//                         top: animationProperties.destinationTop,
+//                       }}
+//                 />
+
+//                 {leafnode()}
+//             </div>
+//             {[1, 2, 3, 4, 5].map((i) => (
+//                 <div className={classes.lessonsLilyPad} key={i} onClick={() => handleLilyPadClick(i)}>
+//                     {i <= currentLesson ? (
+//                         <>
+//                             {animate && <FrogAnimation animate={animate} />}
+//                             <img
+//                                 className={`${classes.frogImg} ${animate ? classes.animation : ''}`}
+//                                 src={frogImg}
+//                                 alt='FrogLogo'
+//                             />
+//                             {leafnode()}
+//                         </>
+//                     ) : (
+//                         <img className={classes.gray} src={leaf} alt="lilyPad" />
+//                     )}
+//                 </div>
+//             ))}
+//         </div>
+//     );
+// }
+
+// export default FiveLeafNodes;
 
 
 // const FiveLeafNodes = () => {
