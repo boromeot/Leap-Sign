@@ -32,15 +32,11 @@ const SignUp = (props) => {
     <div className='signup-container' style={{paddingBottom: "2rem"}}>
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
-        <div>
+        
           <label>
             Username:
             <input required type='text' value={username} onChange={(e) => setUsername(e.target.value)} />
           </label>
-         
-        
-
-       
           <label>
             First Name:
             <input required type='text' value={firstName} onChange={(e) => setFirstName(e.target.value)} />
@@ -65,7 +61,6 @@ const SignUp = (props) => {
             Confirm Password:
             <input required type='password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
           </label>
-        </div>
         <button type='submit'>Submit</button>
       </form>
     </div>

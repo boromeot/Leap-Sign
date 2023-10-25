@@ -41,7 +41,7 @@ const HomePage = () => {
   return (
     <>
     
-    <div className={classes.carouselContainer}>
+    {/* <div className={classes.carouselContainer}> */}
       <div className={classes.homeTextVideoContainer}>
         {cardsData.map((data, index) => (
           <HomeTextVideo
@@ -53,7 +53,7 @@ const HomePage = () => {
           />
         ))}
       </div>
-    </div>
+    {/* </div> */}
 
     <div className={classes.radioButtons}>
             {cardsData.map((_, index) => (

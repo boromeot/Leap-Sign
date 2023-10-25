@@ -1,5 +1,11 @@
+.homeTextVideoContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 
 .homeTextVideoDiv {
+    max-width: 1000px;
     display: flex;
     height: 500px;
     gap: 80px;
