@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import '../styles/signup.css'
 
-const SignUp = () => {
+const SignUp = (props) => {
   const [username, setUsername] = useState('')
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
@@ -24,38 +24,48 @@ const SignUp = () => {
     if (confirmPassword !== password) errorsObj.confirmPassword = 'Please confirm your password';
 
     setErrors(errorsObj);
+
+    props.closeModal();
   }
 
   return (
     <div className='signup-container' style={{paddingBottom: "2rem"}}>
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
-        <label>
-          Username:
-          <input required type='text' value={username} onChange={(e) => setUsername(e.target.value)} />
-        </label>
-        <label>
-          First Name:
-          <input required type='text' value={firstName} onChange={(e) => setFirstName(e.target.value)} />
-        </label>
-        <label>
-          Last Name:
-          <input required type='text' value={lastName} onChange={(e) => setLastName(e.target.value)} />
-        </label>
-        {(isSubmitting && errors.email) && <p className='error'>{errors.email}</p>}
-        <label>
-          Email:
-          <input required type='email' value={email} onChange={(e) => setEmail(e.target.value)} />
-        </label>
-        <label>
-          Password:
-          <input required type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
-        </label>
-        {(isSubmitting && errors.confirmPassword) && <p className='error'>{errors.confirmPassword}</p>}
-        <label>
-          Confirm Password:
-          <input required type='password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
-        </label>
+        <div>
+          <label>
+            Username:
+            <input required type='text' value={username} onChange={(e) => setUsername(e.target.value)} />
+          </label>
+          <label>
+            Email:
+            <input required type='email' value={email} onChange={(e) => setEmail(e.target.value)} />
+          </label>
+        </div>
+
+        <div>
+          <label>
+            First Name:
+            <input required type='text' value={firstName} onChange={(e) => setFirstName(e.target.value)} />
+          </label>
+          <label>
+            Last Name:
+            <input required type='text' value={lastName} onChange={(e) => setLastName(e.target.value)} />
+          </label>
+          {(isSubmitting && errors.email) && <p className='error'>{errors.email}</p>}
+        </div>
+        
+        <div>
+          <label>
+            Password:
+            <input required type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
+          </label>
+          {(isSubmitting && errors.confirmPassword) && <p className='error'>{errors.confirmPassword}</p>}
+          <label>
+            Confirm Password:
+            <input required type='password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+          </label>
+        </div>
         <button type='submit'>Submit</button>
       </form>
     </div>

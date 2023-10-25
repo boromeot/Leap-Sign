@@ -5,6 +5,14 @@
   align-items: center;
   margin: 3rem;
   gap: 20px;
+  background-color: #94C56F;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgb(0, 0, 0, 0.2);
+  padding: 2rem;
+  z-index: 5;
+  position: absolute;
+  left: 30%;
+  top: 5%;
 }
 
 .signup-container > form {
@@ -16,22 +24,22 @@
   width: 30vw;
   border-radius: 20px;
   padding: 20px 10px;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2); */
 }
 
-.signup-container > form > p {
+.signup-container > form > div > p {
   color: red;
 }
 
-.signup-container > form > label {
+.signup-container > form > div > label {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
-  font-size: 1.4rem;
+  gap: 10px;
+  font-size: 1.2rem;
 }
 
-.signup-container > form > label > input {
+.signup-container > form > div > label > input {
   border-radius: 8px;
   padding: 10px 5px;
   font-size: 1em;
@@ -43,7 +51,7 @@
 }
 
 .signup-container > form > button {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 }
 
 .signup-container > form > button:hover {

@@ -1,0 +1,72 @@
+.signin-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem;
+    gap: 20px;
+    background-color: #94C56F;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgb(0, 0, 0, 0.2);
+    padding: 2rem;
+    z-index: 5;
+    position: absolute;
+    left: 30%;
+    top: 25%;
+  }
+  
+  .signin-container > form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    background-color: white;
+    width: 30vw;
+    border-radius: 20px;
+    padding: 20px 10px;
+    /* box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2); */
+  }
+  
+  .signin-container > form > p {
+    color: red;
+  }
+  
+  .signin-container > form > label {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+  }
+  
+  .signin-container > form > label > input {
+    border-radius: 8px;
+    padding: 10px 5px;
+    font-size: 1em;
+    font-weight: 500;
+    font-family: inherit;
+    background-color: #f9f9f9;
+    border: 1px solid #f9f9f9;
+    width: 100%;
+  }
+  
+  .signin-container > form > button {
+    font-size: 1.2rem;
+  }
+  
+  .signin-container > form > button:hover {
+    background-color: #94C56F;
+    color: white;
+  }
+  
+  /* media query for mobile */
+  @media (max-width: 768px) {
+    .signin-container {
+      margin-top: 1rem;
+    }
+  
+    .signin-container > form {
+      width: 80vw;
+    }
+  }
+  

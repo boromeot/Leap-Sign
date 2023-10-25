@@ -1,10 +1,21 @@
+import SignIn from '../pages/SignIn';
+import SignUp from '../pages/SignUp';
+import classes from '../styles/ModalBackground.module.css';
 
-import classes from '../styles/ModalBackground.css';
+function ModalBackground (props) {
 
-function ModalBackground () {
+    // console.log('signIn: ', props.signIn);
+    // console.log('signUp: ', props.signUP);
+
     return (
         <>
-        <div className={classes.modalBackgroudn}></div>
+        <div className={classes.modalBackground} onClick={props.closeModal}></div>
+        
+            {props.signIn ? 
+            <SignIn closeModal={props.closeModal} />
+            : 
+            <SignUp closeModal={props.closeModal} />}
+        
         </>
     )
 };

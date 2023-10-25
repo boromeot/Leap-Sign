@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import '../styles/signup.css'
+import '../styles/SignIn.css';
 
-const SignIn = () => {
+const SignIn = (props) => {
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
   const [errors, setErrors] = useState({})
@@ -10,10 +10,11 @@ const SignIn = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setIsSubmitting(true);
+    props.closeModal();
   }
 
   return (
-    <div className='signup-container'>
+    <div className='signin-container'>
       <h1>Sign In</h1>
       <form onSubmit={handleSubmit}>
         <label>
