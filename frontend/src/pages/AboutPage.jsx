@@ -33,7 +33,7 @@ function AboutPage() {
         <>
             {/* <div className={classes.aboutPageContainer}> */}
                 <div className={classes.aboutPageText}>
-                    <h1>About LeapSign</h1>
+                    <h1>About <span>LeapSign</span></h1>
                     <div className={classes.aboutText}>
                     <img src={lilypad} alt="app name" className={classes.lilyImg}/> 
                     <p><span>LeapSign</span>  is an educational project that has the potential to enrich the lives of families and strengthen bonds between parents and children.</p>
@@ -51,7 +51,7 @@ function AboutPage() {
             
 
                 <div className={classes.developersContainer}>
-                    <h3>Meet the LeapSign team</h3>
+                    <h3>Meet the <span>LeapSign</span> team</h3>
                     <ul className={classes.developersUl}>
                         {developers.map((developer) => (
                             <li 

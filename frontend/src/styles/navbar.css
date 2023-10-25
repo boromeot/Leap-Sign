@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap');
+
+
 nav > ul {
   display: flex;
   justify-content: space-between;
@@ -35,6 +38,10 @@ nav {
 
 .nav-bar__logo > a:hover {
   animation: jump 0.6s ease infinite;
+}
+
+.nav-logo {
+  font-family: 'Cherry Bomb One', sans-serif;
 }
 
 

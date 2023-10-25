@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap');
+
+
 .aboutPageContainer {
     display: flex;
     flex-direction: column;
@@ -17,6 +20,10 @@
     border-radius: 10px;
     box-shadow: 0 0 20px rgb(0, 0, 0, 0.2);
     /* max-width: 1000px; */
+}
+
+.aboutPageText > h1 > span {
+    font-family: 'Cherry Bomb One', sans-serif;
 }
 
 .aboutText{
@@ -80,8 +87,14 @@
     margin: 10px 20px 25px 20px;
 }
 
+.developersContainer > h3 > span {
+    font-family: 'Cherry Bomb One', sans-serif;
+}
+
 .aboutText > p > span {
     font-weight: bold;
+    font-family: 'Cherry Bomb One', sans-serif;
+    font-size: 20px;
 }
 
 

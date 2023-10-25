@@ -37,20 +37,20 @@ const SignUp = (props) => {
             Username:
             <input required type='text' value={username} onChange={(e) => setUsername(e.target.value)} />
           </label>
-          <label>
+          {/* <label>
             First Name:
             <input required type='text' value={firstName} onChange={(e) => setFirstName(e.target.value)} />
           </label>
           <label>
             Last Name:
             <input required type='text' value={lastName} onChange={(e) => setLastName(e.target.value)} />
-          </label>
-          {(isSubmitting && errors.email) && <p className='error'>{errors.email}</p>}
+          </label> */}
+          
          <label>
             Email:
             <input required type='email' value={email} onChange={(e) => setEmail(e.target.value)} />
-          </label>
-        
+         </label>
+          {(isSubmitting && errors.email) && <p className='error'>{errors.email}</p>}
         
           <label>
             Password:
