@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap');
+
+
 .radioButtons {
     margin-top: 10px;
     padding: 30px;
@@ -28,6 +31,11 @@ input[type='radio']:checked:after {
 
 input[type='radio']:after {
   background-color: green;
+}
+
+.title2 > span {
+  font-family: 'Cherry Bomb One', sans-serif;
+  font-size: 40px;
 }
 
 @media screen and (max-width: 820px) {
