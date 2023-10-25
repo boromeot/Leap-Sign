@@ -4,7 +4,7 @@ import Footer from '../components/footer';
 import classes from '../styles/home.module.css';
 
 const title1 = 'Why Learning Sign Language?'
-const title2 = 'Welcome to [app name]! Where AI and Machine Learning meet the world of sign language.';
+// const title2 = 'Welcome to LeapSign! Where AI and Machine Learning meet the world of sign language.';
 const title3 = 'Interactive Sign Language Courses';
 const text1 = "There are numerous compelling reasons to learn sign language. It can improve communication, foster inclusivity, and open doors to various opportunities. Whether it's for personal growth, career prospects, cultural awareness, or travel benefits, sign language is a universal language that connects us all. Start your journey to create a more inclusive society!";
 const text2 = "Our app offers a holistic approach to education, with AI providing personalized lessons and real-time feedback. Join us on this exciting journey and let's unlock the world of communication together!";
@@ -16,6 +16,8 @@ const video3 = 'https://www.youtube.com/shorts/Fcd4UQQc8ZE';
 
 
 const HomePage = () => {
+  const title2 = <p className={classes.title2}>Welcome to <span>LeapSign</span>! Where AI and Machine Learning meet the world of sign language.'</p>;
+
   const [activeCard, setActiveCard] = useState(0);
 
   const handleCardChange = (event) => {
