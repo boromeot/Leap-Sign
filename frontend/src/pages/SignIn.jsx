@@ -25,6 +25,7 @@ const SignIn = (props) => {
       // setIsSubmitting(true);
       props.closeModal();
     }
+    return;
   }
 
   return (

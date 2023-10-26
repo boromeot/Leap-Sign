@@ -1,15 +1,20 @@
 import { useState } from 'react'
 import * as sessionActions from "../store/session";
 import { useDispatch, useSelector } from "react-redux";
+import { redirect } from 'react-router-dom';
 import '../styles/signup.css'
 
 const SignUp = (props) => {
+  const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
   const [username, setUsername] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [errors, setErrors] = useState({})
-  const [isSubmitting, setIsSubmitting] = useState(false)
+  // const [isSubmitting, setIsSubmitting] = useState(false)
+
+  if (sessionUser) return redirect('/');
 
   const isEmail = (email) => {
     return /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)
@@ -17,46 +22,57 @@ const SignUp = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    // setIsSubmitting(true);
 
     const errorsObj = {};
     if (!isEmail(email)) errorsObj.email = 'Please enter a valid email';
     if (confirmPassword !== password) errorsObj.confirmPassword = 'Please confirm your password';
 
-    setErrors(errorsObj);
+    if (password === confirmPassword) {
+      setErrors({});
+      dispatch(
+        sessionActions.signup({
+          email,
+          username,
+          password,
+        })
+      ).catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) {
+          setErrors(data.errors);
+        }
+      });
+    }
+    setErrors({
+      confirmPassword: "Confirm Password field must be the same as the Password field"
+    });
 
-    props.closeModal();
+    if (Object.keys(errors).length === 0) {
+      props.closeModal();
+    }
+    return;
   }
 
   return (
     <div className='signup-container' style={{paddingBottom: "2rem"}}>
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
-
+          {errors.username && <p className='error'>{errors.username}</p>}
           <label>
             Username:
             <input required type='text' value={username} onChange={(e) => setUsername(e.target.value)} />
           </label>
-          {/* <label>
-            First Name:
-            <input required type='text' value={firstName} onChange={(e) => setFirstName(e.target.value)} />
-          </label>
-          <label>
-            Last Name:
-            <input required type='text' value={lastName} onChange={(e) => setLastName(e.target.value)} />
-          </label> */}
-
+          {errors.email && <p className='error'>{errors.email}</p>}
          <label>
             Email:
             <input required type='email' value={email} onChange={(e) => setEmail(e.target.value)} />
          </label>
-          {(isSubmitting && errors.email) && <p className='error'>{errors.email}</p>}
-
+          {errors.password && <p className='error'>{errors.password}</p>}
           <label>
             Password:
             <input required type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
           </label>
-          {(isSubmitting && errors.confirmPassword) && <p className='error'>{errors.confirmPassword}</p>}
+          {errors.confirmPassword && <p className='error'>{errors.confirmPassword}</p>}
           <label>
             Confirm Password:
             <input required type='password' value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
