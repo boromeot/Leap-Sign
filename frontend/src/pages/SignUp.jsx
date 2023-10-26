@@ -1,10 +1,10 @@
 import { useState } from 'react'
+import * as sessionActions from "../store/session";
+import { useDispatch, useSelector } from "react-redux";
 import '../styles/signup.css'
 
 const SignUp = (props) => {
   const [username, setUsername] = useState('')
-  const [firstName, setFirstName] = useState('')
-  const [lastName, setLastName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')

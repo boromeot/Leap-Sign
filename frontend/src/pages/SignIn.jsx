@@ -1,4 +1,7 @@
 import { useState } from 'react'
+import * as sessionActions from "../store/session";
+import { useDispatch, useSelector } from "react-redux";
+// import { Redirect } from "react-router-dom";
 import '../styles/SignIn.css';
 
 const SignIn = (props) => {
@@ -9,9 +12,19 @@ const SignIn = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // setIsSubmitting(true);
+    setErrors({});
 
-    props.closeModal();
+    dispatchEvent(sessionActions.login({ username, password })).catch(
+      async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      }
+    )
+
+    if (Object.keys(errors).length === 0) {
+      // setIsSubmitting(true);
+      props.closeModal();
+    }
   }
 
   return (
