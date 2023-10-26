@@ -89,6 +89,7 @@ const Camera = () => {
           right: 0,
           width: 640,
           height: 480,
+          zIndex: 3,
         }
       }/>
       <canvas ref={canvasRef} style={

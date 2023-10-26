@@ -11,6 +11,8 @@ nav > ul {
 nav {
   /* padding: 0.5em 1em; */
   padding: 20px 30px;
+  z-index: 5;
+  position: relative;
 }
 
 .nav-bar__user-btns {

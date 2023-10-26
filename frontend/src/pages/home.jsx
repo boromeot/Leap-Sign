@@ -33,7 +33,7 @@ const HomePage = () => {
   useEffect(() => {
     const interval = setInterval(() => {
       setActiveCard((prevActiveCard) => (prevActiveCard + 1) % cardsData.length);
-    }, 10000)
+    }, 100000)
 
     return () => {
       clearInterval(interval);
@@ -44,6 +44,7 @@ const HomePage = () => {
     <>
     
     {/* <div className={classes.carouselContainer}> */}
+    {/* <div id="particles-js"> */}
       <div className={classes.homeTextVideoContainer}>
         {cardsData.map((data, index) => (
           <HomeTextVideo
@@ -72,8 +73,10 @@ const HomePage = () => {
               
             ))}
     </div>
+    {/* </div> */}
 
     <Footer />
+    
 
     </>
   );

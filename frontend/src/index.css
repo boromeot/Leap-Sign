@@ -16,7 +16,7 @@ html {
 
   /* color-scheme: light dark; */
   color: black;
-  background-color: #ffffff;
+  /* background-color: #ffffff; */
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -102,4 +102,13 @@ footer {
   button {
     background-color: #f9f9f9;
   }
+}
+
+#particles-js {
+  background-color: transparent;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top:0;
+  /* z-index: -3; */
 }
