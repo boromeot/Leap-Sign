@@ -20,7 +20,8 @@ export default function lesson() {
   // }
 
   const navigateBackToLessons = () => {
-    navigate('/lessons', { state: { animate: true } });
+    navigate('/lessons', { state: { animate: true, unlock: true } });
+
 }
 
 return (
