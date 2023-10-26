@@ -32,7 +32,7 @@ const SignUp = (props) => {
     <div className='signup-container' style={{paddingBottom: "2rem"}}>
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
-        
+
           <label>
             Username:
             <input required type='text' value={username} onChange={(e) => setUsername(e.target.value)} />
@@ -45,13 +45,13 @@ const SignUp = (props) => {
             Last Name:
             <input required type='text' value={lastName} onChange={(e) => setLastName(e.target.value)} />
           </label> */}
-          
+
          <label>
             Email:
             <input required type='email' value={email} onChange={(e) => setEmail(e.target.value)} />
          </label>
           {(isSubmitting && errors.email) && <p className='error'>{errors.email}</p>}
-        
+
           <label>
             Password:
             <input required type='password' value={password} onChange={(e) => setPassword(e.target.value)} />

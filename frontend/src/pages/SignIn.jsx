@@ -9,7 +9,8 @@ const SignIn = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
+    // setIsSubmitting(true);
+
     props.closeModal();
   }
 
