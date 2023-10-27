@@ -14,13 +14,13 @@ const SignUp = (props) => {
   const [errors, setErrors] = useState({})
   // const [isSubmitting, setIsSubmitting] = useState(false)
 
-  if (sessionUser) return redirect('/');
+  // if (sessionUser) return redirect('/');
 
   const isEmail = (email) => {
     return /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(email)
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // setIsSubmitting(true);
 
@@ -28,30 +28,36 @@ const SignUp = (props) => {
     if (!isEmail(email)) errorsObj.email = 'Please enter a valid email';
     if (confirmPassword !== password) errorsObj.confirmPassword = 'Please confirm your password';
 
+    if (Object.keys(errorsObj).length > 0) {
+      setErrors(errorsObj);
+      return; // Stop execution if there are errors
+    }
+
     if (password === confirmPassword) {
-      setErrors({});
-      dispatch(
-        sessionActions.signup({
-          email,
-          username,
-          password,
-        })
-      ).catch(async (res) => {
+      try {
+        setErrors({});
+        await dispatch(
+          sessionActions.signup({
+            email,
+            username,
+            password,
+          })
+        );
+        // Close the modal only on successful sign-up
+        props.closeModal();
+      } catch (res) {
         const data = await res.json();
         if (data && data.errors) {
           setErrors(data.errors);
         }
+      }
+    } else {
+      setErrors({
+        confirmPassword: 'Confirm Password field must be the same as the Password field',
       });
     }
-    setErrors({
-      confirmPassword: "Confirm Password field must be the same as the Password field"
-    });
+  };
 
-    if (Object.keys(errors).length === 0) {
-      props.closeModal();
-    }
-    return;
-  }
 
   return (
     <div className='signup-container' style={{paddingBottom: "2rem"}}>
@@ -60,7 +66,7 @@ const SignUp = (props) => {
           {errors.username && <p className='error'>{errors.username}</p>}
           <label>
             Username:
-            <input required type='text' value={username} onChange={(e) => setUsername(e.target.value)} />
+            <input required type='text' minLength={4} maxLength={25} value={username} onChange={(e) => setUsername(e.target.value)} />
           </label>
           {errors.email && <p className='error'>{errors.email}</p>}
          <label>
@@ -70,7 +76,7 @@ const SignUp = (props) => {
           {errors.password && <p className='error'>{errors.password}</p>}
           <label>
             Password:
-            <input required type='password' value={password} onChange={(e) => setPassword(e.target.value)} />
+            <input required type='password' minLength={6} maxLength={25} value={password} onChange={(e) => setPassword(e.target.value)} />
           </label>
           {errors.confirmPassword && <p className='error'>{errors.confirmPassword}</p>}
           <label>
