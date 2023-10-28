@@ -1,53 +1,86 @@
-import React, { createContext, useState, useContext } from 'react';
+import { csrfFetch } from "./csrf";
 
-// Create a new context object
-export const SignupContext = createContext({
-  username: '',
-  setUsername: () => {},
-  firstName: '',
-  setFirstName: () => {},
-  lastName: '',
-  setLastName: () => {},
-  email: '',
-  setEmail: () => {},
-  password: '',
-  setPassword: () => {},
-  confirmPassword: '',
-  setConfirmPassword: () => {},
-});
+const SET_USER = "session/setUser";
+const REMOVE_USER = "session/removeUser";
 
-// Export a function that provides access to the context object
-export const useSignup = () => useContext(SignupContext);
-
-// Create a provider component that wraps the app
-export function SignupProvider({ children }) {
-  const [username, setUsername] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
-
-  // Define the context value object
-  const contextValue = {
-    username,
-    setUsername,
-    firstName,
-    setFirstName,
-    lastName,
-    setLastName,
-    email,
-    setEmail,
-    password,
-    setPassword,
-    confirmPassword,
-    setConfirmPassword,
+const setUser = (user) => {
+  return {
+    type: SET_USER,
+    payload: user,
   };
+};
 
-  // Render the provider with the context value and any child components
-  return (
-    <SignupContext.Provider value={contextValue}>
-      {children}
-    </SignupContext.Provider>
-  );
-}
+const removeUser = () => {
+  return {
+    type: REMOVE_USER,
+  };
+};
+
+export const login = (user) => async (dispatch) => {
+  const { credential, password } = user;
+  const response = await csrfFetch("/api/session", {
+    method: "POST",
+    body: JSON.stringify({
+      credential,
+      password,
+    }),
+  });
+
+  if (response.ok) {
+    const data = await response.json();
+    dispatch(setUser(data.user));
+    return response;
+  }
+};
+
+export const logout = () => async (dispatch) => {
+  const response = await csrfFetch('/api/session', {
+    method: 'DELETE',
+  });
+  dispatch(removeUser());
+  return response;
+};
+
+export const signup = (user) => async (dispatch) => {
+  const { username, firstName, lastName, email, password } = user;
+  const response = await csrfFetch("/api/users", {
+    method: "POST",
+    body: JSON.stringify({
+      username,
+      firstName,
+      lastName,
+      email,
+      password,
+    }),
+  });
+  const data = await response.json();
+  dispatch(setUser(data.user));
+  return response;
+};
+
+const initialState = { user: null };
+
+const sessionReducer = (state = initialState, action) => {
+  let newState;
+  switch (action.type) {
+    case SET_USER:
+      newState = Object.assign({}, state);
+      newState.user = action.payload;
+      return newState;
+    case REMOVE_USER:
+      newState = Object.assign({}, state);
+      newState.user = null;
+      return newState;
+    default:
+      return state;
+  }
+};
+
+export const restoreUser = () => async (dispatch) => {
+  const response = await csrfFetch("/api/session");
+  const data = await response.json();
+  dispatch(setUser(data.user));
+  return response;
+};
+
+export default sessionReducer;

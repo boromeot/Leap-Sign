@@ -1,6 +1,8 @@
+import { useEffect, useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
+import * as sessionActions from "./store/session";
+import { useDispatch } from 'react-redux'
 
-import './App.css'
 import NavBar from './components/NavBar'
 import HomePage from './pages/home'
 import AboutPage from './pages/AboutPage'
@@ -11,9 +13,18 @@ import SingleLesson from './pages/SingleLesson'
 import Camera from './components/Camera';
 import SecondLesson from './pages/SecondLesson'
 
+import './App.css'
 
 function App() {
+  const dispatch = useDispatch();
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
+  }, [dispatch])
+
   return (
+    isLoaded && (
     <>
       <NavBar />
       <Routes>
@@ -28,6 +39,7 @@ function App() {
         <Route path= '/lessons/:id' element={<SecondLesson />}/>
       </Routes>
     </>
+    )
   )
 }
 
