@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import HomeTextVideo from '../components/HomeTextVideo';
 import Footer from '../components/footer';
 import classes from '../styles/home.module.css';
@@ -19,26 +19,55 @@ const HomePage = () => {
   const title2 = <p className={classes.title2}>Welcome to <span>LeapSign</span>! Where AI and Machine Learning meet the world of sign language.'</p>;
 
   const [activeCard, setActiveCard] = useState(0);
-
-  const handleCardChange = (event) => {
-    setActiveCard(Number(event.target.value));
-  };
-
+  const [videoPlaying, setVideoPlaying] = useState(false);
+ 
   const cardsData = [
     { title: title1, text: text1, url: video1 },
     { title: title2, text: text2, url: video2 },
     { title: title3, text: text3, url: video3 },
   ];
 
+  const playerRefs = cardsData.map(() => useRef(null));
+
+  let interval; 
+
+  const handleCardChange = (event) => {
+    if (playerRefs[activeCard].current) {
+      playerRefs[activeCard].current.seekTo(0);
+    }
+
+    clearInterval(interval); // Clear the interval when the user interacts with the radio button
+    setActiveCard(Number(event.target.value));
+    setVideoPlaying(false);
+  };
+
+
+  const handleVideoPlay = () => {
+    setVideoPlaying(true);
+  };
+
+  const handleVideoClose = () => {
+    
+    if (playerRefs[activeCard].current) {
+      playerRefs[activeCard].current.seekTo(0);
+    };
+    
+    setVideoPlaying(false);
+  };
+
+
   useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveCard((prevActiveCard) => (prevActiveCard + 1) % cardsData.length);
-    }, 100000)
+    interval = setInterval(() => {
+      if(!videoPlaying) {
+        setActiveCard((prevActiveCard) => (prevActiveCard + 1) % cardsData.length);
+      }
+    }, 8000);
 
     return () => {
       clearInterval(interval);
     }
-  }, [cardsData]);
+  }, [cardsData, videoPlaying]);
+
 
   return (
     <>
@@ -53,6 +82,9 @@ const HomePage = () => {
             text={data.text}
             url={data.url}
             isActive={index === activeCard}
+            videoPlay={handleVideoPlay}
+            videoClose={handleVideoClose}
+            playerRef={playerRefs[index]}
           />
         ))}
       </div>
