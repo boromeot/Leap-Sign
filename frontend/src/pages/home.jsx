@@ -36,27 +36,23 @@ const HomePage = () => {
       playerRefs[activeCard].current.seekTo(0);
     }
 
-    clearInterval(interval); // Clear the interval when the user interacts with the radio button
+    clearInterval(interval); 
     setActiveCard(Number(event.target.value));
     setVideoPlaying(false);
   };
 
 
   const handleVideoPlay = () => {
-    console.log('handleVideoPlay invoked....')
+    // console.log('handleVideoPlay invoked....');
     setVideoPlaying(true);
   };
 
   const handleVideoClose = () => {
-    console.log('handleVideoClose invoked....')
-    // if (playerRefs[activeCard].current) {
-    //   playerRefs[activeCard].current.seekTo(0);
-    // };
     
     setVideoPlaying(false);
   };
 
-  console.log('out of handleVideoClose function');
+  // console.log('out of handleVideoClose function');
 
 
   useEffect(() => {

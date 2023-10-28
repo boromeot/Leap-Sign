@@ -9,19 +9,16 @@ function HomeTextVideo(props) {
     : `${classes.homeTextVideoDiv} ${classes.hidden} `; 
 
     const videoCloseFunction = () => {
-      console.log('videoClosFunction invoked')
-      
-      console.log('videoClosFunction working....')
       props.videoClose();
     }
     
+    // const videoOnStartFunction = () => {
+    //   if (props.playerRef.current) {
+    //     props.playerRef.current.seekTo(0);
+    //   };
+    // }
 
-    const videoOnStartFunction = () => {
-      if (props.playerRef.current) {
-        props.playerRef.current.seekTo(0);
-      };
-    }
-
+    
 
     return (
     <div className={classes.homeTextVideoContainer}>
