@@ -8,6 +8,20 @@ function HomeTextVideo(props) {
     ? `${classes.homeTextVideoDiv} ${classes.active} `
     : `${classes.homeTextVideoDiv} ${classes.hidden} `; 
 
+    const videoCloseFunction = () => {
+      console.log('videoClosFunction invoked')
+      
+      console.log('videoClosFunction working....')
+      props.videoClose();
+    }
+    
+
+    const videoOnStartFunction = () => {
+      if (props.playerRef.current) {
+        props.playerRef.current.seekTo(0);
+      };
+    }
+
 
     return (
     <div className={classes.homeTextVideoContainer}>
@@ -23,7 +37,7 @@ function HomeTextVideo(props) {
             width='100%' 
             height='100%' 
             onPlay={props.videoPlay}
-            onEnded={props.videoClose}
+            onEnded={videoCloseFunction}
             ref={props.playerRef}
             stopOnUnmount={true}
             />

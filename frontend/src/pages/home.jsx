@@ -43,17 +43,20 @@ const HomePage = () => {
 
 
   const handleVideoPlay = () => {
+    console.log('handleVideoPlay invoked....')
     setVideoPlaying(true);
   };
 
   const handleVideoClose = () => {
-    
-    if (playerRefs[activeCard].current) {
-      playerRefs[activeCard].current.seekTo(0);
-    };
+    console.log('handleVideoClose invoked....')
+    // if (playerRefs[activeCard].current) {
+    //   playerRefs[activeCard].current.seekTo(0);
+    // };
     
     setVideoPlaying(false);
   };
+
+  console.log('out of handleVideoClose function');
 
 
   useEffect(() => {
