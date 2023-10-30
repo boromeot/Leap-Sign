@@ -1,0 +1,17 @@
+.notFoundPage {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-top: 200px;
+}
+
+.notFoundPage > p {
+    position: relative;
+    z-index: 3;
+    padding: 10%;
+    background-color: #94C56F;
+    border-radius: 10px;
+    color: #fff;
+    font-size: 30px;
+    font-weight: bold;
+}
