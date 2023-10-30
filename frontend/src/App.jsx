@@ -9,7 +9,8 @@ import SignIn from './pages/SignIn'
 import LessonsPage from './pages/LessonsPage'
 import SingleLesson from './pages/SingleLesson'
 import Camera from './components/Camera';
-import SecondLesson from './pages/SecondLesson'
+import SecondLesson from './pages/SecondLesson';
+import NotFoundPage from './pages/404'
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path='/camera' element={<Camera />}/>
         <Route path= '/lessons/:id' element={<SingleLesson />}/>
         <Route path= '/lessons/:id' element={<SecondLesson />}/>
+        <Route path= '*' element={<NotFoundPage />} />
       </Routes>
     </>
   )
