@@ -3,6 +3,8 @@
     display: flex;
     justify-content: center;
     margin-top: 150px;
+    opacity: .9;
+    z-index: 3;
 }
 
 .notFoundPage > p {
