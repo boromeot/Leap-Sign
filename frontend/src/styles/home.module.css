@@ -2,13 +2,16 @@
 
 
 .radioButtons {
-    margin-top: 10px;
+    margin: 10px 35% 0 35%;
     padding: 30px;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 20px;
     /* background-color: pink; */
+    z-index: 2;
+    position: relative;
+    width: 30%;
 }
 
 .radioBtn {
@@ -16,6 +19,7 @@
   height: 25px; 
   margin-right: 5px; 
   cursor: pointer;
+
 }
 
 .radioBtn:checked{

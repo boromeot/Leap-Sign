@@ -290,6 +290,8 @@ inset 0 0 0 10px  rgba(0,0,255,.2);
     margin-left: 30px;
     margin-right: 30px;
     cursor: pointer;
+    position: relative;
+    z-index: 2;
 
 }
 
