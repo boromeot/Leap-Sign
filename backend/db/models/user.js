@@ -5,6 +5,8 @@ module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
       // define association here
+      // a user has many lessons
+      User.hasMany(models.Lesson, { foreignKey: 'userId' });
     }
   };
 
@@ -39,6 +41,7 @@ module.exports = (sequelize, DataTypes) => {
       }
     }, {
       sequelize,
+      // schema: process.env.SCHEMA,
       modelName: 'User',
       defaultScope: {
         attributes: {
