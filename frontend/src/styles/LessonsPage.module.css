@@ -306,26 +306,64 @@ inset 0 0 0 10px  rgba(0,0,255,.2);
     height: 50px; /* Adjust the height of each frog as needed */
     position: relative;
 }
+
 .gray {
     margin-top: -2px;
     width: 168px;
     margin-left: -14px;
     opacity: 0.7;
     filter: grayscale(100%);
-
 }
+
+.lock {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    z-index: 4;
+    top: 45px;
+    left: 33px;
+    opacity: 0.3;
+    filter: grayscale(100%);
+}
+
 .frogImg {
     position: absolute;
-    z-index: 4;
+    z-index: 5;
     width: 166px;
     height: 172px;
     top: 10px;
     left: 10px;
 }
 
-
 .frogImg.animation {
     animation: moveElement 2s ease forwards; /* Combine the animation properties */
+}
+
+.lock.unlock {
+    animation: disappearLock 1s ease forwards; /* Combine the animation properties */
+}
+
+.leafimg.unlock {
+    animation: turnGreen 1s ease forwards;
+
+}
+
+@keyframes disappearLock {
+    0% {
+        opacity: 0.3;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes turnGreen {
+    0% {
+        filter: grayscale(100%);
+    }
+    100% {
+        filter: grayscale(0%);
+    }
 }
 
 
