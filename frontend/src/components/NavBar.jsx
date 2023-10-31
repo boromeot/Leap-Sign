@@ -5,6 +5,9 @@ import ModalBackground from './ModalBackground';
 import ProfileButton from './profileButton';
 import frogImg from "../assets/frog.png";
 import userIcon from '../assets/user-icon.png';
+import login2 from '../assets/log-in2.png';
+import login3 from '../assets/log-in3.png';
+import login4 from '../assets/log-in4.png';
 import * as sessionActions from "../store/session";
 
 import "../styles/navbar.css";
@@ -15,10 +18,6 @@ const NavBar = () => {
   const [showSignIn, setShowSignIn] = useState(false);
   const [showSignUp, setShowSignUp] = useState(false);
   const [showProfileButton, setShowProfileButton] = useState(false)
-
-  function logout() {
-    dispatch(sessionActions.logout());
-  }
 
   function showSignInHandler() {
     setShowSignIn(true);
@@ -42,6 +41,11 @@ const NavBar = () => {
     setShowProfileButton(!showProfileButton)
   }
 
+  function hideUserProfileButton () {
+    setShowProfileButton(false)
+  }
+
+
   return (
     <nav className='nav-bar'>
       <ul className='nav-bar__list'>
@@ -52,17 +56,19 @@ const NavBar = () => {
           <Link to="/signup"><button>Sign Up</button></Link> */}
           {userSession ? 
           
-          <div className='userImage'>
-            <img src={userIcon} alt={userSession.username} onClick={showProfileButtonHandler} />
-            {showProfileButton ? <div><ProfileButton sessionUser={userSession} /></div> : null}
+          <div className='userprofileDiv' onClick={showProfileButtonHandler}>
+            <img src={login2} alt={userSession.username}  />
+            <i className="fa-solid fa-bars"></i>
+            {showProfileButton ? <div className='profileButtonDiv' onMouseLeave={hideUserProfileButton}><ProfileButton sessionUser={userSession} /></div> : null}
           </div> 
-          
           : (
             <div style={{display: 'flex', gap: '10px'}}>
               <button onClick={showSignInHandler}>Sign In</button>
               <button onClick={showSignUpHandler}>Sign Up</button>
             </div>
           )}
+
+
         </li>
       </ul>
           {showSignIn ? <ModalBackground closeModal={hideSignInHandler} signIn={showSignIn}/> : null}

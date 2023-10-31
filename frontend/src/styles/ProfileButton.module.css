@@ -1,0 +1,13 @@
+.profileButton {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    width: fit-content;
+    justify-content: center;
+}
+
+.profileButton > p {
+    text-align: center;
+    width: 100%;
+}

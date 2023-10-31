@@ -46,12 +46,44 @@ nav {
   font-family: 'Cherry Bomb One', sans-serif;
 }
 
-.userImage > img {
-  width: 60px;
-  height: 50px;
-  background-color: green;
-  border-radius: 50%;
-  /* padding: 10px; */
+
+.userprofileDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  padding: 5px 10px;
+  border-radius: 10%;
+  opacity: 0.85;
+  position: relative;
+  margin-right: 30px;
+  cursor: pointer;
+}
+
+.userprofileDiv > img {
+  width: 50px;
+  height: 40px;
+}
+
+.userprofileDiv > i {
+  font-size: 25px;
+  color: #4A5B68;
+  margin-right: 8px;
+}
+
+.userprofileDiv:hover {
+  opacity: 1;
+}
+
+.profileButtonDiv {
+  width: 150px;
+  position: absolute;
+  top: 60px;
+  right: -20px;
+  padding: 15px;
+  background-color: #fff;
+  box-shadow: 0 0 20px rgb(0, 0, 0, 0.2);
+  border-radius: 10%;
 }
 
 
