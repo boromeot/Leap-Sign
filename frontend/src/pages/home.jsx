@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import HomeTextVideo from '../components/HomeTextVideo';
 import Footer from '../components/footer';
 import classes from '../styles/home.module.css';
+import '../styles/home.css';
 
 const title1 = 'Why Learning Sign Language?'
 // const title2 = 'Welcome to LeapSign! Where AI and Machine Learning meet the world of sign language.';
@@ -20,7 +21,7 @@ const HomePage = () => {
 
   const [activeCard, setActiveCard] = useState(0);
   const [videoPlaying, setVideoPlaying] = useState(false);
- 
+
   const cardsData = [
     { title: title1, text: text1, url: video1 },
     { title: title2, text: text2, url: video2 },
@@ -29,14 +30,14 @@ const HomePage = () => {
 
   const playerRefs = cardsData.map(() => useRef(null));
 
-  let interval; 
+  let interval;
 
   const handleCardChange = (event) => {
     if (playerRefs[activeCard].current) {
       playerRefs[activeCard].current.seekTo(0);
     }
 
-    clearInterval(interval); 
+    clearInterval(interval);
     setActiveCard(Number(event.target.value));
     setVideoPlaying(false);
   };
@@ -48,7 +49,7 @@ const HomePage = () => {
   };
 
   const handleVideoClose = () => {
-    
+
     setVideoPlaying(false);
   };
 
@@ -69,10 +70,13 @@ const HomePage = () => {
 
 
   return (
-    <>
-    
+    <div className='home-container'>
+
     {/* <div className={classes.carouselContainer}> */}
     {/* <div id="particles-js"> */}
+      <div className='slogan-container'>
+        <h1 className='slogan'><span className='nav-logo slogan-logo'>Leapsign</span>: Where Gestures Speak Louder!</h1>
+      </div>
       <div className={classes.homeTextVideoContainer}>
         {cardsData.map((data, index) => (
           <HomeTextVideo
@@ -101,15 +105,15 @@ const HomePage = () => {
                   className={classes.radioBtn}
                 />
               </label>
-              
+
             ))}
     </div>
     {/* </div> */}
 
     <Footer />
-    
 
-    </>
+
+    </div>
   );
 };
 
