@@ -1,23 +1,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&display=swap');
 
-
 .radioButtons {
-    margin: 10px 35% 0 35%;
-    padding: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    /* background-color: pink; */
-    z-index: 2;
-    position: relative;
-    width: 30%;
+  margin: 10px 35% 0 35%;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  /* background-color: pink; */
+  z-index: 2;
+  position: relative;
+  width: 30%;
 }
 
 .radioBtn {
-  width: 25px; 
-  height: 25px; 
-  margin-right: 5px; 
+  width: 25px;
+  height: 25px;
+  margin-right: 5px;
   cursor: pointer;
 
 }
