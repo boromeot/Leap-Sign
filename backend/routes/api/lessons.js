@@ -16,7 +16,7 @@ router.get('/current', async ( req, res, next) => {
         }
     });
 
-    console.log(lessons);
+    console.log(lessons,"lessons from backend");
 
     return res.status(200).json({
         Lessons: lessons
