@@ -72,11 +72,13 @@ router.get(
   '/',
   (req, res) => {
     const { user } = req;
+    console.log('user in session route: ', user);
     if (user) {
       const safeUser = {
         id: user.id,
         email: user.email,
         username: user.username,
+        password: user.password,
       };
       return res.json({
         user: safeUser

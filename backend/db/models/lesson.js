@@ -15,13 +15,24 @@ module.exports = (sequelize, DataTypes) => {
       Lesson.belongsTo(models.User, { foreignKey: 'userId' });
     }
   }
-  Lesson.init({
-    lessonId: DataTypes.INTEGER,
-    unlocked: DataTypes.BOOLEAN,
-    userId: DataTypes.INTEGER
-  }, {
-    sequelize,
-    modelName: 'Lesson',
-  });
+  Lesson.init(
+    {
+      lessonId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      },
+      unlocked: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+      },
+      userId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+      }
+    }, {
+      sequelize,
+      modelName: 'Lesson',
+  }
+  );
   return Lesson;
 };

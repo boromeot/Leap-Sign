@@ -8,7 +8,9 @@ module.exports = (sequelize, DataTypes) => {
       // a user has many lessons
       User.hasMany(models.Lesson, { foreignKey: 'userId' });
     }
+
   };
+
 
   User.init(
     {
@@ -41,10 +43,19 @@ module.exports = (sequelize, DataTypes) => {
       }
     }, {
       sequelize,
+      // schema: process.env.SCHEMA,
       modelName: 'User',
       defaultScope: {
         attributes: {
           exclude: ["hashedPassword", "email", "createdAt", "updatedAt"]
+        }
+      },
+      scopes: {
+        currentUser: {
+          attributes:{exclude: ["hashedPassword"]}
+        },
+        loginUser: {
+          attributes: {}
         }
       }
     }
