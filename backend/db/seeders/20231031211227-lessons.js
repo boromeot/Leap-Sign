@@ -23,6 +23,12 @@ module.exports = {
         lessonId: 1,
         unlocked: true,
         userId: 1,
+
+      },
+      {
+        lessonId: 2,
+        unlocked: true,
+        userId: 1,
       },
       {
         lessonId: 1,

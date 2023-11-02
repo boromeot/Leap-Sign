@@ -17,7 +17,7 @@ const video3 = 'https://www.youtube.com/shorts/Fcd4UQQc8ZE';
 
 
 const HomePage = () => {
-  const title2 = <p className={classes.title2}>Welcome to <span>LeapSign</span>! Where AI and Machine Learning meet the world of sign language.'</p>;
+  const title2 = <p className={classes.title2}>Welcome to <span>LeapSign</span>! Where AI and Machine Learning meet the world of sign language.</p>;
 
   const [activeCard, setActiveCard] = useState(0);
   const [videoPlaying, setVideoPlaying] = useState(false);
