@@ -28,7 +28,7 @@ const FiveLeafNodes = () => {
   const [unlock, setUnlock] = useState(false);
   const [currentLesson, setCurrentLesson] = useState(0);
   const lessons = useSelector((state) => state.lessons);
-  console.log(lessons,"USESELECTOR")
+  // console.log(lessons,"USESELECTOR");
   const dispatch = useDispatch();
   // Define animation properties as state
   const [animationProperties, setAnimationProperties] = useState({
@@ -42,7 +42,8 @@ const FiveLeafNodes = () => {
   const [currentlyUnlockedLilyPad, setCurrentlyUnlockedLilyPad] = useState(0);
   useEffect(() => {
     dispatch(userLessons());
-  }, [lessons]);
+  }, [ dispatch]);
+
   useEffect(() => {
     // Function to calculate and set animation properties
     const calculateAnimationProperties = (lessonNumber) => {

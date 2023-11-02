@@ -9,7 +9,7 @@ return {
 
 export const userLessons =()=> async(dispatch)=>{
     const response = await csrfFetch("api/lessons/current");
-    console.log(response,"in the user lessons thunk")
+    console.log(response,"in the user lessons thunk");
     if(response.ok){
         const data = await response.json();
         console.log(data,"DATA FROM THUNK")
@@ -23,11 +23,11 @@ const lessonReducer = (state = initialState, action) => {
     switch (action.type) {
       case GET_LESSONS:
         newState = Object.assign({}, state);
-        console.log(action.lessons,"lessons");
+        // console.log(action.lessons,"lessons");
         action.payload.Lessons.forEach((lesson)=>{
             newState.lessons[lesson.id] = lesson;
         })
-        console.log(newState,"newState");
+        // console.log(newState,"newState");
         return newState;
       default:
         return state;
