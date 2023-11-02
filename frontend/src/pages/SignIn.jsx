@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import * as sessionActions from "../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { redirect } from "react-router-dom";
+// import { clearLessons } from '../store/lesson';
 import '../styles/SignIn.css';
 
 const SignIn = (props) => {
@@ -31,6 +31,8 @@ const SignIn = (props) => {
         setErrors(data.errors);
       }
     }
+
+    // dispatch(clearLessons());
   }
 
   return (

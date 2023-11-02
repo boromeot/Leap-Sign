@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import * as sessionActions from "../store/session";
+import { clearLessons } from '../store/lesson';
 import classes from '../styles/ProfileButton.module.css';
 
 
@@ -14,8 +15,11 @@ function ProfileButton (props) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
-    function logout() {
-        dispatch(sessionActions.logout());
+    async function logout(e) {
+        e.preventDefault();
+        await dispatch(sessionActions.logout());
+        await dispatch(clearLessons());
+        
         navigate('/');
       }
     

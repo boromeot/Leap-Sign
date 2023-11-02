@@ -1,5 +1,7 @@
 import { csrfFetch } from "./csrf";
 const GET_LESSONS = "lessons/getLessons";
+const CLEAR_LESSONS = "lessons/clearLessons";
+
 const getLessons = (lessons)=>{
 return {
     type:GET_LESSONS,
@@ -7,12 +9,18 @@ return {
 }
 }
 
+export const clearLessons = () => {
+  return {
+    type: CLEAR_LESSONS,
+  };
+};
+
 export const userLessons =()=> async(dispatch)=>{
     const response = await csrfFetch("api/lessons/current");
-    console.log(response,"in the user lessons thunk");
+    // console.log(response,"in the user lessons thunk");
     if(response.ok){
         const data = await response.json();
-        console.log(data,"DATA FROM THUNK")
+        // console.log(data,"DATA FROM THUNK")
         dispatch(getLessons(data));
         return data;
     }
@@ -29,6 +37,10 @@ const lessonReducer = (state = initialState, action) => {
         })
         // console.log(newState,"newState");
         return newState;
+
+      case CLEAR_LESSONS:
+        return initialState;
+
       default:
         return state;
     }

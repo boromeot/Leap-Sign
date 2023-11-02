@@ -25,10 +25,12 @@ const FiveLeafNodes = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [animate, setAnimate] = useState(false);
-  const [unlock, setUnlock] = useState(false);
+  // const [unlock, setUnlock] = useState(false);
   const [currentLesson, setCurrentLesson] = useState(0);
-  const lessons = useSelector((state) => state.lessons);
-  // console.log(lessons,"USESELECTOR");
+  const lessons = useSelector((state) => state.lessons.lessons);
+  console.log(lessons,"USESELECTOR");
+  const lessonsArr = Object.values(lessons)
+  console.log('lessonsArr in LessonsPage: ', lessonsArr);
   const dispatch = useDispatch();
   // Define animation properties as state
   const [animationProperties, setAnimationProperties] = useState({
@@ -38,14 +40,17 @@ const FiveLeafNodes = () => {
     destinationTop: 0,
   });
 
+
   // Use a separate state variable to keep track of the currently unlocked lily pad
   const [currentlyUnlockedLilyPad, setCurrentlyUnlockedLilyPad] = useState(0);
+
   useEffect(() => {
     dispatch(userLessons());
   }, [ dispatch]);
 
   useEffect(() => {
     // Function to calculate and set animation properties
+    // const calculateAnimationProperties = (lessonNumber) => {
     const calculateAnimationProperties = (lessonNumber) => {
       // Calculate the position of the destination lily pad
       const destinationLilyPad = document.querySelector(`#lilyPad${lessonNumber}`);
@@ -68,17 +73,24 @@ const FiveLeafNodes = () => {
       }
     };
 
+   
     // Get the animate state from localStorage
     const shouldAnimate = localStorage.getItem('animate') === 'true';
     const shouldUnlock = localStorage.getItem('unlock') === 'true';
 
     // Set the component's animate state
     setAnimate(shouldAnimate);
-    setUnlock(shouldUnlock);
+    // setUnlock(shouldUnlock);
 
     // Call the function to calculate animation properties for the current lesson
     calculateAnimationProperties(currentLesson);
   }, [location, currentLesson]);
+
+
+  // if(lessonsArr.length < 1 || lessonsArr === undefined) {
+  //   return (<p>Loading...</p>);
+  // }
+
 
   function handleLilyPadClick(lessonNumber) {
     if (lessonNumber === currentLesson + 1) {
@@ -102,7 +114,7 @@ const FiveLeafNodes = () => {
 
       setTimeout(() => {
         localStorage.setItem('unlock', 'false');
-        setUnlock(false);
+        // setUnlock(false);
       }, 1000);
     }
   }
@@ -124,7 +136,7 @@ const FiveLeafNodes = () => {
         />
         {leafnode()}
       </div>
-      {[1, 2, 3, 4, 5].map((i) => (
+      {/* {[1, 2, 3, 4, 5].map((i) => (
         <div className={classes.lessonsLilyPad} id={`lilyPad${i}`} key={i} onClick={() => handleLilyPadClick(i)}>
           {i <= currentLesson ? (
             <>
@@ -143,9 +155,30 @@ const FiveLeafNodes = () => {
               {i !== currentLesson && <img className={classes.lock} src={lock} alt="lock" />}
               {i === currentLesson && unlock && <UnlockAnimation unlock={unlock} />}
             </div>
+          )} */}
+      {lessonsArr.map((lesson) => (
+        <div className={classes.lessonsLilyPad} id={`lilyPad${lesson.id}`} key={lesson.id} onClick={() => handleLilyPadClick(lesson.lessonId)}>
+          {lesson.lessonId <= currentLesson ? (
+            <>
+              {animate && <FrogAnimation animate={animate} />}
+              {currentlyUnlockedLilyPad === lesson.lessonId && lesson.unlocked && <UnlockAnimation unlock={lesson.unlocked} />}
+              <img
+                className={`${classes.frogImg} ${animate ? classes.animation : ''}`}
+                src={frogImg}
+                alt='FrogLogo'
+              />
+              {leafnode()}
+            </>
+          ) : (
+            <div>
+              <img className={classes.gray} src={leaf} alt="lilyPad" />
+              {lesson.lessonId !== currentLesson && <img className={classes.lock} src={lock} alt="lock" />}
+              {lesson.lessonId === currentLesson && lesson.unlocked && <UnlockAnimation unlock={lesson.unlocked} />}
+            </div>
           )}
         </div>
       ))}
+     
     </div>
   );
 };

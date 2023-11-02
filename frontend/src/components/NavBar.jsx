@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ModalBackground from './ModalBackground';
 import ProfileButton from './profileButton';
@@ -13,9 +13,9 @@ import login4 from '../assets/log-in4.png';
 import "../styles/navbar.css";
 
 const NavBar = () => {
-  const dispatch = useDispatch();
+
   const userSession = useSelector(state => state.session.user);
-  console.log("userSession in NavBar: ", userSession);
+  // console.log("userSession in NavBar: ", userSession);
   const [showSignIn, setShowSignIn] = useState(false);
   const [showSignUp, setShowSignUp] = useState(false);
   const [showProfileButton, setShowProfileButton] = useState(false)
