@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import ModalBackground from './ModalBackground';
@@ -8,13 +8,14 @@ import userIcon from '../assets/user-icon.png';
 import login2 from '../assets/log-in2.png';
 import login3 from '../assets/log-in3.png';
 import login4 from '../assets/log-in4.png';
-import * as sessionActions from "../store/session";
+
 
 import "../styles/navbar.css";
 
 const NavBar = () => {
   const dispatch = useDispatch();
   const userSession = useSelector(state => state.session.user);
+  console.log("userSession in NavBar: ", userSession);
   const [showSignIn, setShowSignIn] = useState(false);
   const [showSignUp, setShowSignUp] = useState(false);
   const [showProfileButton, setShowProfileButton] = useState(false)

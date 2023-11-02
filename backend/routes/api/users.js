@@ -2,7 +2,7 @@ const express = require('express');
 const bcrypt = require('bcryptjs');
 
 const { setTokenCookie, requireAuth } = require('../../utils/auth');
-const { User } = require('../../db/models');
+const { User, Lesson } = require('../../db/models');
 const { check } = require('express-validator');
 const { handleValidationErrors } = require('../../utils/validation');
 
@@ -45,8 +45,26 @@ router.post(
 
     await setTokenCookie(res, safeUser);
 
+    let lessons = {};
+
+    await Lesson.create({
+        lessonId: 1,
+        unlocked: true,
+        userId: user.id,
+    })
+
+    for(let i = 2; i < 7; i++) {
+      await Lesson.create({
+        lessonId: i,
+        unlocked: false,
+        userId: user.id,
+      })
+    }
+
+    console.log('lessons in user route: ', lessons);
+
     return res.json({
-      safeUser
+      safeUser,
     });
   }
 );
