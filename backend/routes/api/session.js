@@ -69,7 +69,7 @@ router.delete(
 
 // Restore session user
 router.get(
-  '/',
+  '',
   (req, res) => {
     const { user } = req;
     // console.log('user in session route: ', user);
