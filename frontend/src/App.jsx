@@ -34,10 +34,8 @@ function App() {
         {/* <Route path='/signup' element={<SignUp />} />
         <Route path='/signin' element={<SignIn />} /> */}
         <Route path='/lessons' element={<LessonsPage />}/>
-        <Route path='/lessons/1' element={<SingleLesson />}/>
         <Route path='/camera' element={<Camera />}/>
         <Route path= '/lessons/:id' element={<SingleLesson />}/>
-        <Route path= '/lessons/:id' element={<SecondLesson />}/>
         <Route path= '*' element={<NotFoundPage />} />
       </Routes>
     </>
