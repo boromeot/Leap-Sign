@@ -65,7 +65,7 @@ const Camera = ({ word, threshold, matchFunction }) => {
         clearInterval(intervalId);
       }
     }
-  }, [CNN, LSTM])
+  }, [CNN, LSTM, word])
 
   const loadModels = async () => {
     try {
@@ -103,8 +103,6 @@ const Camera = ({ word, threshold, matchFunction }) => {
           position: 'absolute',
           marginLeft: 'auto',
           marginRight: 'auto',
-          left: 0,
-          right: 0,
           width: 640,
           height: 480,
           zIndex: 3,
@@ -115,8 +113,6 @@ const Camera = ({ word, threshold, matchFunction }) => {
           position: 'absolute',
           marginLeft: 'auto',
           marginRight: 'auto',
-          left: 0,
-          right: 0,
           width: 640,
           height: 480,
           zIndex: 3,
