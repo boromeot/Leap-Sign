@@ -23,18 +23,29 @@ const leafnode = () => {
 };
 
 const FiveLeafNodes = () => {
+  const lessons = useSelector((state) => state.lesson.allLessons); 
+  const lessonsArr = Object.values(lessons);
+  let countOfLilyPad = 0; 
+  
+  for (let lesson of lessonsArr) {
+    if (lesson.unlocked == true) {
+      countOfLilyPad += 1;
+    }
+  }
+  
+  console.log(countOfLilyPad, "countOfLilyPad");
+
   const navigate = useNavigate();
   const location = useLocation();
   const [animate, setAnimate] = useState(false);
   // const [unlock, setUnlock] = useState(false);
-  let countOfLilyPad = 0;
+  
   const [currentLesson, setCurrentLesson] = useState(0);
-  const lessons = useSelector((state) => state.lesson.allLessons);
-  const user = useSelector((state) => state.session.user);
-  console.log("lessons state from LessonPage: ", lessons)
-  console.log(user, "USESELECTOR");
-  const lessonsArr = Object.values(lessons)
-  console.log('lessonsArr in LessonsPage: ', lessonsArr);
+  
+  // const user = useSelector((state) => state.session.user);
+  // console.log(user, "USESELECTOR");
+ 
+  // console.log('lessonsArr in LessonsPage: ', lessonsArr);
   const dispatch = useDispatch();
   // Define animation properties as state
   const [animationProperties, setAnimationProperties] = useState({
@@ -47,15 +58,9 @@ const FiveLeafNodes = () => {
 
   // Use a separate state variable to keep track of the currently unlocked lily pad
   const [currentlyUnlockedLilyPad, setCurrentlyUnlockedLilyPad] = useState(0);
-  for (let lesson in lessonsArr) {
-    if (lessons.unlocked == true) {
-      countOfLilyPad = countOfLilyPad + 1;
-      console.log(countOfLilyPad, "countOfLilyPad")
-      console.log(lesson, "lesson from countlilypad func")
-    }
-  }
+ 
   useEffect(() => {
-    console.log("in the useEffect of dispatch(userLessons().....")
+    // console.log("in the useEffect of dispatch(userLessons().....")
     dispatch(userLessons());
   }, [dispatch]);
 
@@ -133,7 +138,7 @@ const FiveLeafNodes = () => {
   return (
     <>
     <div className={classes.leafclass}>
-      <div className={classes.frogContainer} onClick={() => handleLilyPadClick()}>
+      <div className={classes.frogContainer} >
         {animate && <FrogAnimation animate={animate} />}
         <img
           className={`${classes.frogImg} ${animate ? classes.animation : ''}`}
@@ -145,6 +150,7 @@ const FiveLeafNodes = () => {
             left: animationProperties.destinationLeft,
             top: animationProperties.destinationTop,
           }}
+          onClick={() => handleLilyPadClick(0)}
         />
         {/* {leafnode()} */}
       </div>
@@ -168,14 +174,18 @@ const FiveLeafNodes = () => {
               {i === currentLesson && unlock && <UnlockAnimation unlock={unlock} />}
             </div>
           )} */}
+        
       {lessonsArr.map((lesson) => (
         <div className={classes.lessonsLilyPad} >
           {/* {lesson.lessonId && lesson.unlocked && user.id == lesson.userId  ? */}
           {lesson.lessonId && lesson.unlocked ?
+          <>
             <img className={classes.leafimg} src={leaf} alt="lilyPad" 
-          
-            onClick={() => handleLilyPadClick(lesson.lessonId)}
-          /> 
+              onClick={() => handleLilyPadClick(lesson.lessonId)} 
+            /> 
+          </>
+           
+         
             :
             <>
               <img className={classes.gray} src={leaf} alt="lilyPad" />

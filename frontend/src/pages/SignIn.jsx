@@ -32,8 +32,6 @@ const SignIn = (props) => {
         setErrors(data.errors);
       }
     }
-    // await dispatch(clearLessons());
-    // await dispatch(userLessons());
   }
 
   return (
