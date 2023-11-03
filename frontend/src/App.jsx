@@ -35,10 +35,11 @@ console.log(id,"ID FROM PARAMS")
         {/* <Route path='/signup' element={<SignUp />} />
         <Route path='/signin' element={<SignIn />} /> */}
         <Route exact={true} path='/lessons' element={<LessonsPage />}/>
-        <Route exact={true} path='/lessons/:lessonId' element={<SingleLesson />}/>
+        {/* <Route exact={true} path='/lessons/1' element={<SingleLesson />}/>
+        <Route exact={true} path='/lessons/2' element={<SecondLesson />}/> */}
         <Route path='/camera' element={<Camera />}/>
-        {/* <Route path= '/lessons/:id' element={<SingleLesson />}/> */}
-        {/* <Route path= '/lessons/:id' element={<SecondLesson />}/> */}
+        <Route path= '/lessons/:id' element={<SingleLesson />}/> 
+      <Route path= '/lessons/:id' element={<SecondLesson />}/>
         <Route path= '*' element={<NotFoundPage />} />
       </Routes>
     </>
