@@ -5,7 +5,7 @@ export const lessons = {
   },
   2: {
     'words' : ['your', 'name', 'understand'],
-    'youtubeIds' : []
+    'youtubeIds' : ['J5cjDBY1QU0', 'GbeC9TFuSX4', '5N10dIavSYc']
   },
   3: {
     'words' : ['hello', 'goodbye', 'okay'],

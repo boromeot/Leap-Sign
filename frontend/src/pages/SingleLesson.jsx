@@ -45,6 +45,7 @@ export default function lesson() {
         <h1>Current sign : {currentWord}</h1>
         <ReactPlayer 
           url={`https://www.youtube.com/watch?v=${currentId}`}
+          loop={true}
           playing={true}
           muted={true}
         />
