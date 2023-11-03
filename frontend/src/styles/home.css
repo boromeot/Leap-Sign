@@ -4,7 +4,13 @@
   align-items: center;
 }
 
-.slogan-container { z-index: 1; }
+.slogan-container { 
+  z-index: 1; 
+  margin-top: 120px; 
+  width: 80%;
+  display: flex;
+  justify-content: center;
+}
 
 .slogan {
   color: white;
