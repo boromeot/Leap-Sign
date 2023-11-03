@@ -176,7 +176,7 @@ const FiveLeafNodes = () => {
           )} */}
         
       {lessonsArr.map((lesson) => (
-        <div className={classes.lessonsLilyPad} >
+        <div className={classes.lessonsLilyPad} key={lesson.id}>
           {/* {lesson.lessonId && lesson.unlocked && user.id == lesson.userId  ? */}
           {lesson.lessonId && lesson.unlocked ?
           <>
