@@ -119,11 +119,11 @@ const FiveLeafNodes = () => {
           {leafnode()}
         </div>
         {[1, 2, 3, 4, 5].map((i) => (
-          <div className={classes.lessonsLilyPad} id={`lilyPad${i}`} key={i} onClick={() => handleLilyPadClick(i)}>
+          <div className={classes.lessonsLilyPad} id={`lilyPad${i}`} key={i} onClick={() => handleLilyPadClick(i - 1)}>
             {i <= currentLesson ? (
               <>
                 {animate && <FrogAnimation animate={animate} />}
-                {currentlyUnlockedLilyPad === i && unlock && <UnlockAnimation unlock={unlock} />}
+                {currentlyUnlockedLilyPad === i - 1 && unlock && <UnlockAnimation unlock={unlock} />}
                 <img
                   className={`${classes.frogImg} ${animate ? classes.animation : ''}`}
                   src={frogImg}
@@ -133,10 +133,17 @@ const FiveLeafNodes = () => {
               </>
             ) : (
                 <div>
-                    <img className={classes.gray} src={leaf} alt="lilyPad" />
+                  <div>
+                    {/* <div className={`${classes.pulse1} ${classes.grayed}`}></div>
+                    <div className={`${classes.pulse2} ${classes.grayed}`}></div>
+                    <button className={`${classes.profilepicture} ${classes.grayed}`}> */}
+                        <img className={classes.gray} src={leaf} alt="lilyPad" />
+                    {/* </button> */}
+                  </div>
                     {i !== currentLesson && <img className={classes.lock} src={lock} alt="lock" />}
-                    {i === currentLesson && unlock && <UnlockAnimation unlock={unlock} />}
+                    {i - 1  === currentLesson && unlock && <UnlockAnimation unlock={unlock} />}
                 </div>
+
             )}
           </div>
         ))}

@@ -5,7 +5,7 @@ const UnlockAnimation = ({ unlock }) => {
   useEffect(() => {
     if (unlock) {
       document.querySelector(`.${classes.lock}`).classList.add(classes.unlock);
-      document.querySelector(`.${classes.leafimg}`).classList.add(classes.unlock);
+      document.querySelector(`.${classes.gray}`).classList.add(classes.unlock);
     }
   }, []);
 
