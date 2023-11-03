@@ -3,6 +3,7 @@ import * as sessionActions from "../store/session";
 import { useDispatch, useSelector } from "react-redux";
 // import { clearLessons } from '../store/lesson';
 import '../styles/SignIn.css';
+import { userLessons, clearLessons } from '../store/lesson';
 
 const SignIn = (props) => {
   const dispatch = useDispatch();
@@ -31,8 +32,8 @@ const SignIn = (props) => {
         setErrors(data.errors);
       }
     }
-
-    // dispatch(clearLessons());
+    // await dispatch(clearLessons());
+    // await dispatch(userLessons());
   }
 
   return (

@@ -5,7 +5,7 @@ import sessionReducer from './session';
 import lessonReducer from './lesson';
 const rootReducer = combineReducers({
   session: sessionReducer,
-  lessons: lessonReducer
+  lesson: lessonReducer
 });
 
 

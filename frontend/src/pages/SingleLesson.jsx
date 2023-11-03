@@ -1,11 +1,14 @@
 import React from 'react';
 import classes from '../styles/SingleLesson.module.css';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import FrogAnimation from './FrogAnimation';
 
 
 export default function lesson() {
   const navigate = useNavigate();
+  
+  const { lessonId } = useParams();
+  console.log("lessonId in singleLesson: ", lessonId);
 
   // const [checked, setChecked] = React.useState(false);
   // const [animate, setAnimate] = React.useState(false);

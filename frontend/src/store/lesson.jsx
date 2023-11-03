@@ -5,7 +5,7 @@ const CLEAR_LESSONS = "lessons/clearLessons";
 const getLessons = (lessons)=>{
 return {
     type:GET_LESSONS,
-    payload : lessons
+    lessons,
 }
 }
 
@@ -17,23 +17,23 @@ export const clearLessons = () => {
 
 export const userLessons =()=> async(dispatch)=>{
     const response = await csrfFetch("api/lessons/current");
-    // console.log(response,"in the user lessons thunk");
+    console.log(response,"in the user lessons thunk");
     if(response.ok){
         const data = await response.json();
-        // console.log(data,"DATA FROM THUNK")
+        console.log(data,"DATA FROM THUNK")
         dispatch(getLessons(data));
         return data;
     }
 }
-const initialState = { lessons: {} };
+const initialState = { allLessons: {} };
 const lessonReducer = (state = initialState, action) => {
-    let newState;
+
     switch (action.type) {
       case GET_LESSONS:
-        newState = Object.assign({}, state);
+        const newState = {...state, allLessons: {}};
         // console.log(action.lessons,"lessons");
-        action.payload.Lessons.forEach((lesson)=>{
-            newState.lessons[lesson.id] = lesson;
+        action.lessons.Lessons.forEach((lesson)=>{
+            newState.allLessons[lesson.id] = lesson;
         })
         // console.log(newState,"newState");
         return newState;

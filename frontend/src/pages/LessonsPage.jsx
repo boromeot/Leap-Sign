@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import classes from '../styles/LessonsPage.module.css';
 import frogImg from '../assets/frog.png';
@@ -8,6 +8,7 @@ import lock from '../assets/lock.svg';
 import FrogAnimation from '../pages/FrogAnimation';
 import UnlockAnimation from './UnlockAnimation';
 import { userLessons } from '../store/lesson';
+import Footer from '../components/footer';
 
 const leafnode = () => {
   return (
@@ -28,11 +29,12 @@ const FiveLeafNodes = () => {
   // const [unlock, setUnlock] = useState(false);
   let countOfLilyPad = 0;
   const [currentLesson, setCurrentLesson] = useState(0);
-  const lessons = useSelector((state) => state.lessons.lessons);
+  const lessons = useSelector((state) => state.lesson.allLessons);
   const user = useSelector((state) => state.session.user);
-   console.log(user, "USESELECTOR");
+  console.log("lessons state from LessonPage: ", lessons)
+  console.log(user, "USESELECTOR");
   const lessonsArr = Object.values(lessons)
-  // console.log('lessonsArr in LessonsPage: ', lessonsArr);
+  console.log('lessonsArr in LessonsPage: ', lessonsArr);
   const dispatch = useDispatch();
   // Define animation properties as state
   const [animationProperties, setAnimationProperties] = useState({
@@ -53,6 +55,7 @@ const FiveLeafNodes = () => {
     }
   }
   useEffect(() => {
+    console.log("in the useEffect of dispatch(userLessons().....")
     dispatch(userLessons());
   }, [dispatch]);
 
@@ -95,9 +98,9 @@ const FiveLeafNodes = () => {
   }, [location, currentLesson]);
 
 
-  // if(lessonsArr.length < 1 || lessonsArr === undefined) {
-  //   return (<p>Loading...</p>);
-  // }
+  if(lessonsArr.length < 1 ) {
+    return (<p>Loading...</p>);
+  }
 
 
   function handleLilyPadClick(lessonNumber) {
@@ -128,6 +131,7 @@ const FiveLeafNodes = () => {
   }
 
   return (
+    <>
     <div className={classes.leafclass}>
       <div className={classes.frogContainer} onClick={() => handleLilyPadClick()}>
         {animate && <FrogAnimation animate={animate} />}
@@ -165,25 +169,30 @@ const FiveLeafNodes = () => {
             </div>
           )} */}
       {lessonsArr.map((lesson) => (
-        
-        
         <div className={classes.lessonsLilyPad} >
-          {lesson.lessonId && lesson.unlocked && user.id == lesson.userId  ?
+          {/* {lesson.lessonId && lesson.unlocked && user.id == lesson.userId  ? */}
+          {lesson.lessonId && lesson.unlocked ?
             <img className={classes.leafimg} src={leaf} alt="lilyPad" 
           
-            onClick={() => handleLilyPadClick(lesson.lessonId)}/> :
-            <><img className={classes.gray} src={leaf} alt="lilyPad" />
-              <img className={classes.lock} src={lock} alt="lock" /> </>
+            onClick={() => handleLilyPadClick(lesson.lessonId)}
+          /> 
+            :
+            <>
+              <img className={classes.gray} src={leaf} alt="lilyPad" />
+              <img className={classes.lock} src={lock} alt="lock" /> 
+            </>
 
           }
         </div>
-
-
       )
       )}
 
-    </div>
-  );
+    </div>  
+    <Footer />
+    </>
+  );    
+
+
 };
 
 export default FiveLeafNodes;
