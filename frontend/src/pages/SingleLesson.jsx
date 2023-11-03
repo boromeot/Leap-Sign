@@ -2,13 +2,23 @@ import React from 'react';
 import classes from '../styles/SingleLesson.module.css';
 import { useNavigate, useParams } from 'react-router-dom';
 import FrogAnimation from './FrogAnimation';
-
+import {unlockLesson} from '../store/lesson'
+import { useDispatch ,useSelector} from 'react-redux';
+import { userLessons } from '../store/lesson';
 
 export default function lesson() {
   const navigate = useNavigate();
-  
-  const { lessonId } = useParams();
-  console.log("lessonId in singleLesson: ", lessonId);
+  const dispatch = useDispatch();
+  const sessionUser = useSelector((state) => state.session.user);
+  const { id } = useParams();
+  console.log(id,"USEPARAMS ID");
+  let lessonToBeUnlocked = { 
+    lessonId: parseInt(id)+1,
+    userId: sessionUser.id,
+    unlocked: true,
+    }
+
+  // console.log("lessonId in singleLesson: ", lessonId);
 
   // const [checked, setChecked] = React.useState(false);
   // const [animate, setAnimate] = React.useState(false);
@@ -23,25 +33,31 @@ export default function lesson() {
   // }
 
   const navigateBackToLessons = () => {
-    navigate(`/lessons`, { state: { animate: true, unlock: true } });
+    dispatch(unlockLesson(lessonToBeUnlocked))
+    .then(dispatch(userLessons()))
+    .then(navigate(`/lessons`, { state: { animate: true, unlock: true } }))
+  }
 
-}
 
-return (
-    <>
+  return (
+      <>
 
-    {/* <FormControlLabel
-      control={<Checkbox checked={checked} onChange={handleChange} onClick={handleClick} />}
-      label="Mark as completed"
-    /> */}
+      {/* <FormControlLabel
+        control={<Checkbox checked={checked} onChange={handleChange} onClick={handleClick} />}
+        label="Mark as completed"
+      /> */}
 
-    <div>
-      <button onClick={navigateBackToLessons}>
-        Continue
-      </button>
-    </div>
+      <div>
+        {id < 6 ? 
+          <button onClick={navigateBackToLessons}>
+            Continue
+          </button>
+          :
+          <p>You've finished all lessons!</p>
+        }
+      </div>
 
-    </>
-)
+      </>
+  )
 
 }
