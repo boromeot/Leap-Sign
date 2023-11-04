@@ -15,39 +15,39 @@ export default function lesson() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const { id } = useParams();
-  console.log(id,"USEPARAMS ID");
+  console.log('typeof id', typeof id)
+  console.log(parseInt(id),"USEPARAMS ID");
 
   let lessonToBeUnlocked = { 
     lessonId: parseInt(id)+1,
-    userId: sessionUser.id,
+    userId: sessionUser ? (sessionUser.id ? sessionUser.id : null) : null,
     unlocked: true,
-    }
+  }
 
 
   const navigateBackToLessons = () => {
     dispatch(unlockLesson(lessonToBeUnlocked));
-    // dispatch(userLessons())
     navigate(`/lessons`, { state: { animate: true, unlock: true } })
   }
 
   const [currentIndex, setCurrentIndex] = useState(0);
  
-  console.log(lessons[id].words)
-  const [currentWord, setCurrentWord] = useState(lessons[id].words[currentIndex]);
-  const [currentId, setCurrentId] = useState(lessons[id].youtubeIds[currentIndex]);
+  // console.log(lessons[parseInt(id)].words)
+  const [currentWord, setCurrentWord] = useState(lessons[parseInt(id)].words[currentIndex]);
+  const [currentId, setCurrentId] = useState(lessons[parseInt(id)].youtubeIds[currentIndex]);
   console.log(currentWord)
 
   let debounceTimeout;
 
   useEffect(() => {
-    setCurrentWord(lessons[id].words[currentIndex]);
-    setCurrentId(lessons[id].youtubeIds[currentIndex]);
+    setCurrentWord(lessons[parseInt(id)].words[currentIndex]);
+    setCurrentId(lessons[parseInt(id)].youtubeIds[currentIndex]);
   }, [currentIndex]);
 
   function matchFunction() {
     if (!debounceTimeout) {
       debounceTimeout = setTimeout(() => {
-        setCurrentIndex((prev) => (prev + 1) % lessons[id].words.length);
+        setCurrentIndex((prev) => (prev + 1) % lessons[parseInt(id)].words.length);
         debounceTimeout = null;
       }, 1000); // Adjust the delay as needed (e.g., 1000ms = 1 second)
     }
@@ -77,12 +77,12 @@ export default function lesson() {
     </div>
 
       <div>
-        {id < 6 ? 
+        {parseInt(id) === 6 ? 
+          <p>You've finished all lessons!</p> 
+          :
           <button onClick={navigateBackToLessons}>
             Continue
           </button>
-          :
-          <p>You've finished all lessons!</p>
         }
       </div>
 

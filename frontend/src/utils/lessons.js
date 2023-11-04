@@ -19,6 +19,10 @@ export const lessons = {
     'words' : [],
     'youtubeIds' : []
   },
+  6: {
+    'words' : [],
+    'youtubeIds' : []
+  },
 }
 
 export default lessons;
