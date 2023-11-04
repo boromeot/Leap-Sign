@@ -12,7 +12,7 @@ export const lessons = {
     'youtubeIds' : []
   },
   4: {
-    'words' : [],
+    'words' : ['who', 'what', 'when'],
     'youtubeIds' : []
   },
   5: {
@@ -20,5 +20,6 @@ export const lessons = {
     'youtubeIds' : []
   },
 }
-
+// 'again','thankyou','no','yes',
+// 'understand','your','slow','name','what','where','who','why'
 export default lessons;

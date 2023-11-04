@@ -19,8 +19,7 @@ import './App.css'
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-const { id } = useParams();
-console.log(id,"ID FROM PARAMS")
+  const { id } = useParams();
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch])

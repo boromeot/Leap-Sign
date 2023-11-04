@@ -63,7 +63,7 @@ export default function lesson() {
       <div className='singleLesson-video'>        
         <h1>Current sign : {currentWord}</h1>
         <ReactPlayer 
-          url={`https://www.youtube.com/watch?v=${currentId}`}
+          url={`https://www.youtube.com/watch?v=${currentId}?rel=0`}
           loop={true}
           playing={true}
           muted={true}

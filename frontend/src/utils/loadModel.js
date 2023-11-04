@@ -4,9 +4,12 @@ import * as tf from '@tensorflow/tfjs'
 export const loadCNN = async () => {
   try {
     const CNN = await new mp_holistic.Holistic({locateFile: (file) => {
-      return `https://cdn.jsdelivr.net/npm/@mediapipe/holistic@` +
-             `${mp_holistic.VERSION}/${file}`;
+      return `/holistic/${file}`;
     }});
+    // const CNN = await new mp_holistic.Holistic({locateFile: (file) => {
+    //   return `https://cdn.jsdelivr.net/npm/@mediapipe/holistic@` +
+    //          `${mp_holistic.VERSION}/${file}`;
+    // }});
     await CNN.setOptions({
       modelComplexity: 1,
       smoothLandmarks: true,

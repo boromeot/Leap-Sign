@@ -63,6 +63,8 @@ const Camera = ({ word, threshold, matchFunction }) => {
       });
       return () => {
         clearInterval(intervalId);
+        CNN.close();
+        LSTM.dispose();
       }
     }
   }, [CNN, LSTM, word])
@@ -70,9 +72,14 @@ const Camera = ({ word, threshold, matchFunction }) => {
   const loadModels = async () => {
     try {
       setCNN(await loadCNN());
-      setLSTM(await loadLSTM('/src/models/mark3/model.json'));
     } catch (error) {
-      console.error('Error loading the models:', error);
+      console.error('Error loading CNN:', error);
+    }
+    
+    try {
+      setLSTM(await loadLSTM('/model.json'));
+    } catch (error) {
+      console.error('Error loading LSTM', error);
     }
   }
 
