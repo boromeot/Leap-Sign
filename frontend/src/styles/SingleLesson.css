@@ -1,18 +1,64 @@
-.singleLesson-cotainer {
-  display: grid;
-  justify-content: space-evenly;
+.singleLesson-cotainerouter {
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  margin-top: 2rem;
-  grid-template-columns: 1fr 1fr;
-  gap: 50px;
+  width: 100%;
+}
+
+.singleLesson-cotainerouter > h1 {
+  width: 90%;
+  background-color: #8cba69;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 5% 5% 20px 5%;
+  text-align: center;
+  z-index: 3;
+  opacity: 0.9;
+  color: #fff;
+}
+
+.singleLesson-cotainerouter > h1 > span {
+  /* color: #646cff; */
+  color: #fff;
+  /* font-weight: bold; */
+  /* font-family: 'Cherry Bomb One', sans-serif; */
+  margin-left: 10px;
+}
+
+.singleLesson-cotainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: 0 5% 15px 5%;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  padding: 20px;
 }
 
 .singleLesson-video {
+  width: 40%;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 20px;
+  z-index: 3;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgb(0, 0, 0, 0.2);
+}
+
+.singleLesson-video > h1 {
+  font-size: 40px;
+  margin-bottom: 15px;
+}
+
+.singleLesson-video > h1 > span {
+  color: #646cff;
+  font-weight: bold;
+  font-size: 40px;
+  font-family: 'Cherry Bomb One', sans-serif;
+  margin-left: 20px;
 }
 
 .singleLesson-camera {
@@ -20,4 +66,21 @@
   height: 480px;
   grid-column: 2 / 3;
   justify-self: center;
+  z-index: 3;
+  border-radius: 10px;
+  box-shadow: 0 0 20px rgb(0, 0, 0, 0.2);
+}
+
+.singleLesson-camera > video {
+  border-radius: 2%;
+}
+.singleLesson-camera > canvas {
+  border-radius: 2%;
+}
+
+.continue-button {
+  display: flex;
+  justify-content: center;
+  padding: 15px;
+  margin-top: 2%;
 }
