@@ -1,22 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import classes from '../styles/SingleLesson.module.css';
 import { useNavigate, useParams } from 'react-router-dom';
-import FrogAnimation from './FrogAnimation';
 import {unlockLesson} from '../store/lesson'
 import { useDispatch ,useSelector} from 'react-redux';
-import { userLessons } from '../store/lesson';
 import '../styles/SingleLesson.css';
 import Camera from '../components/Camera';
 import ReactPlayer from 'react-player';
 import lessons from '../utils/lessons';
+import Footer from '../components/footer';
 
 export default function lesson() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const { id } = useParams();
-  console.log('typeof id', typeof id)
-  console.log(parseInt(id),"USEPARAMS ID");
+  // console.log('typeof id', typeof id)
+  // console.log(parseInt(id),"USEPARAMS ID");
+  const [buttonActive, setButtonActive] = useState(false);
 
   let lessonToBeUnlocked = { 
     lessonId: parseInt(id)+1,
@@ -42,6 +41,9 @@ export default function lesson() {
   useEffect(() => {
     setCurrentWord(lessons[parseInt(id)].words[currentIndex]);
     setCurrentId(lessons[parseInt(id)].youtubeIds[currentIndex]);
+    if(currentIndex >= lessons[parseInt(id)].words.length) {
+      setButtonActive(true);
+    }
   }, [currentIndex]);
 
   function matchFunction() {
@@ -56,36 +58,47 @@ export default function lesson() {
 
   return (
       <>
-
+      
       {/* <FormControlLabel
         control={<Checkbox checked={checked} onChange={handleChange} onClick={handleClick} />}
         label="Mark as completed"
       /> */}   
-      <div className='singleLesson-cotainer'>
-      <div className='singleLesson-video'>        
-        <h1>Current sign : {currentWord}</h1>
-        <ReactPlayer 
-          url={`https://www.youtube.com/watch?v=${currentId}`}
-          loop={true}
-          playing={true}
-          muted={true}
-        />
-      </div>
-      <div className='singleLesson-camera'>
-        <Camera word={currentWord} threshold={0.9} matchFunction={matchFunction} />
-      </div>
-    </div>
-
-      <div>
-        {parseInt(id) === 6 ? 
-          <p>You've finished all lessons!</p> 
-          :
-          <button onClick={navigateBackToLessons}>
-            Continue
-          </button>
-        }
+      <div className='singleLesson-cotainerouter'>
+        <h1>Lesson {id}: <span>{`${lessons[parseInt(id)].words}`}</span></h1>
+        <div  className='singleLesson-cotainer'>
+          <div className='singleLesson-video'>        
+            <h1>Current sign : <span>{currentWord}</span></h1>
+            <ReactPlayer 
+              url={`https://www.youtube.com/watch?v=${currentId}`}
+              loop={true}
+              playing={true}
+              muted={true}
+              width="100%"
+              height="350px"
+            />
+          </div>
+          <div className='singleLesson-camera'>
+            <Camera word={currentWord} threshold={0.9} matchFunction={matchFunction} />
+          </div>
+        </div>
       </div>
 
+        <div className='continue-button'>
+          {parseInt(id) === 6 ? 
+            <p>You've finished all lessons!</p> 
+            :
+            <button 
+              onClick={navigateBackToLessons} 
+              className={buttonActive ? 'button-active' : 'not-active'}
+              disabled={buttonActive === false}
+            >
+              Continue
+             
+            </button>
+          }
+        </div>
+
+        <Footer />
       </>
   )
 

@@ -101,23 +101,26 @@ const Camera = ({ word, threshold, matchFunction }) => {
       <Webcam ref={webcamRef} onUserMedia={loadModels} style={
         {
           position: 'absolute',
-          marginLeft: 'auto',
-          marginRight: 'auto',
-          width: 640,
-          height: 480,
+          // marginLeft: 'auto',
+          // marginRight: 'auto',
+          // width: 640,
+          // height: 480,
+          borderRadius: "10px",
           zIndex: 3,
         }
       }/>
       <canvas ref={canvasRef} style={
         {
           position: 'absolute',
-          marginLeft: 'auto',
-          marginRight: 'auto',
-          width: 640,
-          height: 480,
+          // marginLeft: 'auto',
+          // marginRight: 'auto',
+          // width: 640,
+          // height: 480,
           zIndex: 3,
+          borderRadius: "10px",
         }
       }/>
+      
     </>
   );
 }
