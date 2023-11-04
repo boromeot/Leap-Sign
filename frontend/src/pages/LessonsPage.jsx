@@ -32,9 +32,10 @@ return(
             initial={[
               {
                 targets: "#Box",
-                 translateX: 50,
+                 translateX: 50,              
+                // easing: "linear"
+                easing: "easeOutBounce"
               
-                easing: "linear"
               }
             ]}
           >
@@ -126,6 +127,7 @@ const FiveLeafNodes = () => {
         {lessonsArr.map((lesson) => (
           <div className={classes.lessonsLilyPad} key={lesson.id}>
           
+          <h4>Lesson: {lesson.lessonId}</h4>
             {curLesson === lesson.lessonId && lesson.unlocked && animatedFrog(curLesson,navigate)}
             {lesson.lessonId && lesson.unlocked ?
               <>
@@ -135,6 +137,7 @@ const FiveLeafNodes = () => {
                   }}
                 >
                   {leafnode()}
+                 
                 </div>
 
               </>
@@ -147,6 +150,7 @@ const FiveLeafNodes = () => {
               </>
 
             }
+            
           </div>
         )
         )}
