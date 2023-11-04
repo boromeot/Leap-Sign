@@ -325,14 +325,17 @@ inset 0 0 0 10px  rgba(0,0,255,.2);
     opacity: 0.3;
     filter: grayscale(100%);
 }
-
+h4{
+    font-family: 'Cherry Bomb One', sans-serif;
+    font-size: 12px;
+}
 .frogImg {
     position: absolute;
     z-index: 5;
     width: 166px;
     height: 172px;
-    top: 10px;
-    left: 10px;
+    top: 16px;
+    left: -48px;
 }
 
 .frogImg.animation {
@@ -385,3 +388,15 @@ inset 0 0 0 10px  rgba(0,0,255,.2);
 }
 
 
+/* CSS for even lily pads */
+.even-lilypad {
+    float: right;
+    /* Add any other styling you want for even lily pads */
+  }
+  
+  /* CSS for odd lily pads */
+  .odd-lilypad {
+    float: left;
+    /* Add any other styling you want for odd lily pads */
+  }
+  
