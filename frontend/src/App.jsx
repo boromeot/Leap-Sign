@@ -39,7 +39,8 @@ console.log(id,"ID FROM PARAMS")
         <Route exact={true} path='/lessons/2' element={<SecondLesson />}/> */}
         <Route path='/camera' element={<Camera />}/>
         <Route path= '/lessons/:id' element={<SingleLesson />}/> 
-      <Route path= '/lessons/:id' element={<SecondLesson />}/>
+        <Route path='/lessons' element={<LessonsPage />}/>
+        <Route path='/camera' element={<Camera />}/>
         <Route path= '*' element={<NotFoundPage />} />
       </Routes>
     </>
