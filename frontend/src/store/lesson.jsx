@@ -33,14 +33,18 @@ export const userLessons =()=> async(dispatch)=>{
 
 export const unlockLesson = (lesson) => async (dispatch) => {
   console.log(lesson,"LESSON From Thunk PUT")
-  const res = await csrfFetch(`/api/lessons/${lesson.lessonId}`, {
+  console.log('Action to be dispatched:', { type: SET_UNLOCKED, lesson });
+  const res = await csrfFetch(`/api/lessons/update`, {
       method: "PUT",
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(lesson),
   });
 
   if(res.ok) {
+
+    console.log("res in unlockLesson thunk: ", res)
       const unlockedLilyPad = await res.json()
+    console.log('unlockedLilyPad: ', unlockedLilyPad);
 
       dispatch(setUnlocked(unlockedLilyPad));
       return unlockedLilyPad;
@@ -53,28 +57,39 @@ const initialState = { allLessons: {} };
 const lessonReducer = (state = initialState, action) => {
 
     switch (action.type) {
-      case GET_LESSONS:
-        const newState = {...state, allLessons: {}};
+      case GET_LESSONS: {
+         const newState = {...state, allLessons: {}};
         // console.log(action.lessons,"lessons");
         action.lessons.Lessons.forEach((lesson)=>{
             newState.allLessons[lesson.id] = lesson;
         })
         // console.log(newState,"newState");
         return newState;
+      };
+       
     
-      case SET_UNLOCKED:
-        return {
-          ...state,
-          allLessons: {
-            ...state.allLessons,
-            [action.lesson.id]: action.lesson
-          }
-        };
-      case CLEAR_LESSONS:
-        return initialState;
-
-      default:
+      case SET_UNLOCKED: {
+        if (action.lesson && action.lesson.id) {
+          const newState = {
+            ...state,
+            allLessons: { [action.lesson.id]: action.lesson },
+          };
+          return newState;
+        }
+  
         return state;
+      };
+
+
+      case CLEAR_LESSONS: {
+        return initialState;
+      }
+        
+
+      default: {
+        return state;
+      }
+        
     }
   };
   

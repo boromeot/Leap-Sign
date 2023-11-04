@@ -92,9 +92,9 @@ const FiveLeafNodes = () => {
   if(lessonsArr.length < 1 ) {
     return (<p>Loading...</p>);
   }
-  function singleLessonPageHandler(lessonNumber) {
-    navigate(`/lessons/${lessonNumber}`);
-  }
+  // function singleLessonPageHandler(lessonNumber) {
+  //   navigate(`/lessons/${lessonNumber}`);
+  // }
   
   
   
@@ -146,7 +146,7 @@ const FiveLeafNodes = () => {
               onClick={() => {
              
                 handleLilyPadClick(lesson.lessonId);
-                singleLessonPageHandler(lesson.lessonId);
+                // singleLessonPageHandler(lesson.lessonId);
               }} 
             /> 
           </>

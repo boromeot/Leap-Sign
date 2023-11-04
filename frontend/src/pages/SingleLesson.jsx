@@ -71,9 +71,9 @@ export default function lesson() {
           muted={true}
         />
       </div>
-      {/* <div className='singleLesson-camera'>
+      <div className='singleLesson-camera'>
         <Camera word={currentWord} threshold={0.9} matchFunction={matchFunction} />
-      </div> */}
+      </div>
     </div>
 
       <div>
