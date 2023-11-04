@@ -30,7 +30,7 @@ console.log(id,"ID FROM PARAMS")
     <>
       <NavBar />
       <Routes>
-        <Route path="/" element={<HomePage />} />
+        <Route exact={true} path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         {/* <Route path='/signup' element={<SignUp />} />
         <Route path='/signin' element={<SignIn />} /> */}
@@ -38,9 +38,9 @@ console.log(id,"ID FROM PARAMS")
         {/* <Route exact={true} path='/lessons/1' element={<SingleLesson />}/>
         <Route exact={true} path='/lessons/2' element={<SecondLesson />}/> */}
         <Route path='/camera' element={<Camera />}/>
-        <Route path= '/lessons/:id' element={<SingleLesson />}/> 
-        <Route path='/lessons' element={<LessonsPage />}/>
-        <Route path='/camera' element={<Camera />}/>
+        <Route exact={true} path= '/lessons/:id' element={<SingleLesson />}/> 
+        {/* <Route path='/lessons' element={<LessonsPage />}/> */}
+        {/* <Route path='/camera' element={<Camera />}/> */}
         <Route path= '*' element={<NotFoundPage />} />
       </Routes>
     </>

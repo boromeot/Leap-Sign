@@ -16,6 +16,7 @@ export default function lesson() {
   const sessionUser = useSelector((state) => state.session.user);
   const { id } = useParams();
   console.log(id,"USEPARAMS ID");
+
   let lessonToBeUnlocked = { 
     lessonId: parseInt(id)+1,
     userId: sessionUser.id,
@@ -24,9 +25,10 @@ export default function lesson() {
 
 
   const navigateBackToLessons = () => {
-    dispatch(unlockLesson(lessonToBeUnlocked))
-    dispatch(userLessons())
-    navigate(`/lessons`, { state: { animate: true, unlock: true } })}
+    dispatch(unlockLesson(lessonToBeUnlocked));
+    // dispatch(userLessons())
+    navigate(`/lessons`, { state: { animate: true, unlock: true } })
+  }
 
   const [currentIndex, setCurrentIndex] = useState(0);
  
@@ -69,9 +71,9 @@ export default function lesson() {
           muted={true}
         />
       </div>
-      <div className='singleLesson-camera'>
+      {/* <div className='singleLesson-camera'>
         <Camera word={currentWord} threshold={0.9} matchFunction={matchFunction} />
-      </div>
+      </div> */}
     </div>
 
       <div>
