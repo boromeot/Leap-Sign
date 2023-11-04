@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes,useParams } from 'react-router-dom'
 import * as sessionActions from "./store/session";
 import { useDispatch } from 'react-redux'
 
@@ -19,7 +19,8 @@ import './App.css'
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
-
+const { id } = useParams();
+console.log(id,"ID FROM PARAMS")
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch])
@@ -33,11 +34,13 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         {/* <Route path='/signup' element={<SignUp />} />
         <Route path='/signin' element={<SignIn />} /> */}
-        <Route path='/lessons' element={<LessonsPage />}/>
-        <Route path='/lessons/1' element={<SingleLesson />}/>
+        <Route exact={true} path='/lessons' element={<LessonsPage />}/>
+        {/* <Route exact={true} path='/lessons/1' element={<SingleLesson />}/>
+        <Route exact={true} path='/lessons/2' element={<SecondLesson />}/> */}
         <Route path='/camera' element={<Camera />}/>
-        <Route path= '/lessons/:id' element={<SingleLesson />}/>
-        <Route path= '/lessons/:id' element={<SecondLesson />}/>
+        <Route path= '/lessons/:id' element={<SingleLesson />}/> 
+        <Route path='/lessons' element={<LessonsPage />}/>
+        <Route path='/camera' element={<Camera />}/>
         <Route path= '*' element={<NotFoundPage />} />
       </Routes>
     </>

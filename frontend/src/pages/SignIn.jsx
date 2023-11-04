@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import * as sessionActions from "../store/session";
 import { useDispatch, useSelector } from "react-redux";
-import { redirect } from "react-router-dom";
+// import { clearLessons } from '../store/lesson';
 import '../styles/SignIn.css';
+import { userLessons, clearLessons } from '../store/lesson';
 
 const SignIn = (props) => {
   const dispatch = useDispatch();

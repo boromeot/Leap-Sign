@@ -28,7 +28,8 @@ if (process.env.NODE_ENV !== "production") {
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  // <React.StrictMode>
+    <>
     {/* <SignupProvider> */}
     <Provider store={store}>
       <BrowserRouter>
@@ -36,5 +37,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       </BrowserRouter>
     </Provider>
     {/* </SignupProvider> */}
-  </React.StrictMode>,
+    </>
+  // </React.StrictMode>,
 )

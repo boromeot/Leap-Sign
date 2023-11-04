@@ -1,0 +1,23 @@
+.singleLesson-cotainer {
+  display: grid;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 2rem;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
+
+.singleLesson-video {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.singleLesson-camera {
+  width: 640px;
+  height: 480px;
+  grid-column: 2 / 3;
+  justify-self: center;
+}

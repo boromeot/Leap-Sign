@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useState } from 'react';
 import * as sessionActions from "../store/session";
 import { useDispatch, useSelector } from "react-redux";
 import { redirect } from 'react-router-dom';
 import '../styles/signup.css'
+import { restoreUser} from '../store/session';
 
 const SignUp = (props) => {
   const dispatch = useDispatch();
@@ -56,6 +57,8 @@ const SignUp = (props) => {
         confirmPassword: 'Confirm Password field must be the same as the Password field',
       });
     }
+
+    dispatch(restoreUser());
   };
 
 

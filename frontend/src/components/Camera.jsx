@@ -5,11 +5,24 @@ import { loadCNN, loadLSTM } from '../utils/loadModel';
 import extractKeypoints from '../utils/extract';
 import * as tf from '@tensorflow/tfjs';
 
-const Camera = () => {
+const Camera = ({ word, threshold, matchFunction }) => {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
   const [CNN, setCNN] = useState(null);
   const [LSTM, setLSTM] = useState(null);
+  const map = ['nothing','again','thankyou','no','yes', 'understand','your','slow'];
+
+  function getMaxIndex(arr) {
+    let index = -1;
+    let max = 0;
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] > max) {
+        max = arr[i];
+        index = i;
+      }
+    }
+    return index;
+  }
 
   useEffect(() => {
     if (CNN !== null && LSTM !== null) {
@@ -21,8 +34,7 @@ const Camera = () => {
         detect(CNN, canvasCtx)
       }, 75);
 
-      let x = [];
-      let i = 0;
+      let sequence = [];
 
       CNN.onResults((detections) => {
         canvasCtx.save();
@@ -32,27 +44,33 @@ const Camera = () => {
         drawPose(detections, canvasCtx);
 
         const keypoints = extractKeypoints(detections);
-        x = x.concat(keypoints);
-        i++;
-
-        if (i % 30 === 0) {
-          const tensor = tf.tensor3d(x, [1, 30, 1662]);
-          console.log('lstm');
-          LSTM.predict(tensor).print();
-          tensor.dispose();
-          x = [];
+        sequence.push(keypoints);
+        if (sequence.length === 30) {
+          tf.tidy(() => {
+            const flat = sequence.flat();
+            const tensor = tf.tensor3d(flat, [1, 30, 1662]);
+            const predictionTensor = LSTM.predict(tensor);
+            const predicitonData = predictionTensor.dataSync();
+            const gussedWord = map[getMaxIndex(predicitonData)];
+            const confidence = predicitonData[getMaxIndex(predicitonData)];
+            if (gussedWord === word && confidence > threshold) {
+              console.log(gussedWord, word, confidence);
+              matchFunction();
+            }
+            sequence.shift();
+          })
         }
       });
       return () => {
         clearInterval(intervalId);
       }
     }
-  }, [CNN, LSTM])
+  }, [CNN, LSTM, word])
 
   const loadModels = async () => {
     try {
       setCNN(await loadCNN());
-      setLSTM(await loadLSTM('src/models/crispy_creme/model.json'));
+      setLSTM(await loadLSTM('/src/models/mark3/model.json'));
     } catch (error) {
       console.error('Error loading the models:', error);
     }
@@ -85,8 +103,6 @@ const Camera = () => {
           position: 'absolute',
           marginLeft: 'auto',
           marginRight: 'auto',
-          left: 0,
-          right: 0,
           width: 640,
           height: 480,
           zIndex: 3,
@@ -97,10 +113,9 @@ const Camera = () => {
           position: 'absolute',
           marginLeft: 'auto',
           marginRight: 'auto',
-          left: 0,
-          right: 0,
           width: 640,
-          height: 480
+          height: 480,
+          zIndex: 3,
         }
       }/>
     </>

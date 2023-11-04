@@ -31,13 +31,83 @@ module.exports = {
         userId: 1,
       },
       {
+        lessonId: 3,
+        unlocked: false,
+        userId: 1,
+      },
+      {
+        lessonId: 4,
+        unlocked: false,
+        userId: 1,
+      },
+      {
+        lessonId: 5,
+        unlocked: false,
+        userId: 1,
+      },
+      {
+        lessonId: 6,
+        unlocked: false,
+        userId: 1,
+      },
+      {
         lessonId: 1,
         unlocked: true,
         userId: 2,
       },
       {
+        lessonId: 2,
+        unlocked: false,
+        userId: 2,
+      },
+      {
+        lessonId: 3,
+        unlocked: false,
+        userId: 2,
+      },
+      {
+        lessonId: 4,
+        unlocked: false,
+        userId: 2,
+      },
+      {
+        lessonId: 5,
+        unlocked: false,
+        userId: 2,
+      },
+      {
+        lessonId: 6,
+        unlocked: false,
+        userId: 2,
+      },
+      {
         lessonId: 1,
         unlocked: true,
+        userId: 3,
+      },
+      {
+        lessonId: 2,
+        unlocked: true,
+        userId: 3,
+      },
+      {
+        lessonId: 3,
+        unlocked: true,
+        userId: 3,
+      },
+      {
+        lessonId: 4,
+        unlocked: true,
+        userId: 3,
+      },
+      {
+        lessonId: 5,
+        unlocked: false,
+        userId: 3,
+      },
+      {
+        lessonId: 6,
+        unlocked: false,
         userId: 3,
       },
     ], {});
