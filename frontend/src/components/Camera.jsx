@@ -30,8 +30,8 @@ const Camera = ({ word, threshold, matchFunction }) => {
       setCanvasAndVideoDimensions();
 
       const canvasCtx = canvasRef.current.getContext('2d');
-      const intervalId = setInterval(() => {
-        detect(CNN, canvasCtx)
+      const intervalId = setInterval(async () => {
+        await detect(CNN, canvasCtx)
       }, 75);
 
       let sequence = [];
@@ -63,8 +63,6 @@ const Camera = ({ word, threshold, matchFunction }) => {
       });
       return () => {
         clearInterval(intervalId);
-        CNN.close();
-        LSTM.dispose();
       }
     }
   }, [CNN, LSTM, word])
@@ -108,23 +106,26 @@ const Camera = ({ word, threshold, matchFunction }) => {
       <Webcam ref={webcamRef} onUserMedia={loadModels} style={
         {
           position: 'absolute',
-          marginLeft: 'auto',
-          marginRight: 'auto',
+          // marginLeft: 'auto',
+          // marginRight: 'auto',
           width: 640,
           height: 480,
+          borderRadius: "10px",
           zIndex: 3,
         }
       }/>
       <canvas ref={canvasRef} style={
         {
           position: 'absolute',
-          marginLeft: 'auto',
-          marginRight: 'auto',
+          // marginLeft: 'auto',
+          // marginRight: 'auto',
           width: 640,
           height: 480,
           zIndex: 3,
+          borderRadius: "10px",
         }
       }/>
+      
     </>
   );
 }

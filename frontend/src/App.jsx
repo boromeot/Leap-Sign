@@ -6,12 +6,9 @@ import { useDispatch } from 'react-redux'
 import NavBar from './components/NavBar'
 import HomePage from './pages/home'
 import AboutPage from './pages/AboutPage'
-import SignUp from './pages/SignUp'
-import SignIn from './pages/SignIn'
 import LessonsPage from './pages/LessonsPage'
 import SingleLesson from './pages/SingleLesson'
 import Camera from './components/Camera';
-import SecondLesson from './pages/SecondLesson';
 import NotFoundPage from './pages/404'
 
 import './App.css'
@@ -29,17 +26,11 @@ function App() {
     <>
       <NavBar />
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        {/* <Route path='/signup' element={<SignUp />} />
-        <Route path='/signin' element={<SignIn />} /> */}
+        <Route exact={true} path="/" element={<HomePage />} />
+        <Route exact={true} path="/about" element={<AboutPage />} />
         <Route exact={true} path='/lessons' element={<LessonsPage />}/>
-        {/* <Route exact={true} path='/lessons/1' element={<SingleLesson />}/>
-        <Route exact={true} path='/lessons/2' element={<SecondLesson />}/> */}
-        <Route path='/camera' element={<Camera />}/>
-        <Route path= '/lessons/:id' element={<SingleLesson />}/> 
-        <Route path='/lessons' element={<LessonsPage />}/>
-        <Route path='/camera' element={<Camera />}/>
+        <Route exact={true} path='/camera' element={<Camera />}/>
+        <Route exact={true} path= '/lessons/:id' element={<SingleLesson />}/> 
         <Route path= '*' element={<NotFoundPage />} />
       </Routes>
     </>

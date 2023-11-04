@@ -71,7 +71,6 @@ const HomePage = () => {
 
   return (
     <div className='home-container'>
-
     {/* <div className={classes.carouselContainer}> */}
     {/* <div id="particles-js"> */}
       <div className='slogan-container'>

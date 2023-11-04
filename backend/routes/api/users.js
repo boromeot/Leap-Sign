@@ -45,8 +45,6 @@ router.post(
 
     await setTokenCookie(res, safeUser);
 
-    let lessons = {};
-
     await Lesson.create({
         lessonId: 1,
         unlocked: true,
@@ -61,7 +59,7 @@ router.post(
       })
     }
 
-    console.log('lessons in user route: ', lessons);
+    // console.log('lessons in user route: ', lessons);
 
     return res.json({
       safeUser,

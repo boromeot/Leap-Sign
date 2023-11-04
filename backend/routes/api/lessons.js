@@ -10,23 +10,30 @@ const router = express.Router();
 //get current user lessons
 router.get('/current', async ( req, res, next) => {
 
-    console.log('req.user in lessons route: ', req.user.id);
+    // console.log('req.user in lessons route: ', req.user.id);
     const lessons = await Lesson.findAll({
         where: {
             userId: req.user.id
         }
     });
 
-    console.log(lessons,"lessons from backend");
+    // console.log(lessons,"lessons from backend");
 
     return res.status(200).json({
         Lessons: lessons
     })
 });
 
-router.put('/:lessonId', async (req, res, next) => {
+router.put('/update', async (req, res, next) => {
     const {lessonId,userId,unlocked} = req.body;
-    const lesson = await Lesson.findByPk(req.params.lessonId);
+    console.log('lessonId in lessons route: ', lessonId);
+    const lesson = await Lesson.findOne({
+        where: {
+            userId: userId,
+            lessonId: lessonId,
+        }
+    })
+    console.log("search lesson in lesson route: ", lesson);
 
     if(!lesson){
         return res.status(404).json({
@@ -34,8 +41,8 @@ router.put('/:lessonId', async (req, res, next) => {
             statusCode: 404
         })
     }
-    if(lesson) {
-        lesson.lessonId = lessonId
+    if(lessonId) {
+        lesson.lessonId = lessonId;
     };
     if(userId){
         lesson.userId = userId;
@@ -44,6 +51,8 @@ router.put('/:lessonId', async (req, res, next) => {
         lesson.unlocked = unlocked;
     }
     await lesson.save();
+
+    console.log('lesson updated: ', lesson)
     return res.status(200).json({
         lesson: lesson
     });
