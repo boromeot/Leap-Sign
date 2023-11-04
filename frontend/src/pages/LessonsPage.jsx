@@ -21,37 +21,37 @@ const leafnode = () => {
     </div>
   )
 };
-function animatedFrog(lessonNumber,navigate){
+function animatedFrog(lessonNumber, navigate) {
   const { Anime, stagger } = ReactAnime;
-  
-  const handleclick =()=>{
+
+  const handleclick = () => {
     navigate(`/lessons/${lessonNumber}`);
   }
-return(
-  <Anime
-            initial={[
-              {
-                targets: "#Box",
-                 translateX: 50,              
-                // easing: "linear"
-                easing: "easeOutBounce"
-              
-              }
-            ]}
-          >
-            <img
-              id="Box" style={{   height: 200,
-                width: 200,
-                margin: "auto", // Center the element
-              
-            }}
-              className={classes.frogImg}
-              src={frogImg}
-              alt='FrogLogo'
-              onClick={handleclick}
-            />
-          </Anime>
-)
+  return (
+    <Anime
+      initial={[
+        {
+          targets: "#Box",
+          translateX: 50,
+          // easing: "linear"
+          easing: "easeOutBounce"
+        }
+      ]}
+    >
+      <img
+        id="Box" style={{
+          height: 200,
+          width: 200,
+          margin: "auto", // Center the element
+
+        }}
+        className={classes.frogImg}
+        src={frogImg}
+        alt='FrogLogo'
+        onClick={handleclick}
+      />
+    </Anime>
+  )
 }
 const FiveLeafNodes = () => {
   const lessons = useSelector((state) => state.lesson.allLessons);
@@ -65,43 +65,33 @@ const FiveLeafNodes = () => {
     }
   }
 
-  
 
   const navigate = useNavigate();
   const location = useLocation();
   const [animate, setAnimate] = useState(false);
-  const [curLesson,setCurLesson] = useState(0);  
+  const [curLesson, setCurLesson] = useState(0);
   const dispatch = useDispatch();
-
   useEffect(() => {
-    const sortedLessons = lessonsArr.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
-    // console.log(sortedLessons, "sortedLessons");
+    const sortedLessons = lessonsArr.filter((lesson) => lesson.unlocked).sort((a, b) => b.lessonId - a.lessonId);
+  
     if (sortedLessons.length > 0) {
       const mostRecentLesson = sortedLessons[0];
-      // console.log(mostRecentLesson, "mostRecentLesson");
+     
       setCurLesson(mostRecentLesson.lessonId);
-      // console.log(curLesson, "cur");
+    
     }
-  }, [lessonsArr]);
+  }, [lessonsArr, curLesson]);
   useEffect(() => {
     dispatch(userLessons());
   }, [dispatch]);
 
-  useEffect(() => {
-
-    const shouldAnimate = localStorage.getItem('animate') === 'true';
-    const shouldUnlock = localStorage.getItem('unlock') === 'true';
-
-    setAnimate(shouldAnimate);
-
-   
-  }, [location, curLesson]);
-
   
+
+
   if (lessonsArr.length < 1) {
     return (<p>Loading...</p>);
   }
-  
+
   function handleLilyPadClick(lessonNumber) {
 
     // Set animate to 'true' in localStorage
@@ -122,13 +112,14 @@ const FiveLeafNodes = () => {
   return (
     <>
       <div className={classes.leafclass}>
-       
+        
 
         {lessonsArr.map((lesson) => (
           <div className={classes.lessonsLilyPad} key={lesson.id}>
-          
-          <h4>Lesson: {lesson.lessonId}</h4>
-            {curLesson === lesson.lessonId && lesson.unlocked && animatedFrog(curLesson,navigate)}
+
+            <h4>Lesson: {lesson.lessonId}</h4>
+
+            {curLesson === lesson.lessonId && lesson.unlocked && animatedFrog(curLesson, navigate)}
             {lesson.lessonId && lesson.unlocked ?
               <>
                 <div
@@ -137,7 +128,7 @@ const FiveLeafNodes = () => {
                   }}
                 >
                   {leafnode()}
-                 
+
                 </div>
 
               </>
@@ -150,7 +141,7 @@ const FiveLeafNodes = () => {
               </>
 
             }
-            
+
           </div>
         )
         )}
