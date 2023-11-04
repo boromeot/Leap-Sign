@@ -69,22 +69,17 @@ const FiveLeafNodes = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [animate, setAnimate] = useState(false);
-  
-  const { Anime, stagger } = ReactAnime;
-  const [currentLesson, setCurrentLesson] = useState(0);
-  
-  const [curLesson,setCurLesson] = useState(0);
-  
+  const [curLesson,setCurLesson] = useState(0);  
   const dispatch = useDispatch();
 
   useEffect(() => {
     const sortedLessons = lessonsArr.sort((a, b) => new Date(b.updatedAt) - new Date(a.updatedAt));
-    console.log(sortedLessons, "sortedLessons");
+    // console.log(sortedLessons, "sortedLessons");
     if (sortedLessons.length > 0) {
       const mostRecentLesson = sortedLessons[0];
-      console.log(mostRecentLesson, "mostRecentLesson");
+      // console.log(mostRecentLesson, "mostRecentLesson");
       setCurLesson(mostRecentLesson.lessonId);
-      console.log(curLesson, "cur");
+      // console.log(curLesson, "cur");
     }
   }, [lessonsArr]);
   useEffect(() => {
@@ -99,7 +94,7 @@ const FiveLeafNodes = () => {
     setAnimate(shouldAnimate);
 
    
-  }, [location, currentLesson]);
+  }, [location, curLesson]);
 
   
   if (lessonsArr.length < 1) {
@@ -126,12 +121,7 @@ const FiveLeafNodes = () => {
   return (
     <>
       <div className={classes.leafclass}>
-        <div className={classes.frogContainer} >
-         
-          
-          {leafnode()}
-        </div>
-
+       
 
         {lessonsArr.map((lesson) => (
           <div className={classes.lessonsLilyPad} key={lesson.id}>
