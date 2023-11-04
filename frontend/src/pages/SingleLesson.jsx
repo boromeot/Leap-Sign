@@ -90,7 +90,7 @@ export default function lesson() {
             <button 
               onClick={navigateBackToLessons} 
               className={buttonActive ? 'button-active' : 'not-active'}
-              disabled={buttonActive === false}
+              // disabled={buttonActive === false}
             >
               Continue
              
