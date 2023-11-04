@@ -30,8 +30,8 @@ const Camera = ({ word, threshold, matchFunction }) => {
       setCanvasAndVideoDimensions();
 
       const canvasCtx = canvasRef.current.getContext('2d');
-      const intervalId = setInterval(async () => {
-        await detect(CNN, canvasCtx)
+      const intervalId = setInterval(() => {
+        detect(CNN, canvasCtx)
       }, 75);
 
       let sequence = [];
