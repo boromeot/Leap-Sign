@@ -34,8 +34,8 @@ export default function lesson() {
 
   const navigateBackToLessons = () => {
     dispatch(unlockLesson(lessonToBeUnlocked))
-    .then(dispatch(userLessons()))
-    .then(navigate(`/lessons`, { state: { animate: true, unlock: true } }))
+    dispatch(userLessons())
+    navigate(`/lessons`, { state: { animate: true, unlock: true } })
   }
 
 
