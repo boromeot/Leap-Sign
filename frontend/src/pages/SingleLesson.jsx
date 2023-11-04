@@ -41,6 +41,9 @@ export default function lesson() {
   useEffect(() => {
     setCurrentWord(lessons[parseInt(id)].words[currentIndex]);
     setCurrentId(lessons[parseInt(id)].youtubeIds[currentIndex]);
+    if(currentIndex >= lessons[parseInt(id)].words.length) {
+      setButtonActive(true);
+    }
   }, [currentIndex]);
 
   function matchFunction() {
@@ -84,8 +87,13 @@ export default function lesson() {
           {parseInt(id) === 6 ? 
             <p>You've finished all lessons!</p> 
             :
-            <button onClick={navigateBackToLessons}>
+            <button 
+              onClick={navigateBackToLessons} 
+              className={buttonActive ? 'button-active' : 'not-active'}
+              disabled={buttonActive === false}
+            >
               Continue
+             
             </button>
           }
         </div>

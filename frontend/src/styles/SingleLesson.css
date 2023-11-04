@@ -84,3 +84,21 @@
   padding: 15px;
   margin-top: 2%;
 }
+
+.button-active {
+  width: 150px;
+  padding: 10px;
+  background-color: #8cba69;
+  color: #fff;
+  font-size: 25px;
+  opacity: 0.9;
+}
+
+.not-active {
+  background-color: #F0F2F5;
+  width: 150px;
+  padding: 10px;
+  color: #B0B4B5;
+  font-size: 25px;
+  opacity: 0.9;
+}
