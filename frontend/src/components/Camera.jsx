@@ -2,10 +2,11 @@ import React, { useEffect, useRef, useState } from 'react';
 import Webcam from "react-webcam"
 import { drawFace, drawHands, drawPose } from '../utils/draw';
 import { loadCNN, loadLSTM } from '../utils/loadModel';
+import { Camera } from '@mediapipe/camera_utils';
 import extractKeypoints from '../utils/extract';
 import * as tf from '@tensorflow/tfjs';
 
-const Camera = ({ word, threshold, matchFunction }) => {
+const CameraComponent = ({ word, threshold, matchFunction }) => {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
   const [CNN, setCNN] = useState(null);
@@ -30,9 +31,25 @@ const Camera = ({ word, threshold, matchFunction }) => {
       setCanvasAndVideoDimensions();
 
       const canvasCtx = canvasRef.current.getContext('2d');
-      const intervalId = setInterval(() => {
-        detect(CNN, canvasCtx)
-      }, 75);
+      // const intervalId = setInterval(() => {
+      //   detect(CNN, canvasCtx)
+      // }, 75);
+
+      if (
+        typeof webcamRef.current !== "undefined" &&
+        webcamRef.current !== null
+      ) {
+        if (!webcamRef.current?.video) return
+        const camera = new Camera(webcamRef.current.video, {
+          onFrame: async () => {
+            if (!webcamRef.current?.video) return
+            await CNN.send({image: webcamRef.current.video});
+          },
+          width: 640,
+          height: 480,
+        });
+        camera.start();
+      }
 
       let sequence = [];
 
@@ -62,7 +79,6 @@ const Camera = ({ word, threshold, matchFunction }) => {
         }
       });
       return () => {
-        clearInterval(intervalId);
       }
     }
   }, [CNN, LSTM, word])
@@ -125,9 +141,9 @@ const Camera = ({ word, threshold, matchFunction }) => {
           borderRadius: "10px",
         }
       }/>
-      
+      <button onClick={() => CNN.close()}>close CNN</button>
     </>
   );
 }
 
-export default Camera;
+export default CameraComponent;

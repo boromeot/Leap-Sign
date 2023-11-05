@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import {unlockLesson} from '../store/lesson'
 import { useDispatch ,useSelector} from 'react-redux';
 import '../styles/SingleLesson.css';
-import Camera from '../components/Camera';
+import CameraComponent from '../components/Camera';
 import ReactPlayer from 'react-player';
 import lessons from '../utils/lessons';
 import Footer from '../components/footer';
@@ -80,7 +80,7 @@ export default function lesson() {
             />
           </div>
           <div className='singleLesson-camera'>
-            <Camera word={currentWord} threshold={0.9} matchFunction={matchFunction} />
+            <CameraComponent word={currentWord} threshold={0.9} matchFunction={matchFunction} />
           </div>
         </div>
       </div>
