@@ -141,7 +141,6 @@ const CameraComponent = ({ word, threshold, matchFunction }) => {
           borderRadius: "10px",
         }
       }/>
-      <button onClick={() => CNN.close()}>close CNN</button>
     </>
   );
 }
