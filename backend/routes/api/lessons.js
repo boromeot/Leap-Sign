@@ -26,14 +26,14 @@ router.get('/current', async ( req, res, next) => {
 
 router.put('/update', async (req, res, next) => {
     const {lessonId,userId,unlocked} = req.body;
-    console.log('lessonId in lessons route: ', lessonId);
+    // console.log('lessonId in lessons route: ', lessonId);
     const lesson = await Lesson.findOne({
         where: {
             userId: userId,
             lessonId: lessonId,
         }
     })
-    console.log("search lesson in lesson route: ", lesson);
+    // console.log("search lesson in lesson route: ", lesson);
 
     if(!lesson){
         return res.status(404).json({
@@ -52,7 +52,7 @@ router.put('/update', async (req, res, next) => {
     }
     await lesson.save();
 
-    console.log('lesson updated: ', lesson)
+    // console.log('lesson updated: ', lesson);
     return res.status(200).json({
         lesson: lesson
     });

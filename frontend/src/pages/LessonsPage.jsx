@@ -10,6 +10,7 @@ import UnlockAnimation from './UnlockAnimation';
 import { userLessons } from '../store/lesson';
 import Footer from '../components/footer';
 import ReactAnime from 'react-animejs'
+import { restoreUser } from '../store/session';
 const leafnode = () => {
   return (
     <div>
@@ -56,7 +57,7 @@ function animatedFrog(lessonNumber, navigate) {
 const FiveLeafNodes = () => {
   const lessons = useSelector((state) => state.lesson.allLessons);
   const lessonsArr = Object.values(lessons);
-  console.log(lessonsArr, "lessonsArr");
+  // console.log(lessonsArr, "lessonsArr");
   let countOfLilyPad = 0;
 
   for (let lesson of lessonsArr) {
@@ -65,6 +66,8 @@ const FiveLeafNodes = () => {
     }
   }
 
+  const sessionUser = useSelector((state) => state.session.user);
+  // console.log("sessionUSer in LessonsPage: ", sessionUser);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -83,6 +86,7 @@ const FiveLeafNodes = () => {
   }, [lessonsArr, curLesson]);
   useEffect(() => {
     dispatch(userLessons());
+    dispatch(restoreUser());
   }, [dispatch]);
 
   
@@ -111,8 +115,11 @@ const FiveLeafNodes = () => {
 
   return (
     <>
+    <div className={classes.userProgress}>
+      <h1 >{sessionUser.username}'s progress:</h1>
+    </div>
+    
       <div className={classes.leafclass}>
-        
 
         {lessonsArr.map((lesson) => (
           <div className={classes.lessonsLilyPad} key={lesson.id}>

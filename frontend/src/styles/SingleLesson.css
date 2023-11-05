@@ -102,3 +102,14 @@
   font-size: 25px;
   opacity: 0.9;
 }
+
+#lesson6 {
+  padding: 10px 20px;
+  background-color: #8cba69;
+  border-radius: 10px;
+  font-size: 25px;
+  color: #fff;
+  z-index: 3;
+  opacity: 0.9;
+  position: relative;
+}

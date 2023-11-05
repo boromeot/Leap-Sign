@@ -17,7 +17,7 @@ function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
 const { id } = useParams();
-console.log(id,"ID FROM PARAMS")
+// console.log(id,"ID FROM PARAMS");
   useEffect(() => {
     dispatch(sessionActions.restoreUser()).then(() => setIsLoaded(true));
   }, [dispatch])
