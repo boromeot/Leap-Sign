@@ -4,14 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "render-postbuild": "npm install --prefix frontend --production=false && cd /opt/render/project/src/frontend && npm run build",
-    "install": "npm --prefix backend install backend && npm --prefix frontend install frontend",
+    "install": "npm --prefix frontend install --force --production=false && npm --prefix backend install && npm --prefix backend run build",
+    "prod": "npm --prefix frontend run build && npm --prefix backend run db:setup",
     "dev:backend": "npm install --prefix backend start",
     "dev:frontend": "npm install --prefix frontend start",
     "sequelize": "npm run --prefix backend sequelize",
     "sequelize-cli": "npm run --prefix backend sequelize-cli",
     "start": "npm start --prefix backend",
-    "build": "npm run build --prefix backend"
+    "build": "npm --prefix backend run build"
   },
   "keywords": [],
   "author": "",

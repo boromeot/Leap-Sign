@@ -2,7 +2,7 @@
 
 let options = {};
 if (process.env.NODE_ENV === 'production') {
-  options.schema = process.env.SCHEMA;  // define your schema in options object
+  options.schema = process.env.SCHEMA;  // Define your schema in the options object
 }
 
 module.exports = {
@@ -41,7 +41,6 @@ module.exports = {
     }, options);
   },
   down: async (queryInterface, Sequelize) => {
-    options.tableName = "Users";
-    return queryInterface.dropTable(options);
+    return queryInterface.dropTable("Users");
   }
 };

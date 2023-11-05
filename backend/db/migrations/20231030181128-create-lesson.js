@@ -1,9 +1,8 @@
-
 'use strict';
 
 let options = {};
 if (process.env.NODE_ENV === 'production') {
-  options.schema = process.env.SCHEMA;  // define your schema in options object
+  options.schema = process.env.SCHEMA;  // Define your schema in the options object
 }
 
 module.exports = {
@@ -41,7 +40,6 @@ module.exports = {
     });
   },
   async down(queryInterface, Sequelize) {
-    options.tableName = "Lessons";
-    await queryInterface.dropTable(options);
+    return queryInterface.dropTable("Lessons");
   }
 };
