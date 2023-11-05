@@ -77,7 +77,7 @@ const CameraComponent = ({ word, threshold, matchFunction }) => {
       });
       return () => {
         camera.stop();
-        tf.disposeVariables();
+        LSTM.layers.forEach(l => l.dispose());
       }
     }
   }, [CNN, LSTM, word])
