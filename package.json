@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "install": "npm --prefix frontend install --production=false && npm --prefix backend install && npm --prefix backend run build",
-    "prod": "npm --prefix frontend run build && npm run sequelize --prefix backend db:seed:undo:all && npm run sequelize --prefix backend db:migrate:undo:all && npm run sequelize --prefix backend db:migrate && npm run sequelize --prefix backend db:seed:all",
+    "install": "npm --prefix frontend install --force --production=false && npm --prefix backend install && npm --prefix backend run build",
+    "prod": "npm --prefix frontend run build && npm --prefix backend run db:setup",
     "dev:backend": "npm install --prefix backend start",
     "dev:frontend": "npm install --prefix frontend start",
     "sequelize": "npm run --prefix backend sequelize",
