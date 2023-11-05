@@ -40,7 +40,7 @@ function AboutPage() {
                     </div>
                     <div className={classes.aboutText}>
                         <img src={lilypad} alt="app name" className={classes.lilyImg}/>
-                        <p><span>LeapSign</span> aims to provide an engaging and interactive platform for parents and children to learn sign language with a user-friendly application that offers interactive lessons with the power of AI to help give guided lessons through images and video to show that the signs are being done correctly. 
+                        <p><span>LeapSign</span> aims to provide an engaging and interactive platform for parents and children to learn sign language with a user-friendly application that offers interactive lessons with the power of AI to help give guided lessons through video and camera to show that the signs are being done correctly. 
                         </p>
                     </div>
                     <div className={classes.aboutText}>

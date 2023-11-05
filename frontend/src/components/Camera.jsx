@@ -105,6 +105,8 @@ const Camera = ({ word, threshold, matchFunction }) => {
           // marginRight: 'auto',
           // width: 640,
           // height: 480,
+          // width: "100%",
+          // height: "100%",
           borderRadius: "10px",
           zIndex: 3,
         }
@@ -116,6 +118,8 @@ const Camera = ({ word, threshold, matchFunction }) => {
           // marginRight: 'auto',
           // width: 640,
           // height: 480,
+          // width: "100%",
+          // height: "100%",
           zIndex: 3,
           borderRadius: "10px",
         }
