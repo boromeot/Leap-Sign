@@ -31,16 +31,13 @@ const CameraComponent = ({ word, threshold, matchFunction }) => {
       setCanvasAndVideoDimensions();
 
       const canvasCtx = canvasRef.current.getContext('2d');
-      // const intervalId = setInterval(() => {
-      //   detect(CNN, canvasCtx)
-      // }, 75);
-
+      let camera;
       if (
         typeof webcamRef.current !== "undefined" &&
         webcamRef.current !== null
       ) {
         if (!webcamRef.current?.video) return
-        const camera = new Camera(webcamRef.current.video, {
+        camera = new Camera(webcamRef.current.video, {
           onFrame: async () => {
             if (!webcamRef.current?.video) return
             await CNN.send({image: webcamRef.current.video});
@@ -79,6 +76,7 @@ const CameraComponent = ({ word, threshold, matchFunction }) => {
         }
       });
       return () => {
+        camera.stop();
       }
     }
   }, [CNN, LSTM, word])
@@ -106,15 +104,6 @@ const CameraComponent = ({ word, threshold, matchFunction }) => {
 
     canvasRef.current.width = videoWidth;
     canvasRef.current.height = videoHeight;
-  }
-
-  const detect = async (model) => {
-    if (!webcamRef.current || webcamRef.current.video.readyState !== 4) {
-      console.log('detect function failed');
-      return;
-    }
-    const video = webcamRef.current.video;
-    await model.send({image: video });
   }
 
   return (
