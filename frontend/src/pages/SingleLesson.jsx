@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 import {unlockLesson} from '../store/lesson'
 import { useDispatch ,useSelector} from 'react-redux';
 import '../styles/SingleLesson.css';
-import Camera from '../components/Camera';
+import CameraComponent from '../components/Camera';
 import ReactPlayer from 'react-player';
 import lessons from '../utils/lessons';
 import Footer from '../components/footer';
@@ -25,8 +25,10 @@ export default function lesson() {
 
 
   const navigateBackToLessons = () => {
-    dispatch(unlockLesson(lessonToBeUnlocked));
-    navigate(`/lessons`, { state: { animate: true, unlock: true } })
+    if (buttonActive) {
+      dispatch(unlockLesson(lessonToBeUnlocked));
+      navigate(`/lessons`, { state: { animate: true, unlock: true } })
+    }
   }
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -49,7 +51,7 @@ export default function lesson() {
   function matchFunction() {
     if (!debounceTimeout) {
       debounceTimeout = setTimeout(() => {
-        setCurrentIndex((prev) => (prev + 1) % lessons[parseInt(id)].words.length);
+        setCurrentIndex((prev) => (prev + 1));
         debounceTimeout = null;
       }, 1000); // Adjust the delay as needed (e.g., 1000ms = 1 second)
     }
@@ -79,7 +81,7 @@ export default function lesson() {
             />
           </div>
           <div className='singleLesson-camera'>
-            <Camera word={currentWord} threshold={0.9} matchFunction={matchFunction} />
+            <CameraComponent word={currentWord} threshold={0.9} matchFunction={matchFunction} />
           </div>
         </div>
       </div>

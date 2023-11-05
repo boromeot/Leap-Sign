@@ -12,7 +12,7 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
       // a user has many lessons
-      Lesson.belongsTo(models.User, { foreignKey: 'userId' });
+      Lesson.belongsTo(models.User, { foreignKey: 'userId'  });
     }
   }
   Lesson.init(
