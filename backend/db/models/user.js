@@ -58,7 +58,6 @@ module.exports = (sequelize, DataTypes) => {
           attributes: {}
         }
       },
-      freezeTableName: true,
     },
   );
   return User;

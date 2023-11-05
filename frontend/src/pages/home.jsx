@@ -74,7 +74,7 @@ const HomePage = () => {
     {/* <div className={classes.carouselContainer}> */}
     {/* <div id="particles-js"> */}
       <div className='slogan-container'>
-        <h1 className='slogan'><span className='nav-logo slogan-logo'>Leapsign</span>: Where Gestures Speak Louder!</h1>
+        <h1 className='slogan'><span className='nav-logo slogan-logo'>Leapsign</span>: Leap into Sign Language Mastery</h1>
       </div>
       <div className={classes.homeTextVideoContainer}>
         {cardsData.map((data, index) => (
