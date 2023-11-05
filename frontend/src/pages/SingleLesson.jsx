@@ -79,7 +79,7 @@ export default function lesson() {
             />
           </div>
           <div className='singleLesson-camera'>
-            {/* <Camera word={currentWord} threshold={0.9} matchFunction={matchFunction} /> */}
+            <Camera word={currentWord} threshold={0.9} matchFunction={matchFunction} />
           </div>
         </div>
       </div>
