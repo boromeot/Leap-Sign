@@ -45,6 +45,7 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       // schema: process.env.SCHEMA,
       modelName: 'User',
+      tableName: 'Users',
       defaultScope: {
         attributes: {
           exclude: ["hashedPassword", "email", "createdAt", "updatedAt"]
@@ -58,7 +59,6 @@ module.exports = (sequelize, DataTypes) => {
           attributes: {}
         }
       },
-      freezeTableName: true,
     },
   );
   return User;
