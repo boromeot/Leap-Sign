@@ -1,9 +1,9 @@
-import * as mp_holistic from '@mediapipe/holistic';
+import {Holistic} from '@mediapipe/holistic';
 import * as tf from '@tensorflow/tfjs'
 
 export const loadCNN = async () => {
   try {
-    const CNN = await new mp_holistic.Holistic({locateFile: (file) => {
+    const CNN = await new Holistic({locateFile: (file) => {
       return `/holistic/${file}`;
     }});
     // const CNN = await new mp_holistic.Holistic({locateFile: (file) => {

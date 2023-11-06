@@ -77,11 +77,16 @@ const CameraComponent = ({ word, threshold, matchFunction }) => {
       });
       return () => {
         camera.stop();
-        LSTM.layers.forEach(l => l.dispose());
       }
     }
   }, [CNN, LSTM, word])
 
+  useEffect(() => {
+    return () => {
+      tf.disposeVariables();
+    }
+  }, [])
+ 
   const loadModels = async () => {
     try {
       setCNN(await loadCNN());
