@@ -59,8 +59,6 @@ router.post(
       })
     }
 
-    // console.log('lessons in user route: ', lessons);
-
     return res.json({
       safeUser,
     });

@@ -9,16 +9,12 @@ import classes from '../styles/ProfileButton.module.css';
 
 function ProfileButton (props) {
 
-    // const sessionUser = useState(state => state.sessionUser.user);
-    // console.log('session user in ProfileButton component: ', sessionUser);
-
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     async function logout(e) {
         e.preventDefault();
         await dispatch(clearLessons());
-        // console.log("clear lesson state in logout function~~~~~");
         await dispatch(sessionActions.logout());
         
         navigate('/');

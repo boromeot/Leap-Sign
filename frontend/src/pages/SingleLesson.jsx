@@ -13,8 +13,6 @@ export default function lesson() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const { id } = useParams();
-  // console.log('typeof id', typeof id)
-  // console.log(parseInt(id),"USEPARAMS ID");
   const [buttonActive, setButtonActive] = useState(false);
 
   let lessonToBeUnlocked = { 
@@ -33,10 +31,8 @@ export default function lesson() {
 
   const [currentIndex, setCurrentIndex] = useState(0);
  
-  // console.log(lessons[parseInt(id)].words)
   const [currentWord, setCurrentWord] = useState(lessons[parseInt(id)].words[currentIndex]);
   const [currentId, setCurrentId] = useState(lessons[parseInt(id)].youtubeIds[currentIndex]);
-  console.log(currentWord)
 
   let debounceTimeout;
 
@@ -56,8 +52,6 @@ export default function lesson() {
       }, 1000); // Adjust the delay as needed (e.g., 1000ms = 1 second)
     }
   }
-
-  console.log("buttonActive in SingleLesson: ", buttonActive);
 
   return (
       <>
