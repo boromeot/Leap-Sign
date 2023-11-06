@@ -105,7 +105,7 @@
   color: #B0B4B5;
   font-size: 25px;
   opacity: 0.9;
-  cursor: none;
+  /* cursor: none; */
 }
 
 .not-active:hover {
