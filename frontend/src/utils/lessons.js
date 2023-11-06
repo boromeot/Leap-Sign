@@ -23,9 +23,5 @@ export const lessons = {
     'words' : ['nice', 'meet you'],
     'youtubeIds' : ['2PeTh4Ym048', 'AvAGx3xiOq8']
   },
-  6: {
-    'words' : [],
-    'youtubeIds' : []
-  },
 }
 export default lessons;
