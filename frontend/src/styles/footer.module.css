@@ -6,7 +6,7 @@
     align-items: center;
     justify-content: space-between;
     gap: 100px;
-    margin: 50px 100px 30px 100px;
+    margin: 50px 60px 20px 40px;
     position: relative;
     z-index: 2;
 }
@@ -27,6 +27,7 @@
 .footerImg > p > span {
     font-weight: bold;
     font-family: 'Cherry Bomb One', sans-serif;
+    color: #646CFF;
 }
 
 .aboutLink {

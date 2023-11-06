@@ -84,7 +84,7 @@ export default function lesson() {
             <CameraComponent word={currentWord} threshold={0.9} matchFunction={matchFunction} />
           </div>
         </div>
-      </div>
+      
 
         <div className='continue-button'>
           {parseInt(id) === 6 ? 
@@ -101,7 +101,7 @@ export default function lesson() {
              
             </button>
           }
-        </div>
+        </div></div>
 
         <Footer />
       </>

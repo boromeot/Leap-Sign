@@ -407,7 +407,7 @@ h4{
     justify-content: center;
     z-index: 3;
     position: relative;
-    margin-top: 10%;
+    margin-top: 8%;
     
   }
 
@@ -439,6 +439,7 @@ h4{
     border-radius: 10px;
     color: #22B14C;
     box-shadow: 0 0 20px rgb(0, 0, 0, 0.2);
+    font-size: 2.5rem;
   }
 
  
