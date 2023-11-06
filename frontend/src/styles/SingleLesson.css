@@ -10,11 +10,12 @@
   background-color: #8cba69;
   border-radius: 10px;
   padding: 20px;
-  margin: 5% 5% 20px 5%;
+  margin: 50px 5% 20px 5%;
   text-align: center;
   z-index: 3;
   opacity: 0.9;
   color: #fff;
+  font-size: 2.5rem;
 }
 
 .singleLesson-cotainerouter > h1 > span {
@@ -30,12 +31,12 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  margin: 0 5% 15px 5%;
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   padding: 20px;
 }
 
 .singleLesson-video {
+  max-width: 640px;
   width: 40%;
   display: flex;
   flex-direction: column;
@@ -43,13 +44,13 @@
   gap: 20px;
   z-index: 3;
   background-color: #fff;
-  padding: 30px;
+  padding: 20px;
   border-radius: 10px;
   box-shadow: 0 0 20px rgb(0, 0, 0, 0.2);
 }
 
 .singleLesson-video > h1 {
-  font-size: 40px;
+  font-size: 30px;
   margin-bottom: 15px;
 }
 
@@ -62,8 +63,8 @@
 }
 
 .singleLesson-camera {
-  width: 640px;
-  height: 480px;
+  width: 480px;
+  height: 360px;
   grid-column: 2 / 3;
   justify-self: center;
   z-index: 3;
@@ -73,15 +74,18 @@
 
 .singleLesson-camera > video {
   border-radius: 2%;
+  width: 480px;
+  height: 360px;
 }
 .singleLesson-camera > canvas {
   border-radius: 2%;
+  width: 480px;
+  height: 360px;
 }
 
 .continue-button {
   display: flex;
   justify-content: center;
-  padding: 15px;
   margin-top: 2%;
 }
 
@@ -101,4 +105,106 @@
   color: #B0B4B5;
   font-size: 25px;
   opacity: 0.9;
+  cursor: none;
+}
+
+.not-active:hover {
+  border: 1px solid transparent;
+}
+
+#lesson6 {
+  padding: 10px 20px;
+  background-color: #8cba69;
+  border-radius: 10px;
+  font-size: 25px;
+  color: #fff;
+  z-index: 3;
+  opacity: 0.9;
+  position: relative;
+}
+
+@media screen and (min-width: 1025px) and (max-width: 1500px) {
+
+  .singleLesson-cotainer {
+    margin: 20px 0;
+  }
+
+  .singleLesson-camera {
+    width: 560px;
+    height: 420px;
+    grid-column: 2 / 3;
+    justify-self: center;
+    z-index: 3;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgb(0, 0, 0, 0.2);
+  }
+  
+  .singleLesson-camera > video {
+    border-radius: 2%;
+    width: 560px;
+    height: 420px;
+  }
+  .singleLesson-camera > canvas {
+    border-radius: 2%;
+    width: 560px;
+    height: 420px;
+  }
+}
+
+@media screen and (min-width: 1501px) {
+
+  .singleLesson-cotainer {
+    margin: 20px 0;
+  }
+
+  .singleLesson-camera {
+    width: 640px;
+    height: 480px;
+    grid-column: 2 / 3;
+    justify-self: center;
+    z-index: 3;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgb(0, 0, 0, 0.2);
+  }
+  
+  .singleLesson-camera > video {
+    border-radius: 2%;
+    width: 640px;
+    height: 480px;
+  }
+  .singleLesson-camera > canvas {
+    border-radius: 2%;
+    width: 640px;
+    height: 480px;
+  }
+}
+
+@media screen and (max-width: 1025px) {
+  .singleLesson-video {
+    max-width: 640px;
+    width: 40%;
+    height: 360px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    z-index: 3;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgb(0, 0, 0, 0.2);
+  }
+  
+  .singleLesson-cotainerouter > h1 {
+    width: 90%;
+    background-color: #8cba69;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 25px 5% 20px 5%;
+    text-align: center;
+    z-index: 3;
+    opacity: 0.9;
+    color: #fff;
+    font-size: 2.5rem;
+  }
 }

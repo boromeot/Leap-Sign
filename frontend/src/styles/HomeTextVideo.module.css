@@ -11,7 +11,7 @@
     gap: 80px;
     border-radius: 10px;
     background-color: white;
-    margin: 50px 100px 0 100px;
+    margin: 30px 100px 0 100px;
     box-shadow: 0 0 20px rgb(0, 0, 0, 0.2);
     overflow: hidden;
 	animation-name: fadein;
@@ -40,7 +40,8 @@
 }
 
 .hometext > p {
-    padding-top: 15px;
+    padding-top: 20px;
+    margin-top: 10px;
 }
 
 .homevideo {
@@ -80,4 +81,41 @@
         padding: 10px;
         
     }
+}
+
+@media screen and (max-width: 1024px) and (max-height: 800px ) {
+
+    .homeTextVideoDiv {
+        height: 360px;
+        gap: 80px;
+        border-radius: 10px;
+        background-color: white;
+        margin: 30px 100px 0 100px;
+        box-shadow: 0 0 20px rgb(0, 0, 0, 0.2);
+        overflow: hidden;
+        animation-name: fadein;
+        animation-iteration-count: 1;
+        animation-timing-function: ease-in;
+        animation-duration: 0.4s;
+        z-index: 2;
+    }
+
+    .hometext {
+        width: 40%;
+        height: 100%;
+        padding-top: 30px;
+        padding-left: 60px;
+        font-size: 16px;
+    }
+
+    .hometext > h2 {
+        font-size: 20px;
+    }
+    
+    .hometext > p {
+    
+        font-size: 14px
+
+    }
+
 }

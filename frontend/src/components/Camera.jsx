@@ -119,8 +119,10 @@ const CameraComponent = ({ word, threshold, matchFunction }) => {
           position: 'absolute',
           // marginLeft: 'auto',
           // marginRight: 'auto',
-          width: 640,
-          height: 480,
+          // width: 640,
+          // height: 480,
+          // width: "100%",
+          // height: "100%",
           borderRadius: "10px",
           zIndex: 3,
         }
@@ -130,8 +132,8 @@ const CameraComponent = ({ word, threshold, matchFunction }) => {
           position: 'absolute',
           // marginLeft: 'auto',
           // marginRight: 'auto',
-          width: 640,
-          height: 480,
+          // width: 640,
+          // height: 480,
           zIndex: 3,
           borderRadius: "10px",
         }

@@ -46,7 +46,7 @@ export default function lesson() {
     if(currentIndex >= lessons[parseInt(id)].words.length) {
       setButtonActive(true);
     }
-  }, [currentIndex]);
+  }, [currentIndex, id]);
 
   function matchFunction() {
     if (!debounceTimeout) {
@@ -57,6 +57,7 @@ export default function lesson() {
     }
   }
 
+  console.log("buttonActive in SingleLesson: ", buttonActive);
 
   return (
       <>
@@ -83,21 +84,24 @@ export default function lesson() {
             <CameraComponent word={currentWord} threshold={0.9} matchFunction={matchFunction} />
           </div>
         </div>
-      </div>
+      
 
         <div className='continue-button'>
           {parseInt(id) === 6 ? 
-            <p>You've finished all lessons!</p> 
+            <div>
+              {buttonActive ? <p id='lesson6'>You've completed all lessons! 🙌🥳🎉</p> : null}
+            </div>
             :
             <button 
               onClick={navigateBackToLessons} 
               className={buttonActive ? 'button-active' : 'not-active'}
+              disabled={buttonActive === false}
             >
               Continue
              
             </button>
           }
-        </div>
+        </div></div>
 
         <Footer />
       </>

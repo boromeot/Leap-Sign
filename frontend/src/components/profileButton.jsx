@@ -18,7 +18,7 @@ function ProfileButton (props) {
     async function logout(e) {
         e.preventDefault();
         await dispatch(clearLessons());
-        console.log("clear lesson state in logout function~~~~~");
+        // console.log("clear lesson state in logout function~~~~~");
         await dispatch(sessionActions.logout());
         
         navigate('/');

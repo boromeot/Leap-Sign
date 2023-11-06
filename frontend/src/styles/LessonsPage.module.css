@@ -292,7 +292,7 @@ inset 0 0 0 10px  rgba(0,0,255,.2);
     cursor: pointer;
     position: relative;
     z-index: 2;
-
+    margin: 5% 2% 15% 4%;
 }
 
 .leafimg{
@@ -399,3 +399,47 @@ h4{
     float: left;
     /* Add any other styling you want for odd lily pads */
   }
+  
+
+  .userProgress {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 3;
+    position: relative;
+    margin-top: 8%;
+    
+  }
+
+  /* .userProgress > h1 {
+    width: 90%;
+    z-index: 3;
+    padding: 20px; 
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 0 2px black;
+  } */
+  /* .userProgress > h1 {
+    width: 90%;
+    z-index: 3;
+    padding: 20px; 
+    text-align: center;
+    background-color: #8cba69;
+    opacity: 0.8;
+    border-radius: 10px;
+    color: #fff;
+  } */
+  .userProgress > h1 {
+    width: 90%;
+    z-index: 3;
+    padding: 20px; 
+    text-align: center;
+    background-color: #fff;
+    opacity: 0.8;
+    border-radius: 10px;
+    color: #22B14C;
+    box-shadow: 0 0 20px rgb(0, 0, 0, 0.2);
+    font-size: 2.5rem;
+  }
+
+ 
