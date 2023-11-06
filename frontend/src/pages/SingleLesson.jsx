@@ -45,6 +45,7 @@ export default function lesson() {
   }, [currentIndex, id]);
 
   function matchFunction() {
+    /* The matchFunction fires when the LSTM model's detection matches the currentWord at a confindence rating > threshold*/
     if (!debounceTimeout) {
       debounceTimeout = setTimeout(() => {
         setCurrentIndex((prev) => (prev + 1));
@@ -54,12 +55,7 @@ export default function lesson() {
   }
 
   return (
-      <>
-      
-      {/* <FormControlLabel
-        control={<Checkbox checked={checked} onChange={handleChange} onClick={handleClick} />}
-        label="Mark as completed"
-      /> */}   
+    <>
       <div className='singleLesson-cotainerouter'>
         <h1>Lesson {id}: <span>{`${lessons[parseInt(id)].words}`}</span></h1>
         <div  className='singleLesson-cotainer'>
@@ -75,11 +71,10 @@ export default function lesson() {
             />
           </div>
           <div className='singleLesson-camera'>
-            <CameraComponent word={currentWord} threshold={0.9} matchFunction={matchFunction} />
+            <CameraComponent word={currentWord} threshold={0.8} matchFunction={matchFunction} />
           </div>
         </div>
-      
-
+    
         <div className='continue-button'>
           {parseInt(id) === 6 ? 
             <div>
@@ -95,10 +90,10 @@ export default function lesson() {
              
             </button>
           }
-        </div></div>
-
-        <Footer />
-      </>
+        </div>
+      </div>
+      <Footer />
+    </>
   )
 
 }
