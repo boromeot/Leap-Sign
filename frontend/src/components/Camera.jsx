@@ -11,7 +11,7 @@ const CameraComponent = ({ word, threshold, matchFunction }) => {
   const canvasRef = useRef(null);
   const [CNN, setCNN] = useState(null);
   const [LSTM, setLSTM] = useState(null);
-  const map = ['nothing','again','thankyou','no','yes', 'understand','your','slow'];
+  const map = ['nothing','again','thankyou','no','yes', 'understand','your','slow','name','what','where','who','why','nice', 'meetyou', 'hello', 'goodbye'];
 
   function getMaxIndex(arr) {
     let index = -1;
