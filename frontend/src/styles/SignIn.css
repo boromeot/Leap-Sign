@@ -14,6 +14,10 @@
     left: 30%;
     top: 200px;
   }
+
+  .signin-container > h1 {
+    color: #fff;
+  }
   
   .signin-container > form {
     display: flex;
