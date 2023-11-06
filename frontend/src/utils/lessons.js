@@ -12,16 +12,16 @@ export const lessons = {
     'youtubeIds' : ['FVjpLa8GqeM', '4e14uNAn2Ao']
   },
   4: {
+    'words' : ['nice', 'meetyou'],
+    'youtubeIds' : ['2PeTh4Ym048', 'AvAGx3xiOq8']
+  },
+  5: {
     'words' : ['who', 'what', 'where'],
     'youtubeIds' : ['wKl26BsEAoc', '1udGGPLkA-Q', 'HS0SXS-GHYY']
   },
-  5: {
+  6: {
     'words' : ['no', 'yes'],
     'youtubeIds' : ['QJXKaOSyl4o', '0usayvOXzHo']
-  },
-  6: {
-    'words' : ['nice', 'meet you'],
-    'youtubeIds' : ['2PeTh4Ym048', 'AvAGx3xiOq8']
   },
 }
 export default lessons;
