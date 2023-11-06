@@ -320,7 +320,7 @@ inset 0 0 0 10px  rgba(0,0,255,.2);
     width: 80px;
     height: 80px;
     z-index: 4;
-    top: 45px;
+    top: 75px;
     left: 33px;
     opacity: 0.3;
     filter: grayscale(100%);
@@ -393,10 +393,9 @@ h4{
     float: right;
     /* Add any other styling you want for even lily pads */
   }
-  
+
   /* CSS for odd lily pads */
   .odd-lilypad {
     float: left;
     /* Add any other styling you want for odd lily pads */
   }
-  
