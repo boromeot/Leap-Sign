@@ -57,10 +57,13 @@ export default function lesson() {
   return (
     <>
       <div className='singleLesson-cotainerouter'>
-        <h1>Lesson {id}: <span>{`${lessons[parseInt(id)].words}`}</span></h1>
-        <div  className='singleLesson-cotainer'>
-          <div className='singleLesson-video'>        
-            <h1>Current sign : <span>{currentWord}</span></h1>
+        <h1>Lesson {id}: <span className='singeLesson-words'>{`${lessons[parseInt(id)].words.join(', ')}`}</span></h1>
+        <div className='singleLesson-cotainer'>
+          <div className='singleLesson-video'> 
+            {buttonActive ? 
+              <h1>Lesson complete! Click continue.</h1>:
+              <h1>Current sign : <span>{currentWord}</span></h1>
+            }       
             <ReactPlayer 
               url={`https://www.youtube.com/watch?v=${currentId}`}
               loop={true}
