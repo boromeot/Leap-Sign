@@ -7,6 +7,7 @@ import CameraComponent from '../components/Camera';
 import ReactPlayer from 'react-player';
 import lessons from '../utils/lessons';
 import Footer from '../components/footer';
+import { userLessons } from '../store/lesson';
 
 export default function lesson() {
   const navigate = useNavigate();
@@ -25,10 +26,11 @@ export default function lesson() {
 
 
   const navigateBackToLessons = () => {
-    if (buttonActive) {
-      dispatch(unlockLesson(lessonToBeUnlocked));
-      navigate(`/lessons`, { state: { animate: true, unlock: true } })
-    }
+    // if (buttonActive) {
+       dispatch(unlockLesson(lessonToBeUnlocked));
+       navigate(`/lessons`, { state: { animate: true, unlock: true } });
+       dispatch(userLessons());
+    // }
   }
 
   const [currentIndex, setCurrentIndex] = useState(0);
