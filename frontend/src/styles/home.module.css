@@ -38,7 +38,8 @@ input[type='radio']:after {
 
 .title2 > span {
   font-family: 'Cherry Bomb One', sans-serif;
-  font-size: 40px;
+  font-size: 30px;
+  color: #646CFF;
 }
 
 @media screen and (max-width: 820px) {

@@ -4,6 +4,7 @@ import devImg from '../assets/devfrog.png';
 import lilypad from '../assets/lilypad.png'
 
 const developers = [
+    {firstname: 'Michael', lastname: 'Faust', url: 'https://www.linkedin.com/in/michael-foust-671224a3/'},
     {firstname: 'Tyler', lastname: 'Boromeo', url: 'https://www.linkedin.com/in/kekoa-boromeo/'},
     {firstname: 'PJ', lastname: 'Singh', url: 'https://www.linkedin.com/in/prabhjot-singh-software-developer/'},
     {firstname: 'Shana', lastname: 'Edouard', url: 'https://www.linkedin.com/in/shana-edouard/'},
@@ -40,7 +41,7 @@ function AboutPage() {
                     </div>
                     <div className={classes.aboutText}>
                         <img src={lilypad} alt="app name" className={classes.lilyImg}/>
-                        <p><span>LeapSign</span> aims to provide an engaging and interactive platform for parents and children to learn sign language with a user-friendly application that offers interactive lessons with the power of AI to help give guided lessons through images and video to show that the signs are being done correctly. 
+                        <p><span>LeapSign</span> aims to provide an engaging and interactive platform for parents and children to learn sign language with a user-friendly application that offers interactive lessons with the power of AI to help give guided lessons through video and camera to show that the signs are being done correctly. 
                         </p>
                     </div>
                     <div className={classes.aboutText}>
@@ -64,7 +65,7 @@ function AboutPage() {
                                 )}
                                 <a href={developer.url} target='_blank' className={classes.frogJump}>
                                     <img className={classes.devImg} src={devImg} alt={developer.firstname} />
-                                    <p>{developer.firstname} </p><p>{developer.lastname}</p>
+                                    <p>{developer.firstname} </p>
                                 </a>
                             </li>
                         ))}
