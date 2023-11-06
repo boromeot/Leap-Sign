@@ -1,8 +1,9 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react-swc'
+import { mediapipe } from 'vite-plugin-mediapipe'
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [mediapipe(), react()],
   server: {
     proxy: {
       '/api/session': {
