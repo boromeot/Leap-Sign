@@ -44,7 +44,6 @@ const HomePage = () => {
 
 
   const handleVideoPlay = () => {
-    // console.log('handleVideoPlay invoked....');
     setVideoPlaying(true);
   };
 
@@ -53,7 +52,6 @@ const HomePage = () => {
     setVideoPlaying(false);
   };
 
-  // console.log('out of handleVideoClose function');
 
 
   useEffect(() => {

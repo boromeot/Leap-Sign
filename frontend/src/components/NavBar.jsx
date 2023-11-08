@@ -15,7 +15,6 @@ import "../styles/navbar.css";
 const NavBar = () => {
 
   const userSession = useSelector(state => state.session.user);
-  // console.log("userSession in NavBar: ", userSession);
   const [showSignIn, setShowSignIn] = useState(false);
   const [showSignUp, setShowSignUp] = useState(false);
   const [showProfileButton, setShowProfileButton] = useState(false)

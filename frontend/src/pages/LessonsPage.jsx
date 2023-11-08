@@ -57,7 +57,6 @@ function animatedFrog(lessonNumber, navigate) {
 const FiveLeafNodes = () => {
   const lessons = useSelector((state) => state.lesson.allLessons);
   const lessonsArr = Object.values(lessons);
-  // console.log(lessonsArr, "lessonsArr");
   let countOfLilyPad = 0;
 
   for (let lesson of lessonsArr) {
@@ -67,7 +66,6 @@ const FiveLeafNodes = () => {
   }
 
   const sessionUser = useSelector((state) => state.session.user);
-  // console.log("sessionUSer in LessonsPage: ", sessionUser);
 
   const navigate = useNavigate();
   const location = useLocation();

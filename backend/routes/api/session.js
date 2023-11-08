@@ -72,7 +72,6 @@ router.get(
   '',
   (req, res) => {
     const { user } = req;
-    // console.log('user in session route: ', user);
     if (user) {
       const safeUser = {
         id: user.id,

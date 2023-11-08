@@ -19,6 +19,7 @@ export const loadCNN = async () => {
       minDetectionConfidence: 0.5,
       minTrackingConfidence: 0.5
     });
+    console.log('CNN loaded', CNN);
     return CNN;
   } catch (error) {
     console.error('Error loading the CNN model', error);
@@ -29,6 +30,7 @@ export const loadCNN = async () => {
 export const loadLSTM = async (path) => {
   try {
     const LSTM = await tf.loadLayersModel(path);
+    console.log('LSTM loaded', LSTM);
     return LSTM;
   } catch (error) {
     console.error('Error loading the LSTM model', error);

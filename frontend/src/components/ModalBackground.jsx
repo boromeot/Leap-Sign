@@ -4,8 +4,6 @@ import classes from '../styles/ModalBackground.module.css';
 
 function ModalBackground (props) {
 
-    // console.log('signIn: ', props.signIn);
-    // console.log('signUp: ', props.signUP);
 
     return (
         <>

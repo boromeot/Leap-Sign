@@ -14,8 +14,6 @@ export default function lesson() {
   const dispatch = useDispatch();
   const sessionUser = useSelector((state) => state.session.user);
   const { id } = useParams();
-  // console.log('typeof id', typeof id)
-  // console.log(parseInt(id),"USEPARAMS ID");
   const [buttonActive, setButtonActive] = useState(false);
 
   let lessonToBeUnlocked = { 
@@ -35,10 +33,8 @@ export default function lesson() {
 
   const [currentIndex, setCurrentIndex] = useState(0);
  
-  // console.log(lessons[parseInt(id)].words)
   const [currentWord, setCurrentWord] = useState(lessons[parseInt(id)].words[currentIndex]);
   const [currentId, setCurrentId] = useState(lessons[parseInt(id)].youtubeIds[currentIndex]);
-  console.log(currentWord)
 
   let debounceTimeout;
 
@@ -51,6 +47,7 @@ export default function lesson() {
   }, [currentIndex, id]);
 
   function matchFunction() {
+    /* The matchFunction fires when the LSTM model's detection matches the currentWord at a confindence rating > threshold*/
     if (!debounceTimeout) {
       debounceTimeout = setTimeout(() => {
         setCurrentIndex((prev) => (prev + 1));
@@ -59,20 +56,16 @@ export default function lesson() {
     }
   }
 
-  console.log("buttonActive in SingleLesson: ", buttonActive);
-
   return (
-      <>
-      
-      {/* <FormControlLabel
-        control={<Checkbox checked={checked} onChange={handleChange} onClick={handleClick} />}
-        label="Mark as completed"
-      /> */}   
+    <>
       <div className='singleLesson-cotainerouter'>
-        <h1>Lesson {id}: <span>{`${lessons[parseInt(id)].words}`}</span></h1>
-        <div  className='singleLesson-cotainer'>
-          <div className='singleLesson-video'>        
-            <h1>Current sign : <span>{currentWord}</span></h1>
+        <h1>Lesson {id}: <span className='singeLesson-words'>{`${lessons[parseInt(id)].words.join(', ')}`}</span></h1>
+        <div className='singleLesson-cotainer'>
+          <div className='singleLesson-video'> 
+            {buttonActive ? 
+              <h1>Lesson complete! Click continue.</h1>:
+              <h1>Current sign : <span>{currentWord}</span></h1>
+            }       
             <ReactPlayer 
               url={`https://www.youtube.com/watch?v=${currentId}`}
               loop={true}
@@ -83,11 +76,10 @@ export default function lesson() {
             />
           </div>
           <div className='singleLesson-camera'>
-            <CameraComponent word={currentWord} threshold={0.9} matchFunction={matchFunction} />
+            <CameraComponent word={currentWord} threshold={0.8} matchFunction={matchFunction} />
           </div>
         </div>
-      
-
+    
         <div className='continue-button'>
           {parseInt(id) === 6 ? 
             <div>
@@ -103,10 +95,10 @@ export default function lesson() {
              
             </button>
           }
-        </div></div>
-
-        <Footer />
-      </>
+        </div>
+      </div>
+      <Footer />
+    </>
   )
 
 }
