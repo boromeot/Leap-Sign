@@ -19,8 +19,8 @@ app.use(cookieParser());
 app.use(express.json());
 
 // Security Middleware
-// if (!isProduction) {
-if (1 === 1) {
+if (!isProduction) {
+// if (1 === 1) {
   // enable cors only in development
   app.use(cors());
 }
